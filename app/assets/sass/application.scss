@@ -34,3 +34,20 @@
 .alpha-tag {
   @include phase-tag(alpha);
 }
+
+/* Andy's prototype styles: START */
+
+.js-enabled fieldset {
+  display: none;
+}
+.debug.js-enabled fieldset {
+  display: block;
+}
+.note {
+  background: #ffff00;
+  box-sizing: border-box;
+  font-weight: bold;
+  padding: 1em;
+}
+
+/* Andy's prototype styles: END */

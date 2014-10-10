@@ -1,0 +1,29 @@
+<script>
+	var app = function() {
+		var $ = document.querySelector.bind(document),
+			$$ = document.querySelectorAll.bind(document),
+
+			{{$js-elements}}
+				el = {}
+			{{/js-elements}},
+
+			{{$js-functions}}
+				func = function() {}
+			{{/js-functions}},
+
+			{{$js-initialisation}}
+				init = function() {}
+			{{/js-initialisation}},
+
+			setDisabled = function(target, disabled) {
+				target.disabled = disabled ? true : false;
+			},
+			setDisplay = function(target, display) {
+				target.style.display = display ? 'block' : 'none';
+			};
+		return {
+			init: init
+		}
+	}();
+	app.init();
+</script>

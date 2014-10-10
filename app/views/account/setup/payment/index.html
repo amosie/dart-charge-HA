@@ -1,0 +1,151 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Dart Charge{{/h1}}
+
+	{{$column-1}}
+		<h2>Payment information</h2>
+		<form action="/account/setup/payment/card">
+
+
+<h3>How would you like to top up your account?</h3>
+<ul class="boolean" id="topup-boolean">
+	<li>
+		<input id="topup-manual" name="topup" type="radio" />
+		<label for="topup-manual">Manually</label>
+	</li>
+	<li>
+		<input id="topup-automatic" name="topup" type="radio" />
+		<label for="topup-automatic">Automatically</label>
+	</li>
+</ul>
+<fieldset id="topup-types" style="display: block">
+	<fieldset id="type-manual" style="display: block">
+		<h3>Manual top-up</h3>
+		<p>
+			<label for="manual-start">Initial amount</label>
+			£<input id="manual-start" name="manual-start" type="number" value="10.00" />
+		</p>
+	</fieldset>
+	<fieldset id="type-automatic" style="display: block">
+		<h3>Automatic top-up</h3>
+		<p>
+			<label for="automatic-start">Initial amount</label>
+			£<input id="automatic-start" name="automatic-start" type="number" value="10.00" />
+		</p>
+		<p>
+			<label for="automatic-continue">Top-up amount</label>
+			£<input id="automatic-continue" name="automatic-continue" type="number" value="10.00" />
+		</p>
+		<p>
+			<label for="automatic-threshold">When my account drops to</label>
+			£<input id="automatic-threshold" name="automatic-threshold" type="number" value="10.00" />
+		</p>
+		<ul class="boolean" id="payment-boolean">
+			<li>
+				<input id="payment-direct-debit" name="payment" type="radio" />
+				<label for="payment-direct-debit">Direct Debit</label>
+			</li>
+			<li>
+				<input id="payment-card" name="payment" type="radio" />
+				<label for="payment-card">Credit/Debit card</label>
+			</li>
+		</ul>
+		<fieldset id="direct-debit" style="display: block">
+			<h3>Direct Debit details</h3>
+			<p>
+				<label for="account-name">Account holder name</label>
+				<input id="account-name" name="account-name" type="text" />
+			</p>
+			<p>
+				<label for="account-number">Account number</label>
+				<input id="account-number" name="account-number" type="number" />
+			</p>
+			<p>
+				<label for="account-sortcode">Sort code</label>
+				<input id="account-sortcode" name="account-sortcode" type="number" />
+			</p>
+			<p>
+				<label for="first-name">First name</label>
+				<input id="first-name" name="first-name" type="text" />
+			</p>
+			<p>
+				<label for="last-name">Last name</label>
+				<input id="last-name" name="last-name" type="text" />
+			</p>
+			<p>
+				<label for="address-1">Address 1</label>
+				<input id="address-1" name="address-1" type="text" />
+			</p>
+			<p>
+				<label for="address-2">Address 2</label>
+				<input id="address-2" name="address-2" type="text" />
+			</p>
+			<p>
+				<label for="city">City</label>
+				<input id="city" name="city" type="text" />
+			</p>
+			<p>
+				<label for="county">County</label>
+				<input id="county" name="county" type="text" />
+			</p>
+			<p>
+				<label for="postcode">Postcode</label>
+				<input id="postcode" name="postcode" type="text" />
+			</p>
+			<ul id="date-of-birth">
+				<li>
+					<label for="dob-dd">DD</label>
+					<select id="dob-dd" name="dob-dd">
+						<option value="DD">DD</option>
+					</select>
+				</li>
+				<li>
+					<label for="dob-mm">MM</label>
+					<select id="dob-mm" name="dob-mm">
+						<option value="MM">MM</option>
+					</select>
+				</li>
+				<li>
+					<label for="dob-yyyy">YYYY</label>
+					<select id="dob-yyyy" name="dob-yyyy">
+						<option value="yyyy">YYYY</option>
+					</select>
+				</li>
+			</ul>
+		</fieldset>
+	</fieldset>
+	<p>
+		<input id="terms" name="terms" type="checkbox" />
+		<label for="terms">I accept the Terms and Conditions</label>
+		<a href="/account/setup/payment/terms">Read the Terms and Conditions</a>
+	</p>
+</fieldset>
+
+
+			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
+			<p><a href="/account/setup/local">Back</a></p>
+		</form>
+	{{/column-1}}
+
+	{{$js-elements}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-elements}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+{{/layouts/1-column}}

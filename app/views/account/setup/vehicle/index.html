@@ -1,0 +1,85 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Dart Charge{{/h1}}
+
+	{{$column-1}}
+		<h2>Vehicle information</h2>
+		<form action="/account/setup/local">
+			<fieldset id="vehicle-list">
+				<table>
+					<thead>
+						<tr>
+							<td>Registration number</td>
+							<td>Class</td>
+							<td>Make</td>
+							<td>Model</td>
+							<td>Colour</td>
+							<td>Remove</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="vehicle-1">
+							<td class="registration"></td>
+							<td class="class"></td>
+							<td class="make"></td>
+							<td class="model"></td>
+							<td class="colour"></td>
+							<td class="remove"><button>Remove</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+			<h3>Add a vehicle</h3>
+			<p>
+				<label for="vehicle-registration">Registration number</label>
+				<input id="vehicle-registration" name="vehicle-registration" type="text" />
+			</p>
+			<fieldset id="vehicle-not-found">
+				<p>
+					<label for="vehicle-class">Vehicle class</label>
+					<select id="vehicle-class" name="vehicle-class">
+						<option value="class">B: Car</option>
+					</select>
+				</p>
+				<p>
+					<label for="vehicle-make">Make</label>
+					<input id="vehicle-make" name="vehicle-make" type="text" />
+				</p>
+				<p>
+					<label for="vehicle-model">Model</label>
+					<input id="vehicle-model" name="vehicle-model" type="text" />
+				</p>
+				<p>
+					<label for="vehicle-colour">Colour</label>
+					<input id="vehicle-colour" name="vehicle-colour" type="text" />
+				</p>
+				<p><button id="cancel">Cancel</button></p>
+			</fieldset>
+			<p><button id="add-vehicle">Find vehicle</button></p>
+			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
+			<p><a href="/account/setup/personal">Back</a></p>
+		</form>
+	{{/column-1}}
+
+	{{$js-elements}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-elements}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+{{/layouts/1-column}}

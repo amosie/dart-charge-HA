@@ -1,0 +1,70 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Dart Charge{{/h1}}
+
+	{{$column-1}}
+		<h2>Apply for local discount</h2>
+		<form action="/account/setup/payment">
+			<h3>Do you live in the Dartford-Thurrock area</h3>
+			<ul class="boolean" id="local-boolean">
+				<li>
+					<input id="local-yes" name="local" type="radio" />
+					<label for="local-yes">Yes</label>
+				</li>
+				<li>
+					<input id="local-no" name="local" type="radio" />
+					<label for="local-no">No</label>
+				</li>
+			</ul>
+			<fieldset id="discounts">
+				<h3>What type of discount would you like?</h3>
+				<ul class="boolean" id="crossings-boolean">
+					<li>
+						<input id="crossings-unlimited" name="crossings" type="radio" />
+						<label for="crossings-unlimited">Unlimited</label>
+					</li>
+					<li>
+						<input id="crossings-limited" name="crossings" type="radio" />
+						<label for="local-limited">Limited</label>
+					</li>
+				</ul>
+				<p>
+					<label for="proof-of-residency">Upload proof of residency</label>
+					<input id="proof-of-residency" name="proof-of-residency" type="file" />
+				</p>
+				<p>
+					<label for="proof-of-ownership">Upload proof of ownership</label>
+					<input id="proof-of-ownership" name="proof-of-ownership" type="file" />
+				</p>
+				<p>
+					<input id="apply-later" name="apply-later" type="checkbox" />
+					<label for="apply-later">Apply later</label>
+				</p>
+			</fieldset>
+			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
+			<p><a href="/account/setup/vehicle">Back</a></p>
+		</form>
+	{{/column-1}}
+
+	{{$js-elements}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-elements}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+{{/layouts/1-column}}

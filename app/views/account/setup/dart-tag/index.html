@@ -1,0 +1,87 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Dart Charge{{/h1}}
+
+	{{$column-1}}
+		<h2>Do you have a DART Tag?</h2>
+		<p>If you are a DART Tag customer then you should have received a DART Tag migration letter, containing information about the changes that are happening at the Dartford Crossings.</p>
+		<form action="/account/setup/personal" method="post">
+			<h3>Have you received a DART Tag migration letter?</h3>
+			<ul class="boolean" id="dart-boolean">
+				<li>
+					<input id="dart-yes" name="dart" type="radio" />
+					<label for="dart-yes">Yes, I have</label>
+				</li>
+				<li>
+					<input id="dart-no" name="dart" type="radio" />
+					<label for="dart-no">No, I have not</label>
+				</li>
+			</ul>
+			<fieldset id="dart-verify">
+				<p>If you tell us your DART Tag account number and veriification code, we can prefill information, making it quicker and easier to set up your account.</p>
+				<p>
+					<label for="dart-account">What is your DART Tag account number?</label>
+					<input id="dart-account" name="dart-account" type="text" />
+				</p>
+				<p>
+					<label for="dart-verification">What is your verification code?</label>
+					<input id="dart-verification" name="dart-verification" type="text" />
+				</p>
+			</fieldset>
+			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
+			<p><a href="/">Back</a></p>
+
+		</form>
+	{{/column-1}}
+
+	{{$js-elements}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next'),
+			dartAccount: $('#dart-account'),
+			dartBoolean: $('#dart-boolean'),
+			dartNo: $('#dart-no'),
+			dartVerification: $('#dart-verification'),
+			dartVerify: $('#dart-verify'),
+			dartYes: $('#dart-yes')
+		}
+	{{/js-elements}}
+
+	{{$js-functions}}
+		testDart = function() {
+			if (el.dartYes.checked == true) {
+				setDisabled(el.buttonNext, true);
+				if (getComputedStyle(el.dartVerify)['display'] == 'none') {
+					setDisplay(el.dartVerify, true);
+				}
+			} else {
+				if (getComputedStyle(el.dartVerify)['display'] == 'block') {
+					setDisplay(el.dartVerify, false);
+				}
+				setDisabled(el.buttonNext, false);
+			}
+		},
+		testVerify = function() {
+			var accountLength = el.dartAccount.value.length;
+			var verificationLength = el.dartVerification.value.length;
+			if (accountLength > 0 && verificationLength > 0) {
+				setDisabled(el.buttonNext, false);
+			}
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			if (window.location.search.match(/=debug/)) {
+				el.body.classList.add('debug');
+			}
+			el.dartBoolean.addEventListener('change', function() {
+				testDart();	
+			}, false);
+			el.dartVerify.addEventListener('keyup', function() {
+				testVerify();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+{{/layouts/1-column}}

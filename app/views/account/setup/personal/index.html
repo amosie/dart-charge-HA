@@ -1,0 +1,133 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Dart Charge{{/h1}}
+
+	{{$column-1}}
+		<h2>Personal information</h2>
+		<form action="/account/setup/vehicle">
+			<p>
+				<label for="name-first">First name</label>
+				<input id="name-first" name="name-first" type="text" />
+			</p>
+			<p>
+				<label for="name-last">Last name</label>
+				<input id="name-last" name="name-last" type="text" />
+			</p>
+			<p>
+				<input id="behalf-of-company" name="behalf-of-company" type="checkbox" />
+				<label for="behalf-of-company">Are you applying on behalf of a company?</label>
+			</p>
+			<fieldset id="company">
+				<p>
+					<label for="company-number">Registered company number</label>
+					<input id="company-number" name="company-number" type="number" />
+				</p>
+			</fieldset>
+			<p>
+				<label for="email">Email address</label>
+				<input id="email" name="email" type="email" />
+			</p>
+			<p>
+				<label for="email-confirm">Confirm your email address</label>
+				<input id="email-confirm" name="email-confirm" type="email" />
+			</p>
+			<p>
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password" />
+			</p>
+			<p>
+				<label for="password-confirm">Confirm your password</label>
+				<input id="password-confirm" name="password-confirm" type="password" />
+			</p>
+			<p>
+				<label for="telephone">Telephone number</label>
+				<input id="telephone" name="telephone" type="tel" />
+			</p>
+			<p>
+				<label for="secondary-telephone">Secondary telephone number (optional)</label>
+				<input id="secondary-telephone" name="secondary-telephone" type="tel" />
+			</p>
+			<h2>Address details</h2>
+			<p>
+				<label for="country">Country</label>
+				<select id="country" name="country">
+					<option selected="selected" value="uk">United Kingdom</option>
+				</select>
+			</p>
+			<p>
+				<label for="postcode">Postcode</label>
+				<input id="postcode" name="postcode" type="text" />
+			</p>
+			<p><button id="find-address">Find address</button></p>
+			<fieldset id="address">
+				<p>
+					<label for="address-found">Select your address</label>
+					<select id="address-found" name="address-found">
+						<option selected="selected" value="address-01">1 Anystreet, Townsville</option>
+					</select>
+				</p>
+				<p>
+					<input id="address-not-found" name="address-not-found" type="checkbox" />
+					<label for="address-not-found">Cant'find your address?</label>
+				</p>
+				<fieldset id="address-detail">
+					<p>
+						<label for="address-1">Address</label>
+						<input id="address-1" name="address-1" type="text" />
+					</p>
+					<p>
+						<label for="address-2">Address</label>
+						<input id="address-2" name="address-2" type="text" />
+					</p>
+					<p>
+						<label for="city">City</label>
+						<input id="city" name="city" type="text" />
+					</p>
+					<p>
+						<label for="county">County</label>
+						<input id="county" name="county" type="text" />
+					</p>
+				</fieldset>
+			</fieldset>
+			<h2>Security questions</h2>
+			<p>
+				<label for="ivr-pin">IVR PIN</label>
+				<input id="ivr-pin" name="ivr-pin" type="text" />
+			</p>
+			<p>
+				<label for="security-question">Security question</label>
+				<select id="security-question" name="security-question">
+					<option selected="selected" value="pet-name">What is your pet's name</option>
+				</select>
+			</p>
+			<p>
+				<label for="security-answer">Security answer</label>
+				<input id="security-answer" name="security-answer" type="text" />
+			</p>
+			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
+			<p><a href="/account/setup/dart-tag">Back</a></p>
+		</form>
+	{{/column-1}}
+
+	{{$js-elements}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-elements}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+{{/layouts/1-column}}

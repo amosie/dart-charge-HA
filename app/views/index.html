@@ -1,13 +1,21 @@
-{{<layout}}
+{{<layouts/2-column}}
 
-{{$pageTitle}}Index{{/pageTitle}}
+	{{$h1}}Dart Charge{{/h1}}
 
-{{$content}}
-<main id="content" role="main">
-  <header class="page-header">
-    <h1>Welcome to the GOV.UK prototyping kit</h1>
-  </header>
-</main>
-{{/content}}
+	{{$column-1}}
+		<p>[Intro and overview content...]</p>
+		<h2>Set up your account</h2>
+		<a href="account/setup/dart-tag">Start</a>
+	{{/column-1}}
 
-{{/layout}}
+	{{$column-2}}
+		<h2>Guides</h2>
+		<ul>
+			<li><a href="">Pricing information</a></li>
+			<li><a href="">DART Tag account holders</a></li>
+			<li><a href="">Local residents</a></li>
+			<li><a href="">Company accounts</a></li>
+		</ul>
+	{{/column-2}}
+
+{{/layouts/2-column}}

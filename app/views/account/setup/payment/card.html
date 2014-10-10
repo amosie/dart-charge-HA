@@ -1,0 +1,39 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Dart Charge{{/h1}}
+
+	{{$column-1}}
+		<h2>Credit/Debit Card Details</h2>
+		<form action="/account/setup/success">
+
+
+
+
+
+			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
+			<p><a href="/account/setup/payment">Back</a></p>
+		</form>
+	{{/column-1}}
+
+	{{$js-elements}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-elements}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+{{/layouts/1-column}}
