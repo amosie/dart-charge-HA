@@ -47,6 +47,11 @@
 				<label for="secondary-telephone">Secondary telephone number (optional)</label>
 				<input id="secondary-telephone" name="secondary-telephone" type="tel" />
 			</p>
+			<h2>Security information</h2>
+			<p>
+				<label for="ivr-pin">IVR PIN</label>
+				<input id="ivr-pin" name="ivr-pin" type="text" />
+			</p>
 			<h2>Address details</h2>
 			<p>
 				<label for="country">Country</label>
@@ -68,7 +73,7 @@
 				</p>
 				<p>
 					<input id="address-not-found" name="address-not-found" type="checkbox" />
-					<label for="address-not-found">Cant'find your address?</label>
+					<label for="address-not-found">Can't find your address?</label>
 				</p>
 				<fieldset id="address-detail">
 					<p>
@@ -87,23 +92,12 @@
 						<label for="county">County</label>
 						<input id="county" name="county" type="text" />
 					</p>
+					<p>
+						<input id="local-discount" name="local-discount" type="checkbox" />
+						<label for="local-discount">Apply for a local discount</label>
+					</p>
 				</fieldset>
 			</fieldset>
-			<h2>Security questions</h2>
-			<p>
-				<label for="ivr-pin">IVR PIN</label>
-				<input id="ivr-pin" name="ivr-pin" type="text" />
-			</p>
-			<p>
-				<label for="security-question">Security question</label>
-				<select id="security-question" name="security-question">
-					<option selected="selected" value="pet-name">What is your pet's name</option>
-				</select>
-			</p>
-			<p>
-				<label for="security-answer">Security answer</label>
-				<input id="security-answer" name="security-answer" type="text" />
-			</p>
 			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
 			<p><a href="/account/setup/dart-tag">Back</a></p>
 		</form>
@@ -111,21 +105,53 @@
 
 	{{$js-elements}}
 		el = {
+			address: $('#address'),
+			addressDetail: $('#address-detail'),
+			addressNotFound: $('#address-not-found'),
 			body: $('body'),
-			buttonNext: $('#next')
+			buttonNext: $('#next'),
+			behalfCompany: $('#behalf-of-company'),
+			company: $('#company'),
+			companyNumber: $('#company-number'),
+			findAddress: $('#find-address')
 		}
 	{{/js-elements}}
 
 	{{$js-functions}}
-		func = function() {
-			console.log(el.buttonNext);
+		showAddresses = function() {
+			setDisplay(el.address, true);
+		},
+		showAddressForm = function(target) {
+			if (target.checked == true) {
+				setDisplay(el.addressDetail, true);
+			} else {
+				setDisplay(el.addressDetail, false);
+			}
+		},
+		testCompany = function(target) {
+			if (target.checked == true) {
+				setDisplay(el.company, true);
+			} else {
+				setDisplay(el.company, false);
+				el.companyNumber.value = '';
+			}
 		}
 	{{/js-functions}}
 
 	{{$js-initialisation}}
 		init = function() {
-			el.body.addEventListener('click', function() {
-				func();
+			if (window.location.search.match(/=debug/)) {
+				el.body.classList.add('debug');
+			}
+			el.addressNotFound.addEventListener('click', function(e) {
+				showAddressForm(e.target);
+			}, false);
+			el.behalfCompany.addEventListener('change', function(e) {
+				testCompany(e.target);
+			}, false);
+			el.findAddress.addEventListener('click', function(e) {
+				e.preventDefault();
+				showAddresses();
 			}, false);
 		}
 	{{/js-initialisation}}

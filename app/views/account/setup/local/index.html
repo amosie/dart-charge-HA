@@ -4,30 +4,21 @@
 
 	{{$column-1}}
 		<h2>Apply for local discount</h2>
-		<form action="/account/setup/payment">
+		<form action="/account/setup/vehicle">
 			<h3>Do you live in the Dartford-Thurrock area</h3>
-			<ul class="boolean" id="local-boolean">
+			<p>[Some explanatory content]</h3>
+			<h3>What type of discount would you like?</h3>
+			<ul class="boolean" id="crossings-boolean">
 				<li>
-					<input id="local-yes" name="local" type="radio" />
-					<label for="local-yes">Yes</label>
+					<input id="crossings-unlimited" name="crossings" type="radio" />
+					<label for="crossings-unlimited">Unlimited</label>
 				</li>
 				<li>
-					<input id="local-no" name="local" type="radio" />
-					<label for="local-no">No</label>
+					<input id="crossings-limited" name="crossings" type="radio" />
+					<label for="local-limited">Limited</label>
 				</li>
 			</ul>
-			<fieldset id="discounts">
-				<h3>What type of discount would you like?</h3>
-				<ul class="boolean" id="crossings-boolean">
-					<li>
-						<input id="crossings-unlimited" name="crossings" type="radio" />
-						<label for="crossings-unlimited">Unlimited</label>
-					</li>
-					<li>
-						<input id="crossings-limited" name="crossings" type="radio" />
-						<label for="local-limited">Limited</label>
-					</li>
-				</ul>
+			<div id="proof">
 				<p>
 					<label for="proof-of-residency">Upload proof of residency</label>
 					<input id="proof-of-residency" name="proof-of-residency" type="file" />
@@ -36,33 +27,41 @@
 					<label for="proof-of-ownership">Upload proof of ownership</label>
 					<input id="proof-of-ownership" name="proof-of-ownership" type="file" />
 				</p>
-				<p>
-					<input id="apply-later" name="apply-later" type="checkbox" />
-					<label for="apply-later">Apply later</label>
-				</p>
-			</fieldset>
+			</div>
+			<p>[Explain that you can apply from within your account]</h3>
+			<p>
+				<input id="apply-later" name="apply-later" type="checkbox" />
+				<label for="apply-later">Apply later</label>
+			</p>
 			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
-			<p><a href="/account/setup/vehicle">Back</a></p>
+			<p><a href="/account/setup/personal">Back</a></p>
 		</form>
 	{{/column-1}}
 
 	{{$js-elements}}
 		el = {
-			body: $('body'),
-			buttonNext: $('#next')
+			applyLater: $('#apply-later'),
+			buttonNext: $('#next'),
+			proof: $('#proof')
 		}
 	{{/js-elements}}
 
 	{{$js-functions}}
-		func = function() {
-			console.log(el.buttonNext);
+		testNext = function() {
+			console.log('howdy');
 		}
 	{{/js-functions}}
 
 	{{$js-initialisation}}
 		init = function() {
-			el.body.addEventListener('click', function() {
-				func();
+			if (window.location.search.match(/=debug/)) {
+				el.body.classList.add('debug');
+			}
+			el.applyLater.addEventListener('click', function() {
+				testNext();
+			}, false);
+			el.proof.addEventListener('change', function() {
+				testNext();
 			}, false);
 		}
 	{{/js-initialisation}}

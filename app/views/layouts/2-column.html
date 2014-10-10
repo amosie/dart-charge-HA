@@ -5,12 +5,17 @@
 	{{/head}}
 
 	{{$content}}
-
+<div id="page-container">
 		<h1>{{$h1}}{{/h1}}</h1>
-
+  <div class="grid-row">
+    <div class="column-two-thirds">
 		{{$column-1}}{{/column-1}}
+    </div>
+    <div class="column-third">
 		{{$column-2}}{{/column-2}}
-
+    </div>
+  </div>
+</div>
 	{{/content}}
 
 	{{$bodyEnd}}

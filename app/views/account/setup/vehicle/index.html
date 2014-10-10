@@ -76,6 +76,9 @@
 
 	{{$js-initialisation}}
 		init = function() {
+			if (window.location.search.match(/=debug/)) {
+				el.body.classList.add('debug');
+			}
 			el.body.addEventListener('click', function() {
 				func();
 			}, false);
