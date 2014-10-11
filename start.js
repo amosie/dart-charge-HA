@@ -5,10 +5,16 @@ var fs = require('fs'),
     gruntfile;
 
 // start grunt
-gruntfile = (argv.ruby) ? __dirname + '/Gruntfile_ruby_sass.js' : __dirname + '/Gruntfile.js';
+gruntfile = __dirname + '/Gruntfile_ruby_sass.js';
 require(__dirname + '/node_modules/grunt/lib/grunt.js').cli({
   'gruntfile' : gruntfile
 });
+
+// // start grunt
+// gruntfile = (argv.ruby) ? __dirname + '/Gruntfile_ruby_sass.js' : __dirname + '/Gruntfile.js';
+// require(__dirname + '/node_modules/grunt/lib/grunt.js').cli({
+//   'gruntfile' : gruntfile
+// });
 
 fs.writeFileSync(pidFile, process.pid, fileOptions);
 
