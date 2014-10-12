@@ -28,6 +28,17 @@
   }
 }
 
+/* Buttons */
+.button, [type="submit"]{
+  @include button;
+}
+.button-secondary{
+  @include button($grey-3);
+}
+.button-warning{
+  @include button($red);
+}
+
 /* Alpha/Beta styles */
 
 .alpha-banner  {
