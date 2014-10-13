@@ -84,7 +84,11 @@
 				<p class="form-group">
 					<label for="address-found">Select your address</label>
 					<select class="form-control-1" id="address-found" name="address-found">
-						<option value="address-01">1 Anystreet, Townsville</option>
+                        <option value="address-01">1 Anystreet, Townsville</option>
+                        <option value="address-01">1 Anystreet, Townsville</option>
+                        <option value="address-01">1 Anystreet, Townsville</option>
+                        <option value="address-01">1 Anystreet, Townsville</option>
+                        <option value="address-01">1 Anystreet, Townsville</option>
 					</select>
 				</p>
 				<fieldset class="form-group inline">
@@ -97,9 +101,11 @@
 					<div class="panel-indent js-hidden" id="address-detail">
 						<fieldset>
 							<legend>Address</legend>
-							<p class="form-group">
+							<p class="form-group mini">
 								<label class="visuallyhidden" for="address-1">Address line 1</label>
 								<input class="form-control form-control-1-2" id="address-1" type="text">
+                            </p>
+                            <p class="form-group">
 								<label class="visuallyhidden" for="address-2">Address line 2</label>
 								<input class="form-control form-control-1-2" id="address-2" type="text">
 							</p>
@@ -169,11 +175,16 @@
 			}, false);
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
-				window.location = 'vehicle';
+                if (el.localDiscount.checked) {
+    				window.location = 'local';
+                } else {
+                    window.location = 'vehicle';
+                }
 			});
 			el.findAddress.addEventListener('click', function(e) {
 				e.preventDefault();
 				showAddresses();
+                setDisabled(el.buttonNext, false);
 				testLocal(el.postcode);
 			}, false);
 		}
@@ -191,6 +202,7 @@
 			companyNumber: $('#company-number'),
 			discountInvite: $('#discount-invite'),
 			findAddress: $('#find-address'),
+            localDiscount: $('#local-discount'),
 			postcode: $('#postcode')
 		}
 	{{/js-objects}}
