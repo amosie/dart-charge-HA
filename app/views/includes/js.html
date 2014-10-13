@@ -3,10 +3,6 @@
 		var $ = document.querySelector.bind(document),
 			$$ = document.querySelectorAll.bind(document),
 
-			{{$js-elements}}
-				el = {}
-			{{/js-elements}},
-
 			{{$js-functions}}
 				func = function() {}
 			{{/js-functions}},
@@ -14,6 +10,10 @@
 			{{$js-initialisation}}
 				init = function() {}
 			{{/js-initialisation}},
+
+			{{$js-objects}}
+				el = {}
+			{{/js-objects}},
 
 			setDisabled = function(target, disabled) {
 				target.disabled = disabled ? true : false;

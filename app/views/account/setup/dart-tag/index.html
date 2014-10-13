@@ -1,51 +1,36 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Dart Charge{{/h1}}
+	{{$h1}}Do you have a DART Tag account?{{/h1}}
 
 	{{$column-1}}
-		<h2>Do you have a DART Tag?</h2>
-		<p>If you are a DART Tag customer then you should have received a DART Tag migration letter, containing information about the changes that are happening at the Dartford Crossings.</p>
-		<form action="/account/setup/personal" method="post">
-			<h3>Have you received a DART Tag migration letter?</h3>
-			<ul class="boolean" id="dart-boolean">
-				<li>
-					<input id="dart-yes" name="dart" type="radio" />
-					<label for="dart-yes">Yes, I have</label>
-				</li>
-				<li>
-					<input id="dart-no" name="dart" type="radio" />
-					<label for="dart-no">No, I have not</label>
-				</li>
-			</ul>
-			<fieldset id="dart-verify">
-				<p>If you tell us your DART Tag account number and veriification code, we can prefill information, making it quicker and easier to set up your account.</p>
-				<p>
-					<label for="dart-account">What is your DART Tag account number?</label>
-					<input id="dart-account" name="dart-account" type="text" />
+		<form>
+			<fieldset class="inline">
+				<p>If you are a DART Tag customer then you should have received an email or letter explaining how to migrate your DART Tag account.</p>
+				<legend class="heading-24">Do you have a DART Tag migration email or letter?</legend>
+				<p class="form-group form-group-compound" id="dart-boolean">
+					<label class="block-label" for="dart-yes">
+						<input id="dart-yes" type="radio" name="dart-group" value="Yes">
+						Yes
+					</label>
+					<label class="block-label" for="dart-no">
+						<input id="dart-no" type="radio" name="dart-group" value="No">
+						No
+					</label>
 				</p>
-				<p>
-					<label for="dart-verification">What is your verification code?</label>
-					<input id="dart-verification" name="dart-verification" type="text" />
-				</p>
+				<div class="panel-indent js-hidden" id="dart-verify">
+					<p class="form-group">
+						<label class="form-label" for="dart-account">DART Tag account number</label>
+						<input class="form-control form-control-1-2" id="dart-account" type="text">
+					</p>
+					<p class="form-group">
+						<label class="form-label" for="dart-verification">Verification code</label>
+						<input class="form-control form-control-1-2" id="dart-verification" type="text">
+					</p>
+				</div>
 			</fieldset>
-			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
-			<p><a href="/">Back</a></p>
-
+			<p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
 		</form>
 	{{/column-1}}
-
-	{{$js-elements}}
-		el = {
-			body: $('body'),
-			buttonNext: $('#next'),
-			dartAccount: $('#dart-account'),
-			dartBoolean: $('#dart-boolean'),
-			dartNo: $('#dart-no'),
-			dartVerification: $('#dart-verification'),
-			dartVerify: $('#dart-verify'),
-			dartYes: $('#dart-yes')
-		}
-	{{/js-elements}}
 
 	{{$js-functions}}
 		testDart = function() {
@@ -75,6 +60,10 @@
 			if (window.location.search.match(/=debug/)) {
 				el.body.classList.add('debug');
 			}
+			el.buttonNext.addEventListener('click', function(e) {
+				e.preventDefault();
+				window.location = 'personal';
+			});
 			el.dartBoolean.addEventListener('change', function() {
 				testDart();	
 			}, false);
@@ -83,5 +72,18 @@
 			}, false);
 		}
 	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next'),
+			dartAccount: $('#dart-account'),
+			dartBoolean: $('#dart-boolean'),
+			dartNo: $('#dart-no'),
+			dartVerification: $('#dart-verification'),
+			dartVerify: $('#dart-verify'),
+			dartYes: $('#dart-yes')
+		}
+	{{/js-objects}}
 
 {{/layouts/1-column}}

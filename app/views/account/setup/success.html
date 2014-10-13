@@ -1,30 +1,10 @@
 {{<layouts/2-column}}
 
-	{{$h1}}Dart Charge{{/h1}}
+	{{$h1}}Congratulations{{/h1}}
 
 	{{$column-1}}
-		<h2>Congratulations</h2>
-		<h3>Your account has been created</h3>
-		<form action="/account/setup/success">
-
-
-
-<div class="note">
-	<p>This will use the 2 column layout, like the rest of the (non-setup) account manager.</p>
-</div>
-
-
-			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
-			<p><a href="/account/setup/payment">Back</a></p>
-		</form>
+		<p>Your Dart Charge account has been successfully created.</p>
 	{{/column-1}}
-
-	{{$js-elements}}
-		el = {
-			body: $('body'),
-			buttonNext: $('#next')
-		}
-	{{/js-elements}}
 
 	{{$js-functions}}
 		func = function() {
@@ -39,5 +19,12 @@
 			}, false);
 		}
 	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-objects}}
 
 {{/layouts/2-column}}

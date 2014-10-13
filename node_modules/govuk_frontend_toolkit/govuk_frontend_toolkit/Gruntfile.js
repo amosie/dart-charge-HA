@@ -4,11 +4,11 @@ module.exports = function(grunt) {
       javascripts: {
         src: [
           'node_modules/jquery-browser/lib/jquery.js',
-          'javascripts/**/*.js',
+          'javascripts/**/*.js'
         ],
         options: {
-          specs: 'spec/*Spec.js',
-          helpers: 'spec/*Helper.js'
+          specs: 'spec/unit/*Spec.js',
+          helpers: 'spec/unit/*Helper.js'
         }
       }
     }
