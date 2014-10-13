@@ -1,77 +1,144 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Dart Charge{{/h1}}
+	{{$h1}}Vehicle information{{/h1}}
 
 	{{$column-1}}
-		<h2>Vehicle information</h2>
-		<form action="/account/setup/local">
-			<fieldset id="vehicle-list">
+		<form>
+			<p>You can add up to five vehicles via this form. If you need to register more than five vehicles for Dart Charge, you can add them once your account is set up.</p>
+			<fieldset class="js-hidden" id="vehicles">
 				<table>
 					<thead>
 						<tr>
-							<td>Registration number</td>
-							<td>Class</td>
-							<td>Make</td>
-							<td>Model</td>
-							<td>Colour</td>
-							<td>Remove</td>
+							<th>Registration number</th>
+							<th>Class</th>
+							<th>Make</th>
+							<th>Model</th>
+							<th>Colour</th>
+							<th>Remove</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr id="vehicle-1">
-							<td class="registration"></td>
-							<td class="class"></td>
-							<td class="make"></td>
-							<td class="model"></td>
-							<td class="colour"></td>
-							<td class="remove"><button>Remove</button></td>
-						</tr>
+					<tbody id="vehicle-list">
 					</tbody>
 				</table>
 			</fieldset>
-			<h3>Add a vehicle</h3>
-			<p>
-				<label for="vehicle-registration">Registration number</label>
-				<input id="vehicle-registration" name="vehicle-registration" type="text" />
-			</p>
-			<fieldset id="vehicle-not-found">
+			<fieldset class="form-group inline">
+				<h2 class="heading-24">Add a vehicle</h2>
 				<p>
-					<label for="vehicle-class">Vehicle class</label>
-					<select id="vehicle-class" name="vehicle-class">
-						<option value="class">B: Car</option>
-					</select>
+					<label class="form-label" for="vehicle-registration">
+						Vehicle registration number
+					</label>
+					<input class="form-control form-control-1-2 form-control-caps" id="vehicle-registration" type="text">
+					<button class="button inline" id="vehicle-add">Add vehicle</button>
 				</p>
-				<p>
-					<label for="vehicle-make">Make</label>
-					<input id="vehicle-make" name="vehicle-make" type="text" />
-				</p>
-				<p>
-					<label for="vehicle-model">Model</label>
-					<input id="vehicle-model" name="vehicle-model" type="text" />
-				</p>
-				<p>
-					<label for="vehicle-colour">Colour</label>
-					<input id="vehicle-colour" name="vehicle-colour" type="text" />
-				</p>
-				<p><button id="cancel" class="button-secondary">Cancel</button></p>
+				<div class="panel-indent js-hidden" id="vehicle-not-found">
+					<p class="form-group mini">
+						<label for="vehicle-class-group">Vehicle class</label>
+						<fieldset class="inline">
+							<label class="block-label" for="vehicle-class-b">
+								<input id="vehicle-class-b" type="radio" name="vehicle-class-group" value="Yes">
+								Car - Including trailers, motorhomes, vans and buses with less than 9 seats
+							</label>
+							<label class="block-label" for="vehicle-class-c">
+								<input id="vehicle-class-c" type="radio" name="vehicle-class-group" value="Yes">
+								2 axle heavy goods vehicles (including vans)
+							</label>
+							<label class="block-label" for="vehicle-class-d">
+								<input id="vehicle-class-d" type="radio" name="vehicle-class-group" value="Yes">
+								Multi axle goods vehicles
+							</label>
+						</fieldset>
+					</p>
+					<p class="form-group">
+						<label class="form-label" for="vehicle-make">Make</label>
+						<input class="form-control form-control-1-2" id="vehicle-make" type="text">
+					</p>
+					<p class="form-group">
+						<label class="form-label" for="vehicle-model">Model</label>
+						<input class="form-control form-control-1-2" id="vehicle-model" type="text">
+					</p>
+					<p class="form-group">
+						<label class="form-label" for="vehicle-colour">Colour</label>
+						<input class="form-control form-control-1-2" id="vehicle-colour" type="text">
+					</p>
+					<p>
+						<button class="button inline" id="vehicle-add-manual">Add vehicle</button>
+					</p>
+				</div>
 			</fieldset>
-			<p><button id="add-vehicle" class="button-secondary">Find vehicle</button></p>
-			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
-			<p><a href="/account/setup/personal">Back</a></p>
+			<!--
+			<p class="form-group">You can add <span id="vehicles-remaining">5</span> more vehicles</p>
+			-->
+			<p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
 		</form>
 	{{/column-1}}
 
-	{{$js-elements}}
-		el = {
-			body: $('body'),
-			buttonNext: $('#next')
-		}
-	{{/js-elements}}
-
 	{{$js-functions}}
-		func = function() {
-			console.log(el.buttonNext);
-		}
+		testRegistration = function() {
+			var reg = el.vehicleRegistration.value.replace(/\s/g,'');
+			if (vehicleCounter < 5) {
+				if (reg.length > 0) {
+					var vehicleData = vehicles.filter(function(vehicle) {
+					    return vehicle.reg === reg;
+					})[0];
+					if (vehicleData) {
+						setDisplay(el.vehicleNotFound, false);
+						var frag = document.createDocumentFragment();
+						var tr = frag.appendChild(document.createElement('tr'));
+						for (var key in vehicleData) {
+						  if (vehicleData.hasOwnProperty(key)) {
+							var td = tr.appendChild(document.createElement('td'));
+							td.textContent = vehicleData[key];
+						  }
+						};
+						var tdRemove = tr.appendChild(document.createElement('td'));
+						var removeButton = tdRemove.appendChild(document.createElement('button'));
+						removeButton.textContent = 'Remove';
+						removeButton.id = 'remove-' + vehicleCounter;
+						el.vehicleList.appendChild(tr);
+						el.vehicleRegistration.value = '';
+						vehicleCounter += 1;
+						setDisplay(el.vehicles, true);
+						setDisabled(el.buttonNext, false);
+					} else {
+						setDisplay(el.vehicleAdd, false);
+						setDisplay(el.vehicleNotFound, true);
+					}
+				}
+			} else {
+				// too many vehicles
+			}
+		},
+		testVehicle = function() {
+			var vehicleRegistration = el.vehicleRegistration.value;
+			var vehicleClass = el.vehicleClass;
+
+			console.log(vehicleClass.selectedValue);
+			
+			var vehicleData = [];
+ 		}
+
+
+
+{{! 			if (
+				//
+			) {
+				//
+			}
+ }}
+{{! var frag = document.createDocumentFragment();
+var tr = frag.appendChild(document.createElement('tr'));
+for (var key in vehicleData) {
+  if (vehicleData.hasOwnProperty(key)) {
+	var td = tr.appendChild(document.createElement('td'));
+	td.textContent = vehicleData[key];
+  }
+};
+setDisplay(el.vehicleNotFound, false);
+setDisplay(el.vehicleAdd, true);
+ }}
+
+
+
 	{{/js-functions}}
 
 	{{$js-initialisation}}
@@ -79,10 +146,88 @@
 			if (window.location.search.match(/=debug/)) {
 				el.body.classList.add('debug');
 			}
-			el.body.addEventListener('click', function() {
-				func();
-			}, false);
+			el.buttonNext.addEventListener('click', function(e) {
+				e.preventDefault();
+				window.location = 'payment';
+			});
+			el.vehicleAdd.addEventListener('click', function(e) {
+				e.preventDefault();
+				testRegistration();
+			});
+			el.vehicleAddManual.addEventListener('click', function(e) {
+				e.preventDefault();
+				testVehicle();
+			});
 		}
 	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next'),
+			vehicleAdd: $('#vehicle-add'),
+			vehicleAddManual: $('#vehicle-add-manual'),
+			vehicleClass: $('#vehicle-class'),
+			vehicleColour: $('#vehicle-colour'),
+			vehicleMake: $('#vehicle-make'),
+			vehicleModel: $('#vehicle-model'),
+			vehicleList: $('#vehicle-list'),
+			vehicleNotFound: $('#vehicle-not-found'),
+			vehicles: $('#vehicles'),
+			vehicleRegistration: $('#vehicle-registration')
+		},
+		vehicleCounter = 0,
+		vehicles = [
+			{
+				reg: 'GX05DTY',
+				class: 'B',
+				make: 'Honda',
+				model: 'Civic',
+				colour: 'Red'
+			},
+			{
+				reg: 'TR13PFJ',
+				class: 'A',
+				make: 'Suzuki',
+				model: 'Ninja',
+				colour: 'Black'
+			},
+			{
+				reg: 'CHT368D',
+				class: 'P',
+				make: 'Vespa',
+				model: '50',
+				colour: 'Blue'
+			},
+			{
+				reg: 'FY07PFL',
+				class: 'A',
+				make: 'BMW',
+				model: '331',
+				colour: 'Silver'
+			},
+			{
+				reg: 'GX05DTY',
+				class: 'B',
+				make: 'Honda',
+				model: 'Civic',
+				colour: 'Red'
+			},
+			{
+				reg: 'PA50WSD',
+				class: 'B',
+				make: 'Renault',
+				model: 'Megane',
+				colour: 'Plum'
+			},
+			{
+				reg: 'D265FDG',
+				class: 'B',
+				make: 'Vauxhall',
+				model: 'Astra',
+				colour: 'Brown'
+			},
+		]
+	{{/js-objects}}
 
 {{/layouts/1-column}}

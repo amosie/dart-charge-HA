@@ -5,12 +5,31 @@
 	{{/head}}
 
 	{{$content}}
-		<div id="page-container">
-			<h1>{{$h1}}{{/h1}}</h1>
+		<main id="wrapper" role="main">
+			<div id="content">
+				<div class="inner-block">
+					<div class="alpha-banner">
+						<p>
+							<strong class="alpha-tag">ALPHA</strong>
+							<span>This is a new service – your <a href="https://designpatterns.hackpad.com/GOV.UK-elements-feedback-sKrDyQxcfA2">feedback</a> will help us to improve it.</span>
+						</p>
+					</div>
+				</div>
+				<div class="inner-block">
+					<h1 class="heading-36">{{$h1}}{{/h1}}</h1>
+				</div>
+				<div class="grid-wrapper">
+					<div class="grid grid-2-3">
 
-			{{$column-1}}{{/column-1}}
-			
-		</div>
+						<div class="inner-block">
+
+							{{$column-1}}{{/column-1}}
+
+						</div>
+					</div>
+				</div>
+			</div><!-- / #content -->
+		</main>
 	{{/content}}
 
 	{{$bodyEnd}}

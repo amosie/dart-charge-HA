@@ -1,134 +1,140 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Dart Charge{{/h1}}
+	{{$h1}}Your details{{/h1}}
 
 	{{$column-1}}
-		<h2>Personal information</h2>
-		<form action="/account/setup/vehicle">
-			<p>
-				<label for="name-first">First name</label>
-				<input id="name-first" name="name-first" type="text" />
+		<p>In order to set up your Dart Charge account, we need to get some information from you.</p>
+		<form>
+			<p class="form-group">
+				<label class="form-label" for="name-first">First name</label>
+				<input class="form-control form-control-1-2" id="name-first" type="text">
 			</p>
-			<p>
-				<label for="name-last">Last name</label>
-				<input id="name-last" name="name-last" type="text" />
+			<p class="form-group">
+				<label class="form-label" for="name-last">Last name</label>
+				<input class="form-control form-control-1-2" id="name-last" type="text">
 			</p>
-			<p>
-				<input id="behalf-of-company" name="behalf-of-company" type="checkbox" />
-				<label for="behalf-of-company">Are you applying on behalf of a company?</label>
-			</p>
-			<fieldset id="company">
+			<fieldset class="form-group inline">
 				<p>
-					<label for="company-name">Company name</label>
-					<input id="company-name" name="company-name" type="text" />
+					<label class="form-checkbox" for="behalf-of-company">
+						<input id="behalf-of-company" type="checkbox" value="behalf-of-company">
+						Are you applying on behalf of a company?
+					</label>
 				</p>
-				<p>
-					<label for="company-number">Registered company number</label>
-					<input id="company-number" name="company-number" type="text" />
-				</p>
+				<div class="panel-indent js-hidden" id="company">
+					<p class="form-group">
+						<label class="form-label" for="company-name">Company name</label>
+						<input class="form-control form-control-3-4" id="company-name" type="text">
+					</p>
+					<p class="form-group">
+						<label class="form-label" for="company-number">Company number</label>
+						<input class="form-control form-control-1-2" id="company-number" type="text">
+					</p>
+				</div>
 			</fieldset>
-			<p>
-				<label for="email">Email address</label>
-				<input id="email" name="email" type="email" />
+			<p class="form-group">
+				<label class="form-label" for="email-address">Email address</label>
+				<input class="form-control form-control-3-4" id="email-address" type="email">
 			</p>
-			<p>
-				<label for="email-confirm">Confirm your email address</label>
-				<input id="email-confirm" name="email-confirm" type="email" />
+			<p class="form-group">
+				<label class="form-label" for="email-confirm">Confirm your email address</label>
+				<input class="form-control form-control-3-4" id="email-confirm" type="email">
 			</p>
-			<p>
-				<label for="password">Password</label>
-				<input id="password" name="password" type="password" />
+			<p class="form-group">
+				<label class="form-label" for="password">
+					Password
+					<span class="form-hint">Some rules...</span>
+				</label>
+				<input class="form-control form-control-1-2" id="password" type="password">
 			</p>
-			<p>
-				<label for="password-confirm">Confirm your password</label>
-				<input id="password-confirm" name="password-confirm" type="password" />
+			<p class="form-group">
+				<label class="form-label" for="password-confirm">Confirm password</label>
+				<input class="form-control form-control-1-2" id="password-confirm" type="password">
 			</p>
-			<p>
-				<label for="telephone">Telephone number</label>
-				<input id="telephone" name="telephone" type="tel" />
+			<p class="form-group">
+				<label class="form-label" for="telephone">Telephone</label>
+				<input class="form-control form-control-1-2" id="telephone" type="email">
 			</p>
-			<p>
-				<label for="secondary-telephone">Secondary telephone number (optional)</label>
-				<input id="secondary-telephone" name="secondary-telephone" type="tel" />
+			<p class="form-group">
+				<label class="form-label" for="secondary-telephone">Secondary telephone number (optional)</label>
+				<input class="form-control form-control-1-2" id="secondary-telephone" type="email">
 			</p>
-			<h2>Security information</h2>
-			<p>
-				<label for="ivr-pin">IVR PIN</label>
-				<input id="ivr-pin" name="ivr-pin" type="text" />
+			<h2 class="heading-24">Security information</h2>
+			<p class="form-group">
+				<label class="form-label" for="ivr-pin">
+					IVR PIN
+					<span class="form-hint">Some info...</span>
+				</label>
+				<input class="form-control form-control-1-4" id="ivr-pin" type="text">
 			</p>
-			<h2>Address details</h2>
-			<p>
-				<label for="country">Country</label>
-				<select id="country" name="country">
-					<option selected="selected" value="uk">United Kingdom</option>
-				</select>
+			<h2 class="heading-24">Address details</h2>
+			<p class="form-group">
+				<label class="form-label" for="country">
+					Country
+				</label>
+				<input class="autocomplete form-control form-control-1-2" id="country" type="text" value="United Kingdom">
 			</p>
-			<p>
-				<label for="postcode">Postcode</label>
-				<input id="postcode" name="postcode" type="text" />
+			<p class="form-group inline mini">
+				<label class="form-label" for="postcode">
+					Postcode
+				</label>
+				<input class="form-control form-control-1-4 form-control-caps" id="postcode" type="text">
+				<button class="button inline" id="find-address">Find address</button>
 			</p>
-			<p><button id="find-address" class="button-secondary">Find address</button></p>
-			<fieldset id="address">
-				<p>
+			<div class="panel-indent js-hidden" id="address">
+				<p class="form-group">
 					<label for="address-found">Select your address</label>
-					<select id="address-found" name="address-found">
-						<option selected="selected" value="address-01">1 Anystreet, Townsville</option>
+					<select class="form-control-1" id="address-found" name="address-found">
+						<option value="address-01">1 Anystreet, Townsville</option>
 					</select>
 				</p>
-				<p>
-					<input id="address-not-found" name="address-not-found" type="checkbox" />
-					<label for="address-not-found">Can't find your address?</label>
-				</p>
-				<fieldset id="address-detail">
+				<fieldset class="form-group inline">
 					<p>
-						<label for="address-1">Address</label>
-						<input id="address-1" name="address-1" type="text" />
+						<label class="form-checkbox" for="address-not-found">
+							<input id="address-not-found" type="checkbox" value="address-not-found">
+							I can’t find my address in the list
+						</label>
 					</p>
-					<p>
-						<label for="address-2">Address</label>
-						<input id="address-2" name="address-2" type="text" />
-					</p>
-					<p>
-						<label for="city">City</label>
-						<input id="city" name="city" type="text" />
-					</p>
-					<p>
-						<label for="county">County</label>
-						<input id="county" name="county" type="text" />
-					</p>
-					<p>
-						<input id="local-discount" name="local-discount" type="checkbox" />
-						<label for="local-discount">Apply for a local discount</label>
-					</p>
+					<div class="panel-indent js-hidden" id="address-detail">
+						<fieldset>
+							<legend>Address</legend>
+							<p class="form-group">
+								<label class="visuallyhidden" for="address-1">Address line 1</label>
+								<input class="form-control form-control-1-2" id="address-1" type="text">
+								<label class="visuallyhidden" for="address-2">Address line 2</label>
+								<input class="form-control form-control-1-2" id="address-2" type="text">
+							</p>
+							<p class="form-group">
+								<label class="form-label" for="town-city">Town or city</label>
+								<input class="form-control form-control-1-2" id="town-city" type="text">
+							</p>
+						</fieldset>
+					</div>
 				</fieldset>
-			</fieldset>
-			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
-			<p><a href="/account/setup/dart-tag">Back</a></p>
+			</div>
+<!--
+			<p class="form-group js-hidden" id="discount-invite">
+				<label class="form-checkbox" for="local-discount">
+					<input id="local-discount" type="checkbox" value="local-discount">
+					Would you like to apply for a local discount?
+					<span class="form-hint">You will need to prove that you live in the Dartford-Thurrock area</span>
+				</label>
+			</p>
+-->
+			<p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
 		</form>
 	{{/column-1}}
-
-	{{$js-elements}}
-		el = {
-			address: $('#address'),
-			addressDetail: $('#address-detail'),
-			addressNotFound: $('#address-not-found'),
-			body: $('body'),
-			buttonNext: $('#next'),
-			behalfCompany: $('#behalf-of-company'),
-			company: $('#company'),
-			companyNumber: $('#company-number'),
-			findAddress: $('#find-address')
-		}
-	{{/js-elements}}
 
 	{{$js-functions}}
 		showAddresses = function() {
 			setDisplay(el.address, true);
 		},
 		showAddressForm = function(target) {
+			console.log(target.checked);
 			if (target.checked == true) {
+				console.log('true');
 				setDisplay(el.addressDetail, true);
 			} else {
+				console.log('false');
 				setDisplay(el.addressDetail, false);
 			}
 		},
@@ -138,6 +144,16 @@
 			} else {
 				setDisplay(el.company, false);
 				el.companyNumber.value = '';
+			}
+		},
+		testLocal = function(target) {
+			if (el.discountInvite) {
+				var postcode = target.value.toUpperCase();
+				if (postcode.match(/^(BR8|CM13|DA(1[01347]*|[23459])|RM(1[456789]|20)|SS1[67])\s*\d[A-Z]{2}$/)) {
+					setDisplay(el.discountInvite, true);
+				} else {
+					setDisplay(el.discountInvite, false);
+				}
 			}
 		}
 	{{/js-functions}}
@@ -153,11 +169,32 @@
 			el.behalfCompany.addEventListener('change', function(e) {
 				testCompany(e.target);
 			}, false);
+			el.buttonNext.addEventListener('click', function(e) {
+				e.preventDefault();
+				window.location = 'vehicle';
+			});
 			el.findAddress.addEventListener('click', function(e) {
 				e.preventDefault();
 				showAddresses();
+				testLocal(el.postcode);
 			}, false);
 		}
 	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			address: $('#address'),
+			addressDetail: $('#address-detail'),
+			addressNotFound: $('#address-not-found'),
+			body: $('body'),
+			buttonNext: $('#next'),
+			behalfCompany: $('#behalf-of-company'),
+			company: $('#company'),
+			companyNumber: $('#company-number'),
+			discountInvite: $('#discount-invite'),
+			findAddress: $('#find-address'),
+			postcode: $('#postcode')
+		}
+	{{/js-objects}}
 
 {{/layouts/1-column}}

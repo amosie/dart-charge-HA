@@ -1,60 +1,60 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Dart Charge{{/h1}}
+	{{$h1}}Apply for a local discount{{/h1}}
 
 	{{$column-1}}
-		<h2>Apply for local discount</h2>
-		<form action="/account/setup/vehicle">
-			<h3>Do you live in the Dartford-Thurrock area</h3>
-			<p>[Some explanatory content]</h3>
-			<h3>What type of discount would you like?</h3>
-			<ul class="boolean" id="crossings-boolean">
-				<li>
-					<input id="crossings-unlimited" name="crossings" type="radio" />
-					<label for="crossings-unlimited">Unlimited</label>
-				</li>
-				<li>
-					<input id="crossings-limited" name="crossings" type="radio" />
-					<label for="local-limited">Limited</label>
-				</li>
-			</ul>
-			<div id="proof">
-				<p>
-					<label for="proof-of-residency">Upload proof of residency</label>
-					<input id="proof-of-residency" name="proof-of-residency" type="file"/>
+		<form>
+			<p>To claim your local discount, you will need to prove that you live in Dartford or Thurrock and that your vehicle is registered to your home address.</p>
+			<fieldset class="inline">
+				<h2 class="heading-24">What type of discount would you like?</h2>
+				<p class="form-group form-group-compound" id="discount-boolean">
+					<label class="block-label" for="crossings-unlimited">
+						<input id="crossings-unlimited" type="radio" name="discount-group" value="Unlimited">
+						Unlimited
+					</label>
+					<label class="block-label" for="crossings-limited">
+						<input id="crossings-limited" type="radio" name="discount-group" value="limited">
+						Limited
+					</label>
 				</p>
-				<p>
-					<label for="proof-of-ownership">Upload proof of ownership</label>
-					<input id="proof-of-ownership" name="proof-of-ownership" type="file"/>
-				</p>
+			</fieldset>
+			<div class="form-group" id="proof">
+				<h2 class="heading-24">Upload proof of residency</h2>
+				<label class="visuallyhidden" for="proof-of-residence">Upload proof of residency</label>
+				<input class="form-upload" id="proof-of-residence" name="proof-of-residence" type="file" />
 			</div>
-			<p>[Explain that you can apply from within your account]</h3>
-			<p>
-				<input id="apply-later" name="apply-later" type="checkbox" />
-				<label for="apply-later">Apply later</label>
-			</p>
-			<p><button disabled="disabled" id="next" type="submit">Next</button></p>
-			<p><a href="/account/setup/personal">Back</a></p>
+			<div>
+				<h2 class="heading-24">Upload proof of ownership</h2>
+				<label class="visuallyhidden" for="proof-of-ownership">Upload proof of ownership</label>
+				<input class="form-upload" id="proof-of-ownership" name="proof-of-ownership" type="file" />
+			</div>
+			<div class="form-group">
+				<h2 class="heading-24">Apply later</h2>
+				<label class="form-checkbox" for="apply-later">
+					<span class="form-hint">If you prefer, you can apply for your discount later</span>
+					<input id="apply-later" type="checkbox" value="apply-later">
+					Apply later
+				</label>
+			</div>
+			<p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
 		</form>
 	{{/column-1}}
 
-	{{$js-elements}}
-		el = {
-			applyLater: $('#apply-later'),
-			buttonNext: $('#next'),
-			proof: $('#proof')
-		}
-	{{/js-elements}}
-
 	{{$js-functions}}
 		testNext = function() {
-			console.log('howdy');
-/*
-if one of discounts = checked
-and both proofs have values
-or
-if apply later = checked
-*/
+			if (el.applyLater.checked) {
+				setDisabled(el.buttonNext, false);
+			} else if (el.crossingsLimited.checked || el.crossingsUnlimited.checked) {
+				if (
+					el.proofOfOwnership.files.length > 0 &&
+					el.proofOfResidence.files.length > 0
+				) {
+					console.log('w')
+					setDisabled(el.buttonNext, false);
+				}
+			} else {
+				setDisabled(el.buttonNext, true);
+			}
 		}
 	{{/js-functions}}
 
@@ -66,10 +66,34 @@ if apply later = checked
 			el.applyLater.addEventListener('click', function() {
 				testNext();
 			}, false);
-			el.proof.addEventListener('change', function() {
+			el.buttonNext.addEventListener('click', function(e) {
+				e.preventDefault();
+				window.location = 'vehicle';
+			});
+			el.discountBoolean.addEventListener('click', function() {
+				el.applyLater.checked = false;
+				testNext();
+			}, false);
+			el.proofOfOwnership.addEventListener('change', function(e) {
+				testNext();
+			}, false);
+			el.proofOfResidence.addEventListener('change', function(e) {
 				testNext();
 			}, false);
 		}
 	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			applyLater: $('#apply-later'),
+			buttonNext: $('#next'),
+			crossingsLimited: $('#crossings-limited'),
+			crossingsUnlimited: $('#crossings-unlimited'),
+			discountBoolean: $('#discount-boolean'),
+			proof: $('#proof'),
+			proofOfOwnership: $('#proof-of-ownership'),
+			proofOfResidence: $('#proof-of-residence')
+		}
+	{{/js-objects}}
 
 {{/layouts/1-column}}
