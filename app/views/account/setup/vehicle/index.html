@@ -107,7 +107,7 @@
                 setDisplay(el.vehicleInput, true);
                 setDisplay(el.vehicles, false);
             }
-        }
+        },
 		testRegistration = function() {
 			var reg = el.vehicleRegistration.value.replace(/\s/g,'');
             if (reg.length > 0) {
@@ -138,29 +138,6 @@
             vehicleData.push(el.vehicleColour.value);
 			createTableRow(vehicleData);
  		}
-
-
-
-{{! 			if (
-				//
-			) {
-				//
-			}
- }}
-{{! var frag = document.createDocumentFragment();
-var tr = frag.appendChild(document.createElement('tr'));
-for (var key in vehicleData) {
-  if (vehicleData.hasOwnProperty(key)) {
-	var td = tr.appendChild(document.createElement('td'));
-	td.textContent = vehicleData[key];
-  }
-};
-setDisplay(el.vehicleNotFound, false);
-setDisplay(el.vehicleAdd, true);
- }}
-
-
-
 	{{/js-functions}}
 
 	{{$js-initialisation}}

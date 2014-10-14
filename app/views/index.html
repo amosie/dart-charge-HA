@@ -1,21 +1,36 @@
-{{<layouts/2-column}}
+{{<layouts/start}}
 
 	{{$h1}}Dart Charge{{/h1}}
 
 	{{$column-1}}
-		<p>[Intro and overview content...]</p>
-		<h2 class="heading-24">Set up your account</h2>
-		<p><a class="button button-get-started" href="account/setup/dart-tag">Start</a></p>
+        <form>
+    		<h2 class="heading-24">I have an account</h2>
+            <p class="form-group mini">
+                <label class="form-label" for="dart-account">Email address</label>
+                <input class="form-control form-control-1" id="dart-account" type="email" />
+            </p>
+            <p class="form-group mini">
+                <label class="form-label" for="dart-verification">Password</label>
+                <input class="form-control form-control-1" id="dart-verification" type="password" />
+            </p>
+            <p class="form-group">
+                <a href="account/forgot-password">Forgot your password?</a>
+            </p>
+            <p class="form-group"><button class="button" id="next" type="submit">Sign in</button></p>
+        </form>
 	{{/column-1}}
 
 	{{$column-2}}
-		<h2 class="heading-24">Guides</h2>
-		<ul>
-			<li><a href="">Pricing information</a></li>
-			<li><a href="">DART Tag account holders</a></li>
-			<li><a href="">Local residents</a></li>
-			<li><a href="">Company accounts</a></li>
-		</ul>
+		<h2 class="heading-24">I don't have an account</h2>
+        <p><a class="button" href="#">Create an account</a></p>
+        <h3 class="heading-19">Benefits of having an account</h3>
+        <p>[Introductory proposition]</p>
+        <p>This means you can:</p>
+        <ul class="list-bullet">
+            <li>[Each benefit]</li>
+            <li>[Each benefit]</li>
+            <li>[Each benefit]</li>
+        </ul>
 	{{/column-2}}
 
-{{/layouts/2-column}}
+{{/layouts/start}}
