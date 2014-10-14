@@ -58,6 +58,15 @@ The JavaScript is NOT production-ready and will only work in modern browsers, so
 - Adding a vehicle hides the vehicle input fields and shows “add another vehicle” button
 - Clicking “add another vehicle” button shows vehicle input
 - Vehicle removal works, including hiding table and showing input if 0 vehicles
+- There’s an array of JSON objects containing vehicle information
+- The following registration numbers will return “existing” vehicles:
+    - GX05DTY
+    - TR13PFJ
+    - CHT368D
+    - FY07PFL
+    - GX05DTY
+    - PA50WSD
+    - D265FDG
 - Form is submittable once add least one vehicle has been added
 - Leads to “Payment"
 
