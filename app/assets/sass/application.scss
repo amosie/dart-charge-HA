@@ -11,7 +11,7 @@ select {
   line-height: 1.31579;
 }
 table {
-  margin: 30px 0 30px 0;
+  margin: 30px 0 0 0;
   width: 100%;
 }
 table td,
@@ -46,6 +46,11 @@ table th {
   color: $text-colour;
   margin-left: 0.5em;
 }
+.button.support {
+  background: $panel-colour;
+  box-shadow: none;
+  color: $text-colour;
+}
 .button-get-started {
   font-family: "nta", Arial, sans-serif;
   font-size: 24px;
@@ -72,11 +77,17 @@ table th {
 .form-control-1-4 {
   width: 25%;
 }
-.form-control-caps {
+.form-control-uppercase {
   text-transform: uppercase;
+}
+.form-control-capital {
+  text-transform: capitalize;
 }
 .form-final-force {
   padding-bottom: 30px;
+}
+.form-force {
+  padding-top: 30px;
 }
 .form-group {
   margin: 0 0 30px 0;

@@ -1,66 +1,82 @@
-# Express prototyping tool
+# Dart Charge
 
+This is a prototype for Dart Charge...
 
-Prototyping tool built in [Express](http://expressjs.com/).
+It is viewable on <http://dart-charge.herokuapp.com> with the following authentication details:
 
-It will give you a basic Express app, with templates, css and images from the [GOV.UK front-end toolkit](https://github.com/alphagov/govuk_frontend_toolkit).
+- Username: `bridge`
+- Passowrd: `tunnel`
 
+## URLs
 
-## Requirements
+1. http://dart-charge.herokuapp.com/
+2. http://dart-charge.herokuapp.com/account/setup/dart-tag
+3. http://dart-charge.herokuapp.com/account/setup/personal
+4. http://dart-charge.herokuapp.com/account/setup/local
+5. http://dart-charge.herokuapp.com/account/setup/vehicle
+6. http://dart-charge.herokuapp.com/account/setup/payment
+7. http://dart-charge.herokuapp.com/account/setup/payment/direct-debit
+8. http://dart-charge.herokuapp.com/account/setup/payment/card
+9. http://dart-charge.herokuapp.com/account/setup/summary
 
-* [Node](http://nodejs.org/)
+Using the `?=debug` query string shows all hidden fields.
 
-You may already have it, try:
+The JavaScript is NOT production-ready and will only work in modern browsers, so people with older versions of IE should use the `?=debug` switch and follow along with the notes below.
 
-```
-node --version
-```
+----------
 
-Your version needs to be at least v0.10.0.
+## Start
+- GDS will create a GOVUK start page, so this page (in its current form) is redundant
+- It will become the signup/login page once I create the account prototype
 
-## Getting started
+## Dart Tag
+- No changes
+- Form is submittable if:
+    - “No” is selected, or
+    - “Yes” is selected and there is content is “account number” and “verification code”
+- Leads to “Personal"
 
-* Clone this repo.
+## Personal
+- Added more addresses to the address select
+- Local postcode triggers “Apply for local discount” checkbox
+- Submit button now navigates to /local if there’s a local postcode and “Apply for local discount” is checked
+- Disabled form submission by [enter] key to prevent unintentional form submissions
+- Form is submittable once “find address” has been clicked
+- Leads to “Vehicle” (or “Local” as described above)
 
-* If you don't have Node, download it here: [http://nodejs.org/](http://nodejs.org/).
+## Local
+- Now has 2 proof of residence file upload inputs
+- Form is submittable if:
+    - a file is attached for each proof, or
+    - “apply later” is checked
+- Leads to “Vehicle"
 
-* Run the app:
+## Vehicle
+- Disabled form submission by [enter] key to prevent unintentional form submissions
+- Can now add non-found vehicles
+- Max 5 vehicles, else hide input form
+- Adding a vehicle hides the vehicle input fields and shows “add another vehicle” button
+- Clicking “add another vehicle” button shows vehicle input
+- Vehicle removal works, including hiding table and showing input if 0 vehicles
+- Form is submittable once add least one vehicle has been added
+- Leads to “Payment"
 
+## Payment
+- Direct debit changes, as per Jon’s email
+- If “direct debit” is selected, form submission leads to “/direct-debit"
+- Form is submittable once “terms” has been checked
+- Leads to “Card” (or “Direct Debit” as described above)
 
-```
-node start.js
-```
+## Direct debit
+- This is where direct debit confirmation will live
+- “Confirm” button is enabled
+- Leads to “Card"
 
-* Go to [localhost:3000](http://localhost:3000) in your browser.
+## Card
+- No changes
+- Leads to “Summary"
 
-### Hot reload
-
-Any code changes should update in the browser without you restarting the app.
-
-The app recompiles app/assets/stylesheets/application.scss everytime changes are observed.
-
-## Documentation
-
-Guides for getting set up and how to work with the prototyping application are available on this repo's [wiki](https://github.com/tombye/express_prototype/wiki).
-
-* [Getting started](https://github.com/tombye/express_prototype/wiki/Getting-started) (Read this first)
-* [Creating routes](https://github.com/tombye/express_prototype/wiki/Creating-routes)
-* [Making pages](https://github.com/tombye/express_prototype/wiki/Making-pages)
-* [Writing CSS](https://github.com/tombye/express_prototype/wiki/Writing-CSS)
-* [Tips and Tricks](https://github.com/tombye/express_prototype/wiki/Tips-and-Tricks)
-
-This project is built on top of Express, the idea is that it is straightforward to create simple static pages out of the box. However, you're not limited to that - more dynamic sites can be built with more understanding of Express. Here's a good [Express tutorial.](http://code.tutsplus.com/tutorials/introduction-to-express--net-33367)
-
-## Sass Disclaimer
-
-This app uses the [lib-sass](https://github.com/hcatlin/libsass) implementation of Sass to compile its CSS. It's still a work in progress so is missing a few features.
-
-The one that may effect you is the lack of support for [@extend-only selectors](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholders). This means the you can't use [@extend %contain-floats](https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_shims.scss#L45) from the toolkit.
-
-This is explained in more detail [on the wiki](https://github.com/tombye/express_prototype/wiki/Writing-CSS#wiki-we-use-node-sass).
-
-If you need to use the Ruby version of Sass, Run the app like so:
-
-```
-node start.js --ruby
-```
+## Summary
+- Was “/success”
+- Will contain a summary of provided information
+- End of flow (although will lead to GOVUK service complete in the future)

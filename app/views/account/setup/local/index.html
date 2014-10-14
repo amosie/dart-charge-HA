@@ -19,9 +19,11 @@
 				</p>
 			</fieldset>
 			<div class="form-group" id="proof">
-				<h2 class="heading-24">Upload proof of residency</h2>
-				<label class="visuallyhidden" for="proof-of-residence">Upload proof of residency</label>
-				<input class="form-upload" id="proof-of-residence" name="proof-of-residence" type="file" />
+				<h2 class="heading-24">Upload proofs of residency</h2>
+                <label class="visuallyhidden" for="proof-of-residence-1">Upload proof of residency</label>
+                <input class="form-upload" id="proof-of-residence-1" name="proof-of-residence" type="file" />
+                <label class="visuallyhidden" for="proof-of-residence-2">Upload proof of residency</label>
+                <input class="form-upload" id="proof-of-residence-2" name="proof-of-residence" type="file" />
 			</div>
 			<div>
 				<h2 class="heading-24">Upload proof of ownership</h2>
@@ -47,9 +49,9 @@
 			} else if (el.crossingsLimited.checked || el.crossingsUnlimited.checked) {
 				if (
 					el.proofOfOwnership.files.length > 0 &&
-					el.proofOfResidence.files.length > 0
+                    el.proofOfResidence1.files.length > 0 &&
+                    el.proofOfResidence2.files.length > 0
 				) {
-					console.log('w')
 					setDisabled(el.buttonNext, false);
 				}
 			} else {
@@ -63,6 +65,12 @@
 			if (window.location.search.match(/=debug/)) {
 				el.body.classList.add('debug');
 			}
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode == 13 || e.which == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
 			el.applyLater.addEventListener('click', function() {
 				testNext();
 			}, false);
@@ -77,9 +85,12 @@
 			el.proofOfOwnership.addEventListener('change', function(e) {
 				testNext();
 			}, false);
-			el.proofOfResidence.addEventListener('change', function(e) {
-				testNext();
-			}, false);
+            el.proofOfResidence1.addEventListener('change', function(e) {
+                testNext();
+            }, false);
+            el.proofOfResidence2.addEventListener('change', function(e) {
+                testNext();
+            }, false);
 		}
 	{{/js-initialisation}}
 
@@ -92,7 +103,8 @@
 			discountBoolean: $('#discount-boolean'),
 			proof: $('#proof'),
 			proofOfOwnership: $('#proof-of-ownership'),
-			proofOfResidence: $('#proof-of-residence')
+            proofOfResidence1: $('#proof-of-residence-1'),
+            proofOfResidence2: $('#proof-of-residence-2')
 		}
 	{{/js-objects}}
 

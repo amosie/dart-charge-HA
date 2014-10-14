@@ -21,13 +21,16 @@
 					</tbody>
 				</table>
 			</fieldset>
-			<fieldset class="form-group inline">
+            <p class="form-force form-group js-hidden" id="vehicle-add-another">
+                <button class="button support" id="vehicle-add-another-button">Add another vehicle</button>
+            </p>
+			<fieldset class="form-group inline" id="vehicle-input">
 				<h2 class="heading-24">Add a vehicle</h2>
 				<p>
 					<label class="form-label" for="vehicle-registration">
 						Vehicle registration number
 					</label>
-					<input class="form-control form-control-1-2 form-control-caps" id="vehicle-registration" type="text">
+					<input class="form-control form-control-1-2 form-control-uppercase" id="vehicle-registration" type="text">
 					<button class="button inline" id="vehicle-add">Add vehicle</button>
 				</p>
 				<div class="panel-indent js-hidden" id="vehicle-not-found">
@@ -50,15 +53,15 @@
 					</p>
 					<p class="form-group">
 						<label class="form-label" for="vehicle-make">Make</label>
-						<input class="form-control form-control-1-2" id="vehicle-make" type="text">
+						<input class="form-control form-control-1-2 form-control-capital" id="vehicle-make" type="text">
 					</p>
 					<p class="form-group">
 						<label class="form-label" for="vehicle-model">Model</label>
-						<input class="form-control form-control-1-2" id="vehicle-model" type="text">
+						<input class="form-control form-control-1-2 form-control-capital" id="vehicle-model" type="text">
 					</p>
 					<p class="form-group">
 						<label class="form-label" for="vehicle-colour">Colour</label>
-						<input class="form-control form-control-1-2" id="vehicle-colour" type="text">
+						<input class="form-control form-control-1-2 form-control-capital" id="vehicle-colour" type="text">
 					</p>
 					<p>
 						<button class="button inline" id="vehicle-add-manual">Add vehicle</button>
@@ -73,48 +76,67 @@
 	{{/column-1}}
 
 	{{$js-functions}}
+        createTableRow = function(vehicleData) {
+            setDisplay(el.vehicleNotFound, false);
+            setDisplay(el.vehicleInput, false);
+            setDisplay(el.vehicleAddAnother, true);
+            var frag = document.createDocumentFragment();
+            var tr = frag.appendChild(document.createElement('tr'));
+            for (var key in vehicleData) {
+              if (vehicleData.hasOwnProperty(key)) {
+                var td = tr.appendChild(document.createElement('td'));
+                td.textContent = vehicleData[key];
+              }
+            };
+            var tdRemove = tr.appendChild(document.createElement('td'));
+            var removeButton = tdRemove.appendChild(document.createElement('button'));
+            removeButton.textContent = 'Remove';
+            removeButton.id = 'remove-' + vehicleCounter;
+            removeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                destroyTableRow(e.target.id.split('-')[1]);
+            });
+            el.vehicleList.appendChild(tr);
+            setDisplay(el.vehicles, true);
+        },
+        destroyTableRow = function(target) {
+            var rows = $$('#vehicle-list tr');
+            el.vehicleList.removeChild(rows[target]);
+            if (rows.length === 1) {
+                setDisplay(el.vehicleAddAnother, false);
+                setDisplay(el.vehicleInput, true);
+                setDisplay(el.vehicles, false);
+            }
+        }
 		testRegistration = function() {
 			var reg = el.vehicleRegistration.value.replace(/\s/g,'');
-			if (vehicleCounter < 5) {
-				if (reg.length > 0) {
-					var vehicleData = vehicles.filter(function(vehicle) {
-					    return vehicle.reg === reg;
-					})[0];
-					if (vehicleData) {
-						setDisplay(el.vehicleNotFound, false);
-						var frag = document.createDocumentFragment();
-						var tr = frag.appendChild(document.createElement('tr'));
-						for (var key in vehicleData) {
-						  if (vehicleData.hasOwnProperty(key)) {
-							var td = tr.appendChild(document.createElement('td'));
-							td.textContent = vehicleData[key];
-						  }
-						};
-						var tdRemove = tr.appendChild(document.createElement('td'));
-						var removeButton = tdRemove.appendChild(document.createElement('button'));
-						removeButton.textContent = 'Remove';
-						removeButton.id = 'remove-' + vehicleCounter;
-						el.vehicleList.appendChild(tr);
-						el.vehicleRegistration.value = '';
-						vehicleCounter += 1;
-						setDisplay(el.vehicles, true);
-						setDisabled(el.buttonNext, false);
-					} else {
-						setDisplay(el.vehicleAdd, false);
-						setDisplay(el.vehicleNotFound, true);
-					}
-				}
-			} else {
-				// too many vehicles
+            if (reg.length > 0) {
+                var vehicleData = vehicles.filter(function(vehicle) {
+                    return vehicle.reg === reg;
+                })[0];
+                if (vehicleData) {
+                    createTableRow(vehicleData);
+                    el.vehicleRegistration.value = '';
+                    vehicleCounter += 1;
+                    setDisplay(el.vehicles, true);
+                    setDisabled(el.buttonNext, false);
+                } else {
+                    setDisplay(el.vehicleAdd, false);
+                    setDisplay(el.vehicleNotFound, true);
+                }
+            }
+			if (vehicleCounter > 4) {
+                setDisplay(el.vehicleInput, false);
 			}
 		},
 		testVehicle = function() {
-			var vehicleRegistration = el.vehicleRegistration.value;
-			var vehicleClass = el.vehicleClass;
-
-			console.log(vehicleClass.selectedValue);
-			
-			var vehicleData = [];
+            var vehicleData = [];
+			vehicleData.push(el.vehicleRegistration.value);
+			vehicleData.push($('[name="vehicle-class-group"]:checked').id.split('-')[2].toUpperCase());
+            vehicleData.push(el.vehicleMake.value);
+            vehicleData.push(el.vehicleModel.value);
+            vehicleData.push(el.vehicleColour.value);
+			createTableRow(vehicleData);
  		}
 
 
@@ -146,14 +168,31 @@ setDisplay(el.vehicleAdd, true);
 			if (window.location.search.match(/=debug/)) {
 				el.body.classList.add('debug');
 			}
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode == 13 || e.which == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
 				window.location = 'payment';
 			});
-			el.vehicleAdd.addEventListener('click', function(e) {
-				e.preventDefault();
-				testRegistration();
-			});
+            el.form.addEventListener('submit', function(e) {
+                if (el.buttonNext.disabled) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            el.vehicleAdd.addEventListener('click', function(e) {
+                e.preventDefault();
+                testRegistration();
+            });
+            el.vehicleAddAnotherButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                setDisplay(el.vehicleAddAnother, false);
+                setDisplay(el.vehicleInput, true);
+            });
 			el.vehicleAddManual.addEventListener('click', function(e) {
 				e.preventDefault();
 				testVehicle();
@@ -165,10 +204,13 @@ setDisplay(el.vehicleAdd, true);
 		el = {
 			body: $('body'),
 			buttonNext: $('#next'),
-			vehicleAdd: $('#vehicle-add'),
+            form: $('form'),
+            vehicleAdd: $('#vehicle-add'),
+            vehicleAddAnother: $('#vehicle-add-another'),
+            vehicleAddAnotherButton: $('#vehicle-add-another button'),
 			vehicleAddManual: $('#vehicle-add-manual'),
-			vehicleClass: $('#vehicle-class'),
 			vehicleColour: $('#vehicle-colour'),
+            vehicleInput: $('#vehicle-input'),
 			vehicleMake: $('#vehicle-make'),
 			vehicleModel: $('#vehicle-model'),
 			vehicleList: $('#vehicle-list'),
