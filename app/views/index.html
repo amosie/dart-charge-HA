@@ -16,13 +16,13 @@
             <p class="form-group">
                 <a href="account/forgot-password">Forgot your password?</a>
             </p>
-            <p class="form-group"><button class="button" id="next" type="submit">Sign in</button></p>
+            <p class="form-group"><button class="button" id="sign-in" type="submit">Sign in</button></p>
         </form>
 	{{/column-1}}
 
 	{{$column-2}}
 		<h2 class="heading-24">I don't have an account</h2>
-        <p><a class="button" href="#">Create an account</a></p>
+        <p><a class="button" href="account/setup/dart-tag">Create an account</a></p>
         <h3 class="heading-19">Benefits of having an account</h3>
         <p>[Introductory proposition]</p>
         <p>This means you can:</p>
@@ -32,5 +32,26 @@
             <li>[Each benefit]</li>
         </ul>
 	{{/column-2}}
+
+    {{$js-functions}}
+        func = function() {
+            //
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            el.buttonSignIn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'account';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonSignIn: $('#sign-in')
+        }
+    {{/js-objects}}
 
 {{/layouts/start}}
