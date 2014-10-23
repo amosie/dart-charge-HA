@@ -1,207 +1,232 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Your details{{/h1}}
+    {{$h1}}Your details{{/h1}}
 
-	{{$column-1}}
-		<p>In order to set up your Dart Charge account, we need to get some information from you.</p>
-		<form>
-			<p class="form-group">
-				<label class="form-label" for="name-first">First name</label>
-				<input class="form-control form-control-1-2" id="name-first" type="text">
-			</p>
-			<p class="form-group">
-				<label class="form-label" for="name-last">Last name</label>
-				<input class="form-control form-control-1-2" id="name-last" type="text">
-			</p>
-			<fieldset class="form-group inline">
-				<p>
-					<label class="form-checkbox" for="behalf-of-company">
-						<input id="behalf-of-company" type="checkbox" value="behalf-of-company">
-						Are you applying on behalf of a company?
-					</label>
-				</p>
-				<div class="panel-indent js-hidden" id="company">
-					<p class="form-group">
-						<label class="form-label" for="company-name">Company name</label>
-						<input class="form-control form-control-3-4" id="company-name" type="text">
-					</p>
-					<p class="form-group">
-						<label class="form-label" for="company-number">Company number</label>
-						<input class="form-control form-control-1-2" id="company-number" type="text">
-					</p>
-				</div>
-			</fieldset>
-			<p class="form-group">
-				<label class="form-label" for="email-address">Email address</label>
-				<input class="form-control form-control-3-4" id="email-address" type="email">
-			</p>
-			<p class="form-group">
-				<label class="form-label" for="email-confirm">Confirm your email address</label>
-				<input class="form-control form-control-3-4" id="email-confirm" type="email">
-			</p>
-			<p class="form-group">
-				<label class="form-label" for="password">
-					Password
-					<span class="form-hint">Some rules...</span>
-				</label>
-				<input class="form-control form-control-1-2" id="password" type="password">
-			</p>
-			<p class="form-group">
-				<label class="form-label" for="password-confirm">Confirm password</label>
-				<input class="form-control form-control-1-2" id="password-confirm" type="password">
-			</p>
-			<p class="form-group">
-				<label class="form-label" for="telephone">Telephone</label>
-				<input class="form-control form-control-1-2" id="telephone" type="email">
-			</p>
-			<p class="form-group">
-				<label class="form-label" for="secondary-telephone">Secondary telephone number (optional)</label>
-				<input class="form-control form-control-1-2" id="secondary-telephone" type="email">
-			</p>
-			<h2 class="heading-24">Security information</h2>
-			<p class="form-group">
-				<label class="form-label" for="ivr-pin">
-					IVR PIN
-					<span class="form-hint">Some info...</span>
-				</label>
-				<input class="form-control form-control-1-4" id="ivr-pin" type="text">
-			</p>
-			<h2 class="heading-24">Address details</h2>
-			<p class="form-group">
-				<label class="form-label" for="country">
-					Country
-				</label>
-				<input class="autocomplete form-control form-control-1-2" id="country" type="text" value="United Kingdom">
-			</p>
-			<p class="form-group inline mini">
-				<label class="form-label" for="postcode">
-					Postcode
-				</label>
-				<input class="form-control form-control-1-4 form-control-uppercase" id="postcode" type="text">
-				<button class="button inline" id="find-address">Find address</button>
-			</p>
-			<div class="panel-indent js-hidden" id="address">
-				<p class="form-group">
-					<label for="address-found">Select your address</label>
-					<select class="form-control-1" id="address-found" name="address-found">
+    {{$column-1}}
+        <p>In order to set up your Dart Charge account, we need to get some information from you.</p>
+        <form>
+            <p class="form-group">
+                <label class="form-label" for="name-first">First name</label>
+                <input class="form-control form-control-1-2" id="name-first" type="text">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="name-last">Last name</label>
+                <input class="form-control form-control-1-2" id="name-last" type="text">
+            </p>
+            <fieldset class="form-group inline">
+                <p>
+                    <label class="form-checkbox" for="behalf-of-company">
+                        <input id="behalf-of-company" type="checkbox" value="behalf-of-company">
+                        Are you applying on behalf of a company?
+                    </label>
+                </p>
+                <div class="panel-indent js-hidden" id="company">
+                    <p class="form-group">
+                        <label class="form-label" for="company-name">Company name</label>
+                        <input class="form-control form-control-3-4" id="company-name" type="text">
+                    </p>
+                    <p class="form-group">
+                        <label class="form-label" for="company-number">Company number</label>
+                        <input class="form-control form-control-1-2" id="company-number" type="text">
+                    </p>
+                </div>
+            </fieldset>
+            <p class="form-group">
+                <label class="form-label" for="email-address">Email address</label>
+                <input class="form-control form-control-3-4" id="email-address" type="email">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="email-confirm">Confirm your email address</label>
+                <input class="form-control form-control-3-4" id="email-confirm" type="email">
+            </p>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <ul class="list-bullet">
+                    <li>must begin with a letter</li>
+                    <li>contain at least 1 digit</li>
+                    <li>be at least 8 characters long</li>
+                </ul>
+                <input class="form-control form-control-1-2" id="password" type="password">
+            </div>
+            <p class="form-group">
+                <label class="form-label" for="password-confirm">Confirm password</label>
+                <input class="form-control form-control-1-2" id="password-confirm" type="password">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="telephone">Telephone</label>
+                <input class="form-control form-control-1-2" id="telephone" type="email">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="secondary-telephone">Secondary telephone number (optional)</label>
+                <input class="form-control form-control-1-2" id="secondary-telephone" type="email">
+            </p>
+            <h2 class="heading-24">Security information</h2>
+            <div class="form-group">
+                <label class="form-label" for="ivr-pin">Contact Centre Pin</label>
+                <ul class="list-bullet">
+                    <li>create your pin number</li>
+                    <li>pin must be 4 digits long</li>
+                    <li>this would be used to verify your identity if you contact us by phone</li>
+                </ul>
+                <input class="form-control form-control-1-4" id="ivr-pin" type="text">
+            </div>
+            <h2 class="heading-24">Address details</h2>
+            <p class="form-group">
+                <label class="form-label" for="country">
+                    Country
+                </label>
+                <input class="autocomplete form-control form-control-1-2" id="country" type="text" value="United Kingdom">
+            </p>
+            <p class="form-group inline mini">
+                <label class="form-label" for="postcode">
+                    Postcode
+                </label>
+                <input class="form-control form-control-1-4 form-control-uppercase" id="postcode" type="text">
+                <button class="button inline" id="find-address">Find address</button>
+            </p>
+            <div class="panel-indent js-hidden" id="address">
+                <p class="form-group">
+                    <label for="address-found">Select your address</label>
+                    <select class="form-control-1" id="address-found" name="address-found">
                         <option value="address-01">1 Anystreet, Townsville</option>
                         <option value="address-01">2 Anystreet, Townsville</option>
                         <option value="address-01">3 Anystreet, Townsville</option>
                         <option value="address-01">4 Anystreet, Townsville</option>
                         <option value="address-01">5 Anystreet, Townsville</option>
-					</select>
-				</p>
-				<fieldset class="form-group inline">
-					<p>
-						<label class="form-checkbox" for="address-not-found">
-							<input id="address-not-found" type="checkbox" value="address-not-found">
-							I can’t find my address in the list
-						</label>
-					</p>
-					<div class="panel-indent js-hidden" id="address-detail">
-						<fieldset>
-							<legend>Address</legend>
-							<p class="form-group mini">
-								<label class="visuallyhidden" for="address-1">Address line 1</label>
-								<input class="form-control form-control-1-2" id="address-1" type="text">
+                    </select>
+                </p>
+                <fieldset class="form-group inline">
+                    <p>
+                        <label class="form-checkbox" for="address-not-found">
+                            <input id="address-not-found" type="checkbox" value="address-not-found">
+                            I can’t find my address in the list
+                        </label>
+                    </p>
+                    <div class="panel-indent js-hidden" id="address-detail">
+                        <fieldset>
+                            <legend>Address</legend>
+                            <p class="form-group mini">
+                                <label class="visuallyhidden" for="address-1">Address line 1</label>
+                                <input class="form-control form-control-1-2" id="address-1" type="text">
                             </p>
                             <p class="form-group">
-								<label class="visuallyhidden" for="address-2">Address line 2</label>
-								<input class="form-control form-control-1-2" id="address-2" type="text">
-							</p>
-							<p class="form-group">
-								<label class="form-label" for="town-city">Town or city</label>
-								<input class="form-control form-control-1-2" id="town-city" type="text">
-							</p>
-						</fieldset>
-					</div>
-				</fieldset>
-			</div>
-			<p class="form-group js-hidden" id="discount-invite">
-				<label class="form-checkbox" for="local-discount">
-					<input id="local-discount" type="checkbox" value="local-discount">
-					Would you like to apply for a local discount?
-					<span class="form-hint">You will need to prove that you live in the Dartford-Thurrock area</span>
-				</label>
-			</p>
-			<p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
-		</form>
-	{{/column-1}}
+                                <label class="visuallyhidden" for="address-2">Address line 2</label>
+                                <input class="form-control form-control-1-2" id="address-2" type="text">
+                            </p>
+                            <p class="form-group">
+                                <label class="form-label" for="town-city">Town or city</label>
+                                <input class="form-control form-control-1-2" id="town-city" type="text">
+                            </p>
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="form-group js-hidden" id="discount-invite">
+                <label class="form-checkbox" for="local-discount">
+                    <input id="local-discount" type="checkbox" value="local-discount"> 
+                        Would you like to apply for a local discount?
+                    <span class="form-hint">You will need to prove that you live in the Dartford-Thurrock area</span>
+                </label>
+                <span class="form-hint">To progress you will need to provide scans of:</span>
+                 <ul class="list-bullet">
+                    <li>proof of residency</li>
+                    <li>proof of vehicle ownership at the registered address</li>
+                </ul>
+            </div>
+            <p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
+        </form>
+    {{/column-1}}
 
-	{{$js-functions}}
-		showAddresses = function() {
-			setDisplay(el.address, true);
-		},
-		showAddressForm = function(target) {
-			if (target.checked == true) {
-				setDisplay(el.addressDetail, true);
-			} else {
-				setDisplay(el.addressDetail, false);
-			}
-		},
-		testCompany = function(target) {
-			if (target.checked == true) {
-				setDisplay(el.company, true);
-			} else {
-				setDisplay(el.company, false);
-				el.companyNumber.value = '';
-			}
-		},
-		testLocal = function(target) {
-			if (el.discountInvite) {
-				var postcode = target.value.toUpperCase();
-				if (postcode.match(/^(BR8|CM13|DA(1[01347]*|[23459])|RM(1[456789]|20)|SS1[67])\s*\d[A-Z]{2}$/)) {
-					setDisplay(el.discountInvite, true);
-				} else {
-					setDisplay(el.discountInvite, false);
-				}
-			}
-		}
-	{{/js-functions}}
+    {{$js-functions}}
+        showAddresses = function() {
+            setDisplay(el.address, true);
+            var addressValues = el.addressFound[el.addressFound.selectedIndex].text.split(',');
+            el.addressOne.value = addressValues[0];
+            el.townCity.value = addressValues[1];
+            setDisplay(el.addressDetail, true);
+        },
+        showAddressForm = function(target) {
+            if (target.checked == true) {
+                setDisplay(el.addressDetail, true);
+            } else {
+                setDisplay(el.addressDetail, false);
+            }
+        },
+        setAddress = function(target) {
+            var addressValues = target[target.selectedIndex].text.split(',');
+            el.addressOne.value = addressValues[0];
+            el.townCity.value = addressValues[1];
+        },
+        testCompany = function(target) {
+            if (target.checked == true) {
+                setDisplay(el.company, true);
+            } else {
+                setDisplay(el.company, false);
+                el.companyNumber.value = '';
+            }
+        },
+        testLocal = function(target) {
+            if (el.discountInvite) {
+                var postcode = target.value.toUpperCase();
+                if (postcode.match(/^(BR8|CM13|DA(1[01347]*|[23459])|RM(1[456789]|20)|SS1[67])\s*\d[A-Z]{2}$/)) {
+                    setDisplay(el.discountInvite, true);
+                } else {
+                    setDisplay(el.discountInvite, false);
+                }
+            }
+        }
+    {{/js-functions}}
 
-	{{$js-initialisation}}
-		init = function() {
-			if (window.location.search.match(/=debug/)) {
-				el.body.classList.add('debug');
-			}
-			el.addressNotFound.addEventListener('click', function(e) {
-				showAddressForm(e.target);
-			}, false);
-			el.behalfCompany.addEventListener('change', function(e) {
-				testCompany(e.target);
-			}, false);
-			el.buttonNext.addEventListener('click', function(e) {
-				e.preventDefault();
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.addressFound.addEventListener('change',function(e) {
+                setAddress(e.target);
+            });
+            el.addressNotFound.addEventListener('click', function(e) {
+                showAddressForm(e.target);
+            }, false);
+            el.behalfCompany.addEventListener('change', function(e) {
+                testCompany(e.target);
+            }, false);
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
                 if (el.localDiscount.checked) {
-    				window.location = 'local';
+                    window.location = 'local';
                 } else {
                     window.location = 'vehicle';
                 }
-			});
-			el.findAddress.addEventListener('click', function(e) {
-				e.preventDefault();
-				showAddresses();
+            });
+            el.findAddress.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAddresses();
                 setDisabled(el.buttonNext, false);
-				testLocal(el.postcode);
-			}, false);
-		}
-	{{/js-initialisation}}
+                testLocal(el.postcode);
+            }, false);
+        }
+    {{/js-initialisation}}
 
-	{{$js-objects}}
-		el = {
-			address: $('#address'),
-			addressDetail: $('#address-detail'),
-			addressNotFound: $('#address-not-found'),
-			body: $('body'),
-			buttonNext: $('#next'),
-			behalfCompany: $('#behalf-of-company'),
-			company: $('#company'),
-			companyNumber: $('#company-number'),
-			discountInvite: $('#discount-invite'),
-			findAddress: $('#find-address'),
+    {{$js-objects}}
+        el = {
+            address: $('#address'),
+            addressOne: $('#address-1'),
+            addressTwo: $('#address-2'),
+            addressDetail: $('#address-detail'),
+            addressFound: $('#address-found'),
+            addressNotFound: $('#address-not-found'),
+            body: $('body'),
+            buttonNext: $('#next'),
+            behalfCompany: $('#behalf-of-company'),
+            company: $('#company'),
+            companyNumber: $('#company-number'),
+            discountInvite: $('#discount-invite'),
+            findAddress: $('#find-address'),
             localDiscount: $('#local-discount'),
-			postcode: $('#postcode')
-		}
-	{{/js-objects}}
+            postcode: $('#postcode'),
+            townCity: $('#town-city')
+        }
+    {{/js-objects}}
 
 {{/layouts/1-column}}
