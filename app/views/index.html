@@ -1,37 +1,91 @@
-{{<layouts/start}}
+{{<layouts/1-column}}
 
-	{{$h1}}Dart Charge{{/h1}}
+	{{$h1}}Pay the Dartford crossing charge{{/h1}}
 
 	{{$column-1}}
-        <form>
-    		<h2 class="heading-24">I have an account</h2>
-            <p class="form-group mini">
-                <label class="form-label" for="dart-account">Email address</label>
-                <input class="form-control form-control-1" id="dart-account" type="email" />
-            </p>
-            <p class="form-group mini">
-                <label class="form-label" for="dart-verification">Password</label>
-                <input class="form-control form-control-1" id="dart-verification" type="password" />
-            </p>
-            <p class="form-group">
-                <a href="account/forgot-password">Forgot your password?</a>
-            </p>
-            <p class="form-group"><button class="button" id="sign-in" type="submit">Sign in</button></p>
-        </form>
-	{{/column-1}}
+        <div class="beta-label">
+          <span class="beta">beta</span> This part of GOV.UK is being rebuilt – <a href="/help/beta"> find out what this means</a>
+        </div>
+   
+        <section class="intro"><div class="get-started-intro">
+            <div class="application-notice info-notice">
+                <p>From late November 2014, you’ll no longer pay at the barriers when you use the Dartford Crossing. The new payment service is called Dart Charge. Set up a Dart Charge account now so you can use it in November.</p>
+            </div>
 
-	{{$column-2}}
-		<h2 class="heading-24">I don't have an account</h2>
-        <p><a class="button" href="account/setup/dart-tag">Create an account</a></p>
-        <h3 class="heading-19">Benefits of having an account</h3>
-        <p>[Introductory proposition]</p>
-        <p>This means you can:</p>
-        <ul class="list-bullet">
-            <li>[Each benefit]</li>
-            <li>[Each benefit]</li>
-            <li>[Each benefit]</li>
+            <p>Use the Dart Charge service to:</p>
+
+            <ul>
+              <li>transfer your DART-Tag account to a Dart Charge account (you’ll still pay using DART-Tag until late November)</li>
+              <li>set up and manage a standard or commercial account</li>
+              <li>apply for a local resident discount</li>
+            </ul>
+        </div>
+
+        <p class="visuallyhidden"><a href="#what-you-need-to-know">What you need to know</a>
+        </p>
+        <p id="get-started" class="get-started group">
+          <a href="" rel="external" data-transaction-slug="pay-dartford-crossing-charge" class="button">Start now</a>
+        </p>
+
+      </section><section class="more"><div id="before-you-start">
+        <h2 class="heading-24">Before you start</h2>
+    
+        <p>The <a href="/dartford-crossing-fees-exemptions-penalties">crossing fee</a> depends on your vehicle and account type.</p>
+
+        <h3 class="heading-19">Transfer your DART-Tag account</h3>
+
+        <p>You’ll need your:</p>
+        <ul>
+          <li>DART-Tag account number</li>
+          <li>the verification code you got by post or email</li>
         </ul>
-	{{/column-2}}
+
+        <h3 class="heading-19">Set up a standard or commercial account</h3>
+
+        <p>You’ll need:</p>
+        <ul>
+        <li>your personal details, or company details for a commercial account</li>
+          <li>details of each vehicle you’re registering</li>
+          <li>a debit or credit card </li>
+        </ul>
+
+        <p>You must start a standard account with £10. If you close your account, any remaining balance will be refunded.</p>
+
+        <p>Register for a standard account if your company isn’t registered with Companies House.</p>
+
+        <h3 class="heading-19">Apply for a local resident discount</h3>
+
+        <p>You must show evidence - you can scan or photograph your documents, or send them by post for checking.</p>
+
+        <p>You’ll need:</p>
+
+        <ul>
+        <li>your vehicle details</li>
+          <li>a current Council Tax bill that matches the address in your application</li>
+          <li>proof you live in Dartford or Thurrock, eg a gas, electricity or water bill (less than 3 months old), bank or credit card statement (less than 3 months old), income support book, rent document or driving licence</li>
+          <li>proof your vehicle is registered in Dartford or Thurrock, eg a copy of your V5C vehicle registration or a vehicle lease in your name </li>
+          <li>a debit or credit card </li>
+        </ul>
+
+
+        <div class="application-notice info-notice">
+            <p>You can only get a discount for 1 vehicle.</p>
+        </div>
+
+        <p>You can’t get a local resident discount if your vehicle is registered to a company.</p>
+
+        <h2 class="heading-24">Set up a standard or commercial account by phone</h2>
+
+        <p>You can set up your account by phone.</p>
+
+        <div class="contact">
+        <p><strong>Dart Charge</strong><br>
+        Telephone: 0300 3000 120 <br><a href="/call-charges">Find out about call charges</a></p>
+        </div>
+
+        </div>
+        </div>
+	{{/column-1}}
 
     {{$js-functions}}
         func = function() {
@@ -54,4 +108,4 @@
         }
     {{/js-objects}}
 
-{{/layouts/start}}
+{{/layouts/1-column}}
