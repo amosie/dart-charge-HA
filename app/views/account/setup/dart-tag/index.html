@@ -32,72 +32,58 @@
 		</form>
 	{{/column-1}}
 
-<script>
-	var app = function() {
-		var $ = document.querySelector.bind(document),
-			$$ = document.querySelectorAll.bind(document),
-
-			el = {
-				body: $('body'),
-				buttonNext: $('#next'),
-				dartAccount: $('#dart-account'),
-				dartBoolean: $('#dart-boolean'),
-				dartNo: $('#dart-no'),
-				dartVerification: $('#dart-verification'),
-				dartVerify: $('#dart-verify'),
-				dartYes: $('#dart-yes')
-			},
-
-			init = function() {
-				if (window.location.search.match(/=debug/)) {
-					el.body.classList.add('debug');
+	{{$js-functions}}
+		testDart = function() {
+			if (el.dartYes.checked == true) {
+				setDisabled(el.buttonNext, true);
+				if (getComputedStyle(el.dartVerify)['display'] == 'none') {
+					setDisplay(el.dartVerify, true);
 				}
-				el.buttonNext.addEventListener('click', function(e) {
-					e.preventDefault();
-					window.location = 'personal';
-				});
-				el.dartBoolean.addEventListener('change', function() {
-					testDart();	
-				}, false);
-				el.dartVerify.addEventListener('keyup', function() {
-					testVerify();
-				}, false);
-			},
-
-			setDisabled = function(target, disabled) {
-				target.disabled = disabled ? true : false;
-			},
-			setDisplay = function(target, display) {
-				target.style.display = display ? 'block' : 'none';
-			},
-
-			testDart = function() {
-				if (el.dartYes.checked == true) {
-					setDisabled(el.buttonNext, true);
-					if (getComputedStyle(el.dartVerify)['display'] == 'none') {
-						setDisplay(el.dartVerify, true);
-					}
-				} else {
-					if (getComputedStyle(el.dartVerify)['display'] == 'block') {
-						setDisplay(el.dartVerify, false);
-					}
-					setDisabled(el.buttonNext, false);
+			} else {
+				if (getComputedStyle(el.dartVerify)['display'] == 'block') {
+					setDisplay(el.dartVerify, false);
 				}
-			},
-			testVerify = function() {
-				var accountLength = el.dartAccount.value.length;
-				var verificationLength = el.dartVerification.value.length;
-				if (accountLength > 0 && verificationLength > 0) {
-					setDisabled(el.buttonNext, false);
-				}
-			};
-
-		return {
-			init: init
+				setDisabled(el.buttonNext, false);
+			}
+		},
+		testVerify = function() {
+			var accountLength = el.dartAccount.value.length;
+			var verificationLength = el.dartVerification.value.length;
+			if (accountLength > 0 && verificationLength > 0) {
+				setDisabled(el.buttonNext, false);
+			}
 		}
-	}();
-	app.init();
-</script>
+	{{/js-functions}}
 
+	{{$js-initialisation}}
+		init = function() {
+			if (window.location.search.match(/=debug/)) {
+				el.body.classList.add('debug');
+			}
+			el.buttonNext.addEventListener('click', function(e) {
+				e.preventDefault();
+				window.location = 'personal';
+			});
+			el.dartBoolean.addEventListener('change', function() {
+				testDart();	
+			}, false);
+			el.dartVerify.addEventListener('keyup', function() {
+				testVerify();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next'),
+			dartAccount: $('#dart-account'),
+			dartBoolean: $('#dart-boolean'),
+			dartNo: $('#dart-no'),
+			dartVerification: $('#dart-verification'),
+			dartVerify: $('#dart-verify'),
+			dartYes: $('#dart-yes')
+		}
+	{{/js-objects}}
 
 {{/layouts/1-column}}
