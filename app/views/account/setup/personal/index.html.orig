@@ -110,6 +110,29 @@
                                 <input class="form-control form-control-1-2" id="address-1" type="text">
                             </p>
                             <p class="form-group">
+<<<<<<< HEAD
+								<label class="visuallyhidden" for="address-2">Address line 2</label>
+								<input class="form-control form-control-1-2" id="address-2" type="text">
+							</p>
+							<p class="form-group">
+								<label class="form-label" for="town-city">Town or city</label>
+								<input class="form-control form-control-1-2" id="town-city" type="text">
+							</p>
+						</fieldset>
+					</div>
+				</fieldset>
+			</div>
+			<p class="form-group js-hidden" id="discount-invite">
+				<label class="form-checkbox" for="local-discount">
+					<input id="local-discount" type="checkbox" value="local-discount">
+					Would you like to apply for a local discount?
+					<span class="form-hint">You will need to prove that you live in the Dartford-Thurrock area</span>
+				</label>
+			</p>
+			<p><button class="button" id="next" type="submit">Next</button></p>
+		</form>
+	{{/column-1}}
+=======
                                 <label class="visuallyhidden" for="address-2">Address line 2</label>
                                 <input class="form-control form-control-1-2" id="address-2" type="text">
                             </p>
@@ -136,6 +159,7 @@
             <p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
         </form>
     {{/column-1}}
+>>>>>>> dde6ba1b33ba33da9c1d9dbb5f6781b8fa48a571
 
     {{$js-functions}}
         showAddresses = function() {

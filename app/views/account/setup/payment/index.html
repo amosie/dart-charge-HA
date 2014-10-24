@@ -1,12 +1,23 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Account top-ups{{/h1}}
+	{{$h1}}Payment{{/h1}}
 
 	{{$column-1}}
 		<form>
             <fieldset class="inline">
-            	<p>There are a number of ways to top up your Dart Charge account. This page helps you work out the way that works best for you.</p>
-            	<legend class="heading-24">How would you like to top up your account?</legend>
+            	<header class="heading-24">Initial Payment:</header>
+                <p class="non-form">
+                    You need to make an initial payment of minimum £10 to open your account.
+                </p>
+                <div class="panel-indent">
+                    <p class="form-group">
+                        <label class="form-label" for="automatic-start">Initial payment</label> 
+                        £ <input class="form-control form-control-1-4"
+                            id="automatic-start"
+                            type="text"
+                            value="10.00">
+                    </p>
+                </div>
             	<p class="form-group form-group-compound mini" id="dart-boolean">
             		<label class="block-label" for="top-up-manual">
             			<input id="top-up-manual" type="radio" name="topup-group" value="Yes">
@@ -19,24 +30,28 @@
             	</p>
             	<div class="js-hidden" id="top-up-types">
             		<div class="panel-indent js-hidden" id="type-manual">
-            			<p class="non-form">If you top up manually, you need to add an initial payment of at least £10.00 to your account.</p>
-            			<p class="form-group">
+            			<p class="non-form">
+                            When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
+                        </p>
+            			<!-- <p class="form-group">
             				<label class="form-label" for="manual-start">Initial payment</label>
             				£ <input class="form-control form-control-1-4" id="manual-start" type="text" value="10.00" />
-            			</p>
+            			</p> -->
             		</div>
             		<div class="panel-indent js-hidden" id="type-automatic">
-            			<p class="non-form">If you top up automatically, you need to add an initial minimum payment of £10.00 to your account. You also need to set your automatic top-up amount and low balance threshold.</p>
-            			<p class="form-group">
+            			<p class="non-form">No need to remember to top-up, funds to your account are added automatically when 
+                            balance goes below specified amount.
+                        </p>
+            			<!-- <p class="form-group">
             				<label class="form-label" for="automatic-start">Initial payment</label>
             				£ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
-            			</p>
+            			</p> -->
             			<p class="form-group">
-            				<label class="form-label" for="automatic-start">Top-up amount</label>
+            				<label class="form-label" for="automatic-start">Top-up my account by:</label>
             				£ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
             			</p>
             			<p class="form-group">
-            				<label class="form-label" for="automatic-start">When my account reaches</label>
+            				<label class="form-label" for="automatic-start">When my account reaches:</label>
             				£ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
             			</p>
             			<legend class="heading-24">Payment type</legend>
@@ -47,11 +62,15 @@
             				</label>
             				<label class="block-label" for="payment-card">
             					<input id="payment-card" type="radio" name="payment-group" value="No">
-            					Credit/debit card
+            					Debit or Credit card
             				</label>
             			</p>
             			<div class="panel-indent js-hidden" id="direct-debit">
             				<h3 class="heading-24">Direct Debit details</h3>
+                            <p class="no-form">
+                                Direct Debit requires 3 working days to setup. Make sure your initial payment is sufficient to cover any crossings that you will be making in the next 3 working days. Initial payment needs to be made by credit or debit card (next step).
+                            </p>
+                            <p class="form-group"></p>
             				<p class="form-group">
             					<label class="form-label" for="account-name">Account holder name</label>
             					<input class="form-control form-control-3-4" id="account-name" type="text" />
@@ -86,7 +105,7 @@
                                     No
                                 </label>
                             </p>
-                            <legend class="heading-24">Date of birth</legend>
+                           <!--  <legend class="heading-24">Date of birth</legend>
                             <p class="form-group">
                                 <label class="form-label" for="dob-dd">DD</label>
                                 <input class="form-control form-control-1-8" id="dob-dd" type="text" />
@@ -94,7 +113,7 @@
                                 <input class="form-control form-control-1-8" id="dob-mm" type="text" />
                                 <label class="form-label" for="dob-yyyy">YYYY</label>
                                 <input class="form-control form-control-1-8" id="dob-yyyy" type="text" />
-                            </p>
+                            </p> -->
                             <div class="form-group">
                                 <fieldset>
                                 <legend class="heading-24">Date of birth</legend>
