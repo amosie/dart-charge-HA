@@ -154,6 +154,12 @@ table th {
 .panel-indent .heading-24 {
   margin-top: 0;
 }
+p.panel-inline-indent {
+   margin-left:auto; 
+   margin-right:auto; 
+   padding-left:5em;
+   width: 15em;
+}
 .start .grid-2-3 .inner-block {
     padding-left: 30px;
 }

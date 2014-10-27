@@ -2,22 +2,22 @@
 
 This is a prototype for Dart Charge...
 
-It is viewable on <http://dart-charge.herokuapp.com> with the following authentication details:
+It is viewable on <http://dffc-beta.herokuapp.com> with the following authentication details:
 
 - Username: `bridge`
 - Passowrd: `tunnel`
 
 ## URLs
 
-1. http://dart-charge.herokuapp.com/
-2. http://dart-charge.herokuapp.com/account/setup/dart-tag
-3. http://dart-charge.herokuapp.com/account/setup/personal
-4. http://dart-charge.herokuapp.com/account/setup/local
-5. http://dart-charge.herokuapp.com/account/setup/vehicle
-6. http://dart-charge.herokuapp.com/account/setup/payment
-7. http://dart-charge.herokuapp.com/account/setup/payment/direct-debit
-8. http://dart-charge.herokuapp.com/account/setup/payment/card
-9. http://dart-charge.herokuapp.com/account/setup/summary
+1. http://dffc-beta.herokuapp.com/
+2. http://dffc-beta.herokuapp.com/account/setup/dart-tag
+3. http://dffc-beta.herokuapp.com/account/setup/personal
+4. http://dffc-beta.herokuapp.com/account/setup/local
+5. http://dffc-beta.herokuapp.com/account/setup/vehicle
+6. http://dffc-beta.herokuapp.com/account/setup/payment
+7. http://dffc-beta.herokuapp.com/account/setup/payment/direct-debit
+8. http://dffc-beta.herokuapp.com/account/setup/payment/card
+9. http://dffc-beta.herokuapp.com/account/setup/summary
 
 Using the `?=debug` query string shows all hidden fields.
 
