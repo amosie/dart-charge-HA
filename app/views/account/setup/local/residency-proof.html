@@ -1,0 +1,78 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Resisdency and vehicle ownership proof{{/h1}}
+
+    {{$column-1}}
+        <form>
+            <fieldset>
+                <div class="form-group" id="proof">
+                    <h2 class="heading-24">Upload proofs of residency</h2>
+                    <label class="visuallyhidden" for="proof-of-residence-1">Upload proof of residency</label>
+                    <input class="form-upload" id="proof-of-residence-1" name="proof-of-residence" type="file" />
+                    <label class="visuallyhidden" for="proof-of-residence-2">Upload proof of residency</label>
+                    <input class="form-upload" id="proof-of-residence-2" name="proof-of-residence" type="file" />
+                </div>
+                <div>
+                    <h2 class="heading-24">Upload proof of ownership</h2>
+                    <label class="visuallyhidden" for="proof-of-ownership">Upload proof of ownership</label>
+                    <input class="form-upload" id="proof-of-ownership" name="proof-of-ownership" type="file" />
+                </div>          
+            </fieldset>
+                <p>
+                    <button class="button" disabled="disabled" id="next" type="submit">Save and continue</button>
+                </p>
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        testNext = function() {
+            if (
+                el.proofOfOwnership.files.length > 0 &&
+                el.proofOfResidence1.files.length > 0 &&
+                el.proofOfResidence2.files.length > 0
+            ) {
+                setDisabled(el.buttonNext, false);
+            } else {
+                setDisabled(el.buttonNext, true);
+            }
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode == 13 || e.which == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'vehicle';
+            });
+            el.proofOfOwnership.addEventListener('change', function(e) {
+                testNext();
+            }, false);
+            el.proofOfResidence1.addEventListener('change', function(e) {
+                testNext();
+            }, false);
+            el.proofOfResidence2.addEventListener('change', function(e) {
+                testNext();
+            }, false);
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonNext: $('#next'),
+            proof: $('#proof'),
+            proofOfOwnership: $('#proof-of-ownership'),
+            proofOfResidence1: $('#proof-of-residence-1'),
+            proofOfResidence2: $('#proof-of-residence-2')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}

@@ -70,7 +70,7 @@
                 if(el.applyLater.checked){
                     window.location = 'vehicle';
                 } else {
-                    window.location = 'house';
+                    window.location = './local/residency-proof';
                 }
 			});
 			el.discountBoolean.addEventListener('click', function() {
@@ -86,7 +86,7 @@
 			buttonNext: $('#next'),
 			crossingsLimited: $('#crossings-limited'),
 			crossingsUnlimited: $('#crossings-unlimited'),
-			discountBoolean: $('#discount-boolean'),
+			discountBoolean: $('#discount-boolean')
 		}
 	{{/js-objects}}
 
