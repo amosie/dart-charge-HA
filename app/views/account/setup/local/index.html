@@ -1,59 +1,49 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Apply for a local discount{{/h1}}
+	{{$h1}}Local resident discount{{/h1}}
 
 	{{$column-1}}
 		<form>
-			<p>To claim your local discount, you will need to prove that you live in Dartford or Thurrock and that your vehicle is registered to your home address.</p>
-			<fieldset class="inline">
-				<h2 class="heading-24">What type of discount would you like?</h2>
-				<p class="form-group form-group-compound" id="discount-boolean">
-					<label class="block-label" for="crossings-unlimited">
-						<input id="crossings-unlimited" type="radio" name="discount-group" value="Unlimited">
-						Unlimited
-					</label>
-					<label class="block-label" for="crossings-limited">
-						<input id="crossings-limited" type="radio" name="discount-group" value="limited">
-						Limited
-					</label>
-				</p>
+			<fieldset>
+				<div class="form-group-compound" id="discount-boolean">
+                    <div class="form-group">
+                        <label class="block-label" for="crossings-limited">
+    						<input id="crossings-limited" type="radio" name="discount-group" value="limited">
+    						Limited
+    					</label>
+                        <p class="panel-inline-indent">
+                            £10 per year for 50 crossings then 20p per crossing. You will be notified when few crossings are left on your account to make an additional payment.
+                        </p>
+                   </div>
+                   <div class="form-group">
+                        <label class="block-label" for="crossings-unlimited">
+                            <input id="crossings-unlimited" type="radio" name="discount-group" value="Unlimited">
+                            Unlimited
+                        </label>
+                        <p class="panel-inline-indent"> 
+                            £20 per year. You will be notified when you are close to your discount expiration date to renew
+                        </p>
+                    </div?
+				</div>
 			</fieldset>
-			<div class="form-group" id="proof">
-				<h2 class="heading-24">Upload proofs of residency</h2>
-                <label class="visuallyhidden" for="proof-of-residence-1">Upload proof of residency</label>
-                <input class="form-upload" id="proof-of-residence-1" name="proof-of-residence" type="file" />
-                <label class="visuallyhidden" for="proof-of-residence-2">Upload proof of residency</label>
-                <input class="form-upload" id="proof-of-residence-2" name="proof-of-residence" type="file" />
-			</div>
-			<div>
-				<h2 class="heading-24">Upload proof of ownership</h2>
-				<label class="visuallyhidden" for="proof-of-ownership">Upload proof of ownership</label>
-				<input class="form-upload" id="proof-of-ownership" name="proof-of-ownership" type="file" />
-			</div>
-			<div class="form-group">
-				<h2 class="heading-24">Apply later</h2>
-				<label class="form-checkbox" for="apply-later">
-					<span class="form-hint">If you prefer, you can apply for your discount later</span>
-					<input id="apply-later" type="checkbox" value="apply-later">
-					Apply later
-				</label>
-			</div>
-			<p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
+            <div class="form-group">
+                <h2 class="heading-24">Apply later</h2>
+                <label class="form-checkbox" for="apply-later">
+                    <span class="form-hint">If you prefer, you can apply for your discount later</span>
+                    <input id="apply-later" type="checkbox" value="apply-later">
+                    Apply later
+                </label>
+            </div>
+			<p>
+                <button class="button" disabled="disabled" id="next" type="submit">Save and continue</button>
+            </p>
 		</form>
 	{{/column-1}}
 
 	{{$js-functions}}
 		testNext = function() {
-			if (el.applyLater.checked) {
+			if (el.applyLater.checked || (el.crossingsLimited.checked || el.crossingsUnlimited.checked)) {
 				setDisabled(el.buttonNext, false);
-			} else if (el.crossingsLimited.checked || el.crossingsUnlimited.checked) {
-				if (
-					el.proofOfOwnership.files.length > 0 &&
-                    el.proofOfResidence1.files.length > 0 &&
-                    el.proofOfResidence2.files.length > 0
-				) {
-					setDisabled(el.buttonNext, false);
-				}
 			} else {
 				setDisabled(el.buttonNext, true);
 			}
@@ -76,21 +66,16 @@
 			}, false);
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
-				window.location = 'vehicle';
+                if(el.applyLater.checked){
+                    window.location = 'vehicle';
+                } else {
+                    window.location = './local/residency-proof';
+                }
 			});
 			el.discountBoolean.addEventListener('click', function() {
 				el.applyLater.checked = false;
 				testNext();
 			}, false);
-			el.proofOfOwnership.addEventListener('change', function(e) {
-				testNext();
-			}, false);
-            el.proofOfResidence1.addEventListener('change', function(e) {
-                testNext();
-            }, false);
-            el.proofOfResidence2.addEventListener('change', function(e) {
-                testNext();
-            }, false);
 		}
 	{{/js-initialisation}}
 
@@ -100,11 +85,7 @@
 			buttonNext: $('#next'),
 			crossingsLimited: $('#crossings-limited'),
 			crossingsUnlimited: $('#crossings-unlimited'),
-			discountBoolean: $('#discount-boolean'),
-			proof: $('#proof'),
-			proofOfOwnership: $('#proof-of-ownership'),
-            proofOfResidence1: $('#proof-of-residence-1'),
-            proofOfResidence2: $('#proof-of-residence-2')
+			discountBoolean: $('#discount-boolean')
 		}
 	{{/js-objects}}
 
