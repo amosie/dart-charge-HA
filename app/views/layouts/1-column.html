@@ -1,44 +1,44 @@
 {{<govuk_template}}
 
-	{{$head}}
-		{{>includes/css}}
-	{{/head}}
+    {{$head}}
+        {{>includes/css}}
+    {{/head}}
 
-	{{$content}}
-		<main id="wrapper" role="main">
-			<div id="content">
-				<div class="inner-block">
-					<div class="alpha-banner">
-						<p>
-							<strong class="alpha-tag">ALPHA</strong>
-							<span>This is a new service – your <a href="mailto:webfeedback@sanefoperations.co.uk">feedback</a> will help us to improve it.</span>
-						</p>
-					</div>
-				</div>
-				<div class="inner-block">
-					<h1 class="heading-36">{{$h1}}{{/h1}}</h1>
-				</div>
-				<div class="grid-wrapper">
-					<div class="grid grid-2-3">
+    {{$content}}
+        <main id="wrapper" role="main">
+            <div id="content">
+                <div class="inner-block">
+                    <div class="phase-banner">
+                        <p>
+                            <strong class="phase-tag">BETA</strong>
+                            <span>This is a new service – your <a href="mailto:webfeedback@sanefoperations.co.uk">feedback</a> will help us to improve it.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="inner-block">
+                    <h1 class="heading-36">{{$h1}}{{/h1}}</h1>
+                </div>
+                <div class="grid-wrapper">
+                    <div class="grid grid-2-3">
 
-						<div class="inner-block">
+                        <div class="inner-block">
 
-							{{$column-1}}{{/column-1}}
+                            {{$column-1}}{{/column-1}}
 
-						</div>
-					</div>
-				</div>
-			</div><!-- / #content -->
-		</main>
-	{{/content}}
+                        </div>
+                    </div>
+                </div>
+            </div><!-- / #content -->
+        </main>
+    {{/content}}
 
-	{{$bodyEnd}}
-	
-		{{>includes/js}}
+    {{$bodyEnd}}
+    
+        {{>includes/js}}
 
-		{{$pageScript}}{{/pageScript}}
+        {{$pageScript}}{{/pageScript}}
 
-	{{/bodyEnd}}
+    {{/bodyEnd}}
 
 
 {{/govuk_template}}
