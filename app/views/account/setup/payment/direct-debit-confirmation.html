@@ -1,0 +1,103 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Direct Debit confirmation{{/h1}}
+
+    {{$column-1}}
+        <p>
+            Below are the details that you have entered to set up the Direct Debit instruction. Please confirm that they are correct.
+        </p>
+        <form>
+
+            <table class="form-group">
+                <tbody>
+                    <tr>
+                        <td>Bank account holder name</td>
+                        <td>Kathryn Downes</td>
+                    </tr>
+                    <tr>
+                        <td>Bank account number</td>
+                        <td>12345678</td>
+                    </tr>
+                    <tr>
+                        <td>Bank sort code</td>
+                        <td>000099</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+           <h3 class="heading-19">
+                You will be notified by email within 3 working days that your Direct Debit has been set up.
+            </h3>
+            
+            <p  class="form-group">
+                We will also notify you by email 3 working days in advance of any payment being taken. The name that will appear on your bank statement against the Direct Debit will be 'Dart Charge'
+            </p>
+            
+            <p class="form-group direct-debit-print"> 
+                <img src="{{assetPath}}images/print-icon.png" alt="Print icon" />    
+                <a href="/Registration/DownloadPDF" target="_blank">
+                    You may wish to print a copy of your Direct Debit Instruction for your record.
+                </a>
+            </p>
+            
+            <div class="direct-debit-guarantee-container form-group">
+               
+                    <p class="direct-debit-gurantee-heading">The Direct Debit Guarantee</p>
+                    <p class="direct-debit-guarantee-logo">
+                        <img src="{{assetPath}}images/DD_wide_240x100.png" alt="Direct Debit logo" />
+                    </p>
+                
+                <div class="form-group">
+                    <ul class="list-bullet">
+                        <li>
+                            This Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits
+                        </li>
+                        <li>
+                            If there are any changes to the amount, date or frequency of your Direct Debit Sanef Operations Ltd. T/A Dart Charge will notify you 3 working days in advance of 
+                            your account being debited or as otherwise agreed. If you request Sanef Operations Ltd. T/A Dart Charge to collect a payment, confirmation of the amount and date 
+                            will be given to you at the time of the request.
+                        </li>
+                        <li>
+                            If an error is made in the payment of your Direct Debit, by Sanef Operations Ltd. T/A Dart Charge or your bank or building society, you are entitled to a full and 
+                            immediate refund of the amount paid from your bank or building society.If you receive a refund you are not entitled to, you must pay it back when Sanef Operations Ltd. T/A Dart Charge asks you to.
+                        </li>
+                        <li>
+                            You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. 
+                            Please also notify us.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="form-group">
+                By clicking this button you are confirming that the information above is correct and you have read the Direct Debit guarantee.
+            </p>
+            <p><button class="button" id="next" type="submit">Confirm</button></p>
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        func = function() {
+            console.log(el.buttonNext);
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'card';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}

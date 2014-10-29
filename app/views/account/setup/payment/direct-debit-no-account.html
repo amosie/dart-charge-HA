@@ -1,0 +1,77 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Direct Debit confirmation{{/h1}}
+
+    {{$column-1}}
+        <p>
+            As you have indicated that you are not the bank account holder and that more than one person is required to authorize a Direct Debit on the account, you are reuired to:
+        </p>
+        <form>
+            <fieldset>
+                <div class="form-group direct-debit-steps">
+                    <p class="paragraphForStep1">
+                        1. <a href="/Registration/DownloadSignedPDF" target="_blank">Print your Direct Debit Instruction</a>
+                        <img src="{{assetPath}}images/print-icon.png" alt="Direct Debit Instruction" />
+                    </p>
+                    
+                    <p>
+                        2. Verify that the details on the Direct Debit instruction are correct and that you have read the Direct Debit guarantee.
+                    </p>
+
+                    <p>
+                        3. Sign the Direct Debit Instruction and return it to us at:
+                    </p>
+                </div>
+                
+                <span class="heading-19">Dart Charge<br />PO Box 842<br />LEEDS<br />LS1 9QF</span>
+               
+               <div class="form-group">
+                    <h3 class="heading-19">
+                        You will be notified by email when your Direct Debit has been set up.
+                    </h3>
+                    <p class="form-group">
+                        We will also notify you by email 3 working days in advance of any payment being taken. The name that will appear on your bank statement against the Direct Debit will be 'Dart Charge'
+                    </p>
+                <div>
+
+                <div class="help-notice form-group">
+                    <p>
+                        Automated top-ups will not be activated against your account until we have received and processed the signed Direct Debit Instruction.
+                    </p>
+                </div>
+
+                 <p class="form-group">
+                    You are still required to make an initial payment by payment card to open your account.  Once you have returned the Direct Debit form to us and the Direct Debit has been set up, future top-up payments will be by Direct Debit.
+                </p>
+            </fieldset>
+            <p class="form-group"></p>
+            <p><button class="button" id="next" type="submit">Proceed to initial payment</button></p>
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        func = function() {
+            console.log(el.buttonNext);
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'card';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}

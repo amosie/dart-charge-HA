@@ -1,18 +1,104 @@
 {{<layouts/1-column}}
 
-    {{$h1}}Direct Debit confirmation{{/h1}}
+    {{$h1}}Direct Debit{{/h1}}
 
     {{$column-1}}
-        <p>[A message about theirect debit confirmation screen.].</p>
+        <p class="no-form">
+            Direct Debit requires 3 working days to setup. Make sure your initial payment is sufficient to cover any crossings that you will be making in the next 3 working days. Initial payment needs to be made by credit or debit card (next step).
+        </p>
         <form>
-            <p class="form-group">By clicking "confirm"...</p>
+            <fieldset>
+                <div id="direct-debit">
+                    <legend class="heading-24">Direct Debit details</legend>
+                    <p class="form-group">
+                        <label class="form-label" for="account-name">Account holder name</label>
+                        <input class="form-control form-control-3-4" id="account-name" type="text" />
+                    </p>
+                    <p class="form-group">
+                        <label class="form-label" for="address-1">Address</label>
+                        <input class="form-control form-control-3-4" id="address-1" type="text" />
+                    </p>
+                    <p class="form-group">
+                        <label class="form-label visuallyhidden" for="address-2">Address</label>
+                        <input class="form-control form-control-3-4" id="address-2" type="text" />
+                    </p>
+                    <p class="form-group">
+                        <label class="form-label" for="city">Town or city</label>
+                        <input class="form-control form-control-1-2" id="city" type="text" />
+                    </p>
+<!--                     <p class="form-group">
+                        <label class="form-label" for="county">County</label>
+                        <input class="form-control form-control-1-2" id="county" type="text" />
+                    </p> -->
+                    <p class="form-group">
+                        <label class="form-label" for="postcode">Postcode</label>
+                        <input class="form-control form-control-1-4" id="postcode" type="text" />
+                    </p>
+                    
+                    <p class="form-group">
+                        <label class="form-label" for="account-number">Account number</label>
+                        <input class="form-control form-control-1-2" id="account-number" type="text" />
+                    </p>
+                    <p class="form-group">
+                        <label class="form-label" for="account-sortcode">Sortcode</label>
+                        <input class="form-control form-control-1-4" id="account-sortcode" type="text" />
+                    </p>
+                    <label class="form-label" for="account-sortcode">Date of birth</label>
+                    <div class="form-date">
+                        <p class="form-hint">For example, 08 04 2014</p>
+                        <div class="form-group form-dob-2">
+                            <label for="dob-day">Day</label>
+                            <input type="text" class="form-control" id="dob-day" />
+                        </div>
+                        <div class="form-group form-dob-2">
+                            <label for="dob-day">Month</label>
+                            <input type="text" class="form-control" id="dob-day" />
+                        </div>
+                        <div class="form-group form-dob-4">
+                            <label for="dob-year">Year</label>
+                            <input type="text" class="form-control" id="dob-year" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="heading-24">Are you the account holder?</h3>
+                        <p class="form-group inline" id="question-account-holder">
+                            <label class="block-label" for="question-account-holder-yes">
+                                <input id="question-account-holder-yes" type="radio" name="question-account-holder-group" value="Yes">
+                                Yes
+                            </label>
+                            <label class="block-label" for="question-account-holder-no">
+                                <input id="question-account-holder-no" type="radio" name="question-account-holder-group" value="No">
+                                No
+                            </label>
+                        </p>
+                        <h3 class="heading-24">Are you the only person required to set up direct debit against the account?</h3>
+                        <p class="form-group inline" id="question-account-solo">
+                            <label class="block-label" for="question-account-solo-yes">
+                                <input id="question-account-solo-yes" type="radio" name="question-account-solo-group" value="Yes">
+                                Yes
+                            </label>
+                            <label class="block-label" for="question-account-solo-no">
+                                <input id="question-account-solo-no" type="radio" name="question-account-solo-group" value="No">
+                                No
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+            <p class="form-group"></p>
             <p><button class="button" id="next" type="submit">Confirm</button></p>
         </form>
     {{/column-1}}
 
     {{$js-functions}}
-        func = function() {
-            console.log(el.buttonNext);
+        testAccount = function() {
+            if(el.radioAccountHolderYes.checked && el.radioAccountSoloYes.checked){
+                window.location = 'direct-debit-confirmation';
+            } else if(el.radioAccountHolderYes.checked && el.radioAccountSoloNo.checked){
+                window.location = 'direct-debit-authorization';
+            } else {
+                window.location = 'direct-debit-no-account';
+            }
         }
     {{/js-functions}}
 
@@ -23,7 +109,7 @@
             }
             el.buttonNext.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location = 'card';
+                testAccount();
             });
         }
     {{/js-initialisation}}
@@ -31,7 +117,11 @@
     {{$js-objects}}
         el = {
             body: $('body'),
-            buttonNext: $('#next')
+            buttonNext: $('#next'),
+            radioAccountHolderNo: $('#question-account-holder-no'),
+            radioAccountHolderYes: $('#question-account-holder-yes'),
+            radioAccountSoloNo: $('#question-account-solo-no'),
+            radioAccountSoloYes: $('#question-account-solo-yes')
         }
     {{/js-objects}}
 

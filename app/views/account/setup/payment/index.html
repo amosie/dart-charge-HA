@@ -66,98 +66,7 @@
             					Debit or Credit card
             				</label>
             			</p>
-            			<div class="panel-indent js-hidden" id="direct-debit">
-            				<h3 class="heading-24">Direct Debit details</h3>
-                            <p class="no-form">
-                                Direct Debit requires 3 working days to setup. Make sure your initial payment is sufficient to cover any crossings that you will be making in the next 3 working days. Initial payment needs to be made by credit or debit card (next step).
-                            </p>
-                            <p class="form-group"></p>
-            				<p class="form-group">
-            					<label class="form-label" for="account-name">Account holder name</label>
-            					<input class="form-control form-control-3-4" id="account-name" type="text" />
-            				</p>
-            				<p class="form-group">
-            					<label class="form-label" for="account-number">Account number</label>
-            					<input class="form-control form-control-1-2" id="account-number" type="text" />
-            				</p>
-            				<p class="form-group">
-            					<label class="form-label" for="account-sortcode">Sortcode</label>
-            					<input class="form-control form-control-1-4" id="account-sortcode" type="text" />
-            				</p>
-                            <legend class="heading-24">Are you the only person required to set up direct debit against the account?</legend>
-                            <p class="form-group form-group-compound mini" id="question-account-solo">
-                                <label class="block-label" for="question-account-solo-yes">
-                                    <input id="question-account-solo-yes" type="radio" name="question-account-solo-group" value="Yes">
-                                    Yes
-                                </label>
-                                <label class="block-label" for="question-account-solo-no">
-                                    <input id="question-account-solo-no" type="radio" name="question-account-solo-group" value="No">
-                                    No
-                                </label>
-                            </p>
-                            <legend class="heading-24">Are you the account holder?</legend>
-                            <p class="form-group form-group-compound mini" id="question-account-holder">
-                                <label class="block-label" for="question-account-holder-yes">
-                                    <input id="question-account-holder-yes" type="radio" name="question-account-holder-group" value="Yes">
-                                    Yes
-                                </label>
-                                <label class="block-label" for="question-account-holder-no">
-                                    <input id="question-account-holder-no" type="radio" name="question-account-holder-group" value="No">
-                                    No
-                                </label>
-                            </p>
-                           <!--  <legend class="heading-24">Date of birth</legend>
-                            <p class="form-group">
-                                <label class="form-label" for="dob-dd">DD</label>
-                                <input class="form-control form-control-1-8" id="dob-dd" type="text" />
-                                <label class="form-label" for="dob-mm">MM</label>
-                                <input class="form-control form-control-1-8" id="dob-mm" type="text" />
-                                <label class="form-label" for="dob-yyyy">YYYY</label>
-                                <input class="form-control form-control-1-8" id="dob-yyyy" type="text" />
-                            </p> -->
-                            <div class="form-group">
-                                <fieldset>
-                                <legend class="heading-24">Date of birth</legend>
-                                <div class="form-date">
-                                    <p class="form-hint">For example, 08 04 2014</p>
-                                    <div class="form-group form-dob-2">
-                                        <label for="dob-day">Day</label>
-                                        <input type="text" class="form-control" id="dob-day" />
-                                    </div>
-                                    <div class="form-group form-dob-2">
-                                        <label for="dob-day">Month</label>
-                                        <input type="text" class="form-control" id="dob-day" />
-                                    </div>
-                                    <div class="form-group form-dob-4">
-                                        <label for="dob-year">Year</label>
-                                        <input type="text" class="form-control" id="dob-year" />
-                                    </div>
-                                </div>
-                                </fieldset>
-                            </div>
-<!--
-<p class="form-group">
-	<label class="form-label" for="address-1">Account holder address</label>
-	<input class="form-control form-control-3-4" id="address-1" type="text" />
-</p>
-<p class="form-group">
-	<label class="form-label visuallyhidden" for="address-2">Address</label>
-	<input class="form-control form-control-3-4" id="address-2" type="text" />
-</p>
-<p class="form-group">
-	<label class="form-label" for="city">Town or city</label>
-	<input class="form-control form-control-1-2" id="city" type="text" />
-</p>
-<p class="form-group">
-	<label class="form-label" for="county">County</label>
-	<input class="form-control form-control-1-2" id="county" type="text" />
-</p>
-<p class="form-group">
-	<label class="form-label" for="postcode">Postcode</label>
-	<input class="form-control form-control-1-4" id="postcode" type="text" />
-</p>
--->
-            			</div>
+            			
             		</div>
             		<p class="form-group form-final-force">
             			<label class="form-checkbox" for="terms">
@@ -168,7 +77,9 @@
             		</p>
             	</div>
             </fieldset>
-			<p><button class="button" id="next" type="submit">Next</button></p>
+			<p>
+                <button class="button" id="next" type="submit">Next</button>
+            </p>
 		</form>
 	{{/column-1}}
 
@@ -187,6 +98,7 @@
 		},
 		showManual = function() {
 			el.checkTerms.checked = false;
+            el.radioPaymentDirectDebit.checked = false;
 			setDisplay(el.sectionTopUp, true);
 			setDisplay(el.sectionTopUpAutomatic, false);
 			setDisplay(el.sectionTopUpManual, true);
@@ -204,9 +116,9 @@
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
                 if ($('#payment-direct-debit:checked')) {
-                    window.location = './payment/direct-debit';
+                    window.location = 'payment/direct-debit';
                 } else {
-    				window.location = './payment/card';
+    				window.location = 'card';
                 }
 			});
             el.checkTerms.addEventListener('click', function(elem) {
