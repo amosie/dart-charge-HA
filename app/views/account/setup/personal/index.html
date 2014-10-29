@@ -39,19 +39,7 @@
                 <label class="form-label" for="email-confirm">Confirm your email address</label>
                 <input class="form-control form-control-3-4" id="email-confirm" type="email">
             </p>
-            <div class="form-group">
-                <label class="form-label" for="password">Password</label>
-                <ul class="list-bullet">
-                    <li>must begin with a letter</li>
-                    <li>contain at least 1 digit</li>
-                    <li>be at least 8 characters long</li>
-                </ul>
-                <input class="form-control form-control-1-2" id="password" type="password">
-            </div>
-            <p class="form-group">
-                <label class="form-label" for="password-confirm">Confirm password</label>
-                <input class="form-control form-control-1-2" id="password-confirm" type="password">
-            </p>
+            
             <p class="form-group">
                 <label class="form-label" for="telephone">Telephone</label>
                 <input class="form-control form-control-1-2" id="telephone" type="email">
@@ -60,16 +48,6 @@
                 <label class="form-label" for="secondary-telephone">Secondary telephone number (optional)</label>
                 <input class="form-control form-control-1-2" id="secondary-telephone" type="email">
             </p>
-            <h2 class="heading-24">Security information</h2>
-            <div class="form-group">
-                <label class="form-label" for="ivr-pin">Contact Centre Pin</label>
-                <ul class="list-bullet">
-                    <li>create your pin number</li>
-                    <li>pin must be 4 digits long</li>
-                    <li>this would be used to verify your identity if you contact us by phone</li>
-                </ul>
-                <input class="form-control form-control-1-4" id="ivr-pin" type="text">
-            </div>
             <h2 class="heading-24">Address details</h2>
             <p class="form-group">
                 <label class="form-label" for="country">
@@ -196,7 +174,7 @@
                 if (el.localDiscount.checked) {
                     window.location = 'local';
                 } else {
-                    window.location = 'vehicle';
+                    window.location = './personal/account-setup';
                 }
             });
             el.findAddress.addEventListener('click', function(e) {
