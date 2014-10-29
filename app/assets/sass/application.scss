@@ -32,7 +32,7 @@ table th {
 }
 .phase-banner  {
   @include core-19;
-  @include phase-banner(beta);
+  @include phase-banner(alpha);
   strong {
     text-transform: uppercase;
   }
