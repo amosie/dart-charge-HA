@@ -12,6 +12,18 @@
   outline: 3px solid $yellow;
 }
 
+.button.inline {
+  background: $panel-colour;
+  box-shadow: none;
+  color: $text-colour;
+  margin-left: 0.5em;
+}
+
+.button.support {
+  background: $panel-colour;
+  box-shadow: none;
+  color: $text-colour;
+}
 
 // Disabled buttons
 
