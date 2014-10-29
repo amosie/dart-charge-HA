@@ -1,50 +1,44 @@
-// includes node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets
+//includes node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets
 
-@import '../../../govuk_modules/govuk_frontend_toolkit/stylesheets/design-patterns/_alpha-beta.scss';
-@import '../../../govuk_modules/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss';
-@import '../../../govuk_modules/govuk_frontend_toolkit/stylesheets/_colours.scss';
-@import '../../../govuk_modules/govuk_frontend_toolkit/stylesheets/_grid_layout.scss';
-@import '../../../govuk_modules/govuk_frontend_toolkit/stylesheets/_typography.scss';
+//Import GOV.UK frontend toolkit
+@import "colours";
+@import "measurements";
+@import "conditionals";
+@import "shims";
+@import "typography";
+@import "css3";
+@import "design-patterns/alpha-beta";
+@import "design-patterns/buttons";
 
-// Import GOV.UK frontend toolkit
-// @import "colours";
-// @import "measurements";
-// @import "conditionals";
-// @import "shims";
-// @import "typography";
-// @import "css3";
-// @import "design-patterns/alpha-beta";
-// @import "design-patterns/buttons";
+// Helpers
+@import "elements/helpers";
 
-// // Helpers
-// @import "elements/helpers";
+// Reset
+@import "elements/reset";
 
-// // Reset
-// @import "elements/reset";
+// Typography
+@import "elements/typography";
 
-// // Typography
-// @import "elements/typography";
+// Layout
+@import "elements/layout";
 
-// // Layout
-// @import "elements/layout";
+// Modules
+// ==========================================================================
 
-// // Modules
-// // ==========================================================================
+// Forms
+@import "elements/forms";
 
-// // Forms
-// @import "elements/forms";
+// Tables
+@import "elements/tables";
 
-// // Tables
-// @import "elements/tables";
+// Buttons
+@import "elements/buttons";
 
-// // Buttons
-// @import "elements/buttons";
+// Lists
+@import "elements/lists";
 
-// // Lists
-// @import "elements/lists";
+// Panels
+@import "elements/panels";
 
-// // Panels
-// @import "elements/panels";
-
-// // Colours
-// @import "elements/colours";
+// Colours
+@import "elements/colours";

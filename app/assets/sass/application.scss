@@ -31,8 +31,7 @@ table th {
   font-weight: 800;
 }
 .phase-banner  {
-  @include core-19;
-  @include phase-banner(alpha);
+  @include phase-banner(beta);
   strong {
     text-transform: uppercase;
   }
