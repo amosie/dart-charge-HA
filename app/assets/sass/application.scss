@@ -31,7 +31,6 @@ table th {
   font-weight: 800;
 }
 .phase-banner  {
-  @include core-19;
   @include phase-banner(beta);
   strong {
     text-transform: uppercase;
@@ -43,16 +42,15 @@ table th {
 .border-left {
     border-left: 1px solid #bfc1c3;
 }
-.button.inline {
-  background: $panel-colour;
-  box-shadow: none;
-  color: $text-colour;
-  margin-left: 0.5em;
+
+.confirmation-message{
+    background-color: $green;
+    color: white;
 }
-.button.support {
-  background: $panel-colour;
-  box-shadow: none;
-  color: $text-colour;
+.confirmation-text p{
+    @include bold-24();
+    text-align: center;
+    margin-top: 1em;
 }
 .direct-debit-guarantee-container{
     border: 1px solid;
@@ -152,9 +150,10 @@ table th {
     @include bold-19();
     margin-left: 4em;
 }
-.list-bullet li{
-    font-size: 0.8em;
-    color: #6E6E6E; 
+
+.list-bullet-summary{
+    @include copy-19;
+    margin-left: 2em;
 }
 
 .js-enabled .js-hidden {
