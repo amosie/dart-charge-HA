@@ -75,6 +75,13 @@ table th {
     @include core-16;
     margin-left: 1.5em;
 }
+.direct-debit-steps p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.direct-debit-steps img{
+    vertical-align: middle;
+}
 .file-input {
   display: block
 }
@@ -137,7 +144,14 @@ table th {
 .form-upload {
   font-size: 16px;
 }
-
+.help-notice {
+    width: 24em;
+    background: url(https://assets.digital.cabinet-office.gov.uk/static/icon-important-187bcc8d8a6d56498c4ac26cadad102d.png) no-repeat scroll 0 0.5em;
+}
+.help-notice p{
+    @include bold-19();
+    margin-left: 4em;
+}
 .list-bullet li{
     font-size: 0.8em;
     color: #6E6E6E; 

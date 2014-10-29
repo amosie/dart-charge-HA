@@ -59,28 +59,30 @@
                             <input type="text" class="form-control" id="dob-year" />
                         </div>
                     </div>
-                    <legend class="heading-24">Are you the only person required to set up direct debit against the account?</legend>
-                    <p class="form-group form-group-compound mini inline" id="question-account-solo">
-                        <label class="block-label" for="question-account-solo-yes">
-                            <input id="question-account-solo-yes" type="radio" name="question-account-solo-group" value="Yes">
-                            Yes
-                        </label>
-                        <label class="block-label" for="question-account-solo-no">
-                            <input id="question-account-solo-no" type="radio" name="question-account-solo-group" value="No">
-                            No
-                        </label>
-                    </p>
-                    <legend class="heading-24">Are you the account holder?</legend>
-                    <p class="form-group form-group-compound mini inline" id="question-account-holder">
-                        <label class="block-label" for="question-account-holder-yes">
-                            <input id="question-account-holder-yes" type="radio" name="question-account-holder-group" value="Yes">
-                            Yes
-                        </label>
-                        <label class="block-label" for="question-account-holder-no">
-                            <input id="question-account-holder-no" type="radio" name="question-account-holder-group" value="No">
-                            No
-                        </label>
-                    </p>
+                    <div class="form-group">
+                        <h3 class="heading-24">Are you the account holder?</h3>
+                        <p class="form-group inline" id="question-account-holder">
+                            <label class="block-label" for="question-account-holder-yes">
+                                <input id="question-account-holder-yes" type="radio" name="question-account-holder-group" value="Yes">
+                                Yes
+                            </label>
+                            <label class="block-label" for="question-account-holder-no">
+                                <input id="question-account-holder-no" type="radio" name="question-account-holder-group" value="No">
+                                No
+                            </label>
+                        </p>
+                        <h3 class="heading-24">Are you the only person required to set up direct debit against the account?</h3>
+                        <p class="form-group inline" id="question-account-solo">
+                            <label class="block-label" for="question-account-solo-yes">
+                                <input id="question-account-solo-yes" type="radio" name="question-account-solo-group" value="Yes">
+                                Yes
+                            </label>
+                            <label class="block-label" for="question-account-solo-no">
+                                <input id="question-account-solo-no" type="radio" name="question-account-solo-group" value="No">
+                                No
+                            </label>
+                        </p>
+                    </div>
                 </div>
             </fieldset>
             <p class="form-group"></p>
@@ -90,11 +92,13 @@
 
     {{$js-functions}}
         testAccount = function() {
-            if(el.radioAccountSoloYes.checked && el.radioAccountHolderYes.checked){
+            if(el.radioAccountHolderYes.checked && el.radioAccountSoloYes.checked){
                 window.location = 'direct-debit-confirmation';
+            } else if(el.radioAccountHolderYes.checked && el.radioAccountSoloNo.checked){
+                window.location = 'direct-debit-authorization';
             } else {
-                window.location = 'card';
-            } 
+                window.location = 'direct-debit-no-account';
+            }
         }
     {{/js-functions}}
 
