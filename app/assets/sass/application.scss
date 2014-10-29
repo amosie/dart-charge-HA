@@ -44,7 +44,7 @@ table th {
 }
 
 .confirmation-message{
-    background-color: $green;
+    background-color: $turquoise;
     color: white;
 }
 .confirmation-text p{
@@ -150,7 +150,10 @@ table th {
     @include bold-19();
     margin-left: 4em;
 }
-
+.list-bullet-account{
+    @include copy-16;
+    color: $grey-1;
+}
 .list-bullet-summary{
     @include copy-19;
     margin-left: 2em;
