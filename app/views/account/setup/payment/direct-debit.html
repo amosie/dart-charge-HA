@@ -83,13 +83,18 @@
                     </p>
                 </div>
             </fieldset>
+            <p class="form-group"></p>
             <p><button class="button" id="next" type="submit">Confirm</button></p>
         </form>
     {{/column-1}}
 
     {{$js-functions}}
-        func = function() {
-            console.log(el.buttonNext);
+        testAccount = function() {
+            if(el.radioAccountSoloYes.checked && el.radioAccountHolderYes.checked){
+                window.location = 'direct-debit-confirmation';
+            } else {
+                window.location = 'card';
+            } 
         }
     {{/js-functions}}
 
@@ -100,7 +105,7 @@
             }
             el.buttonNext.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location = 'card';
+                testAccount();
             });
         }
     {{/js-initialisation}}
@@ -108,7 +113,11 @@
     {{$js-objects}}
         el = {
             body: $('body'),
-            buttonNext: $('#next')
+            buttonNext: $('#next'),
+            radioAccountHolderNo: $('#question-account-holder-no'),
+            radioAccountHolderYes: $('#question-account-holder-yes'),
+            radioAccountSoloNo: $('#question-account-solo-no'),
+            radioAccountSoloYes: $('#question-account-solo-yes')
         }
     {{/js-objects}}
 

@@ -7,7 +7,7 @@ select {
   background: #f8f8f8;
   border: 1px solid #aaaaaa;
   font-size: 19px;
-  ont-weight: 400;
+  font-weight: 400;
   line-height: 1.31579;
 }
 table {
@@ -54,16 +54,26 @@ table th {
   box-shadow: none;
   color: $text-colour;
 }
-.button-get-started {
-  font-family: "nta", Arial, sans-serif;
-  font-size: 24px;
-  line-height: 1.25;
-  font-weight: 700;
-  text-transform: none;
-  background-image: url("http://govuk-elements.herokuapp.com/public/images/icons/icon-pointer.png");
-  background-repeat: no-repeat;
-  background-position: 100% 50%;
-  padding: 0.36842em 2.15789em 0.21053em 0.84211em;
+.direct-debit-guarantee-container{
+    border: 1px solid;
+}
+.direct-debit-gurantee-heading{
+    // display: inline;
+    float: left;
+    vertical-align: top;;
+    margin-left: 15%;
+    margin-top: 5%;
+    @include core-24;
+}
+.direct-debit-guarantee-logo{
+    float: right;
+}
+.direct-debit-print img{
+    vertical-align: middle;
+}
+.direct-debit-print a{ 
+    @include core-16;
+    margin-left: 1.5em;
 }
 .file-input {
   display: block
