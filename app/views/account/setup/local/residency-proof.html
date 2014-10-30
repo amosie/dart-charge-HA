@@ -6,17 +6,66 @@
         <form>
             <fieldset>
                 <div class="form-group" id="proof">
-                    <h2 class="heading-24">Upload proofs of residency</h2>
-                    <label class="visuallyhidden" for="proof-of-residence-1">Upload proof of residency</label>
-                    <input class="form-upload" id="proof-of-residence-1" name="proof-of-residence" type="file" />
-                    <label class="visuallyhidden" for="proof-of-residence-2">Upload proof of residency</label>
-                    <input class="form-upload" id="proof-of-residence-2" name="proof-of-residence" type="file" />
-                </div>
-                <div>
-                    <h2 class="heading-24">Upload proof of ownership</h2>
-                    <label class="visuallyhidden" for="proof-of-ownership">Upload proof of ownership</label>
-                    <input class="form-upload" id="proof-of-ownership" name="proof-of-ownership" type="file" />
-                </div>          
+                    <h2 class="heading-24">Proof of residency and vehicle ownership</h2>
+                    <ul class="list-bullet">
+                        <li>Documentation is valid for 2 years. You will be notified close to expiration to re-submit.</li>
+                        <li>It takes up to 5 days to approve documents, in the meantime you will be charged standard rate.</li>
+                    </ul>
+                    <h2 class="heading-24">Required documentation</h2>
+                    <ol class="list-number">
+                        <li>Proof of residency</li>
+                        <ul class="list-number">
+                            <li>clear copy of a current council tax bill for the application address</li>
+                            <li>one other of the following documents, showing the applicant's name and address:</li>
+                            <ul class="list-bullet">
+                                <li>a bank or credit card statement no more than 3 months old</li>
+                                <li>utility bill (gas, electric or water bill but not a mobile phone bill) no more than 3 months old</li>
+                                <li>an income support book or housing association rent document</li>
+                                <li>applicant's driving license</li>
+                            </u>
+                        </ul>
+                        <li>Proof of ownership</li>
+                            <ul class="list-bullet">
+                                <li>
+                                    vehicle V5 document (Registered Keeper) that shows that the vehicle is regitered to the application name and address
+                                </li>
+                            </ul>
+                    </ol>
+                    <h2 class="heading-24">How would you like to provide required documentation?</h2> 
+                    <label class="block-label" for="proof-now">
+                        <input id="proof-now" type="radio" name="proof-group" value="Upload now">
+                        Upload now
+                    </label>
+                    <p class="panel-inline-indent">
+                        <label for="proof-of-residence-1">
+                            Council tax bill
+                            <input class="form-upload" id="proof-of-residence-1" name="proof-of-residence" type="file" />
+                        </label>
+                        <label for="proof-of-residence-2">
+                            Upload proof of residency
+                            <input class="form-upload" id="proof-of-residence-2" name="proof-of-residence" type="file" />
+                        </label>
+                        <label for="proof-of-ownership">
+                            Vehicle V5 document
+                            <input class="form-upload" id="proof-of-ownership" name="proof-of-ownership" type="file" />
+                        </label>
+                    </p>
+
+                    <label class="block-label" for="proof-later">
+                        <input id="proof-later" type="radio" name="proof-group" value="Upload later">
+                        Upload later
+                    </label>
+                    <p class="panel-inline-indent">
+                        You can upload the documents later by logging into your account. Please note before documents are approved you will be charged a standard rate for crossing.
+                    </p>
+                    <label class="block-label" for="proof-mail">
+                        <input id="proof-mail" type="radio" name="proof-group" value="Upload Now">
+                        Send by mail
+                    </label>
+                    <p class="panel-inline-indent">
+                        Send clear A4 copies of documents to : Address
+                    </p>
+                </div>         
             </fieldset>
                 <div class="form-group"></div>
                 <p>
