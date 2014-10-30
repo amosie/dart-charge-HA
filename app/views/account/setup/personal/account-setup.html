@@ -10,7 +10,7 @@
             </p>
             <div class="form-group">
                 <label class="form-label" for="password">Password</label>
-                <ul class="list-bullet list-bullet-account">
+                <ul class="list-bullet">
                     <li>must begin with a letter</li>
                     <li>contain at least 1 digit</li>
                     <li>be at least 8 characters long</li>
@@ -23,12 +23,13 @@
             </p>
             <div class="form-group">
                 <label class="form-label" for="ivr-pin">Contact Centre Pin</label>
-                <ul class="list-bullet list-bullet-account">
-                    <li>create your pin number</li>
-                    <li>pin must be 4 digits long</li>
+                <ul class="list-bullet">
                     <li>this would be used to verify your identity if you contact us by phone</li>
                 </ul>
-                <input class="form-control form-control-1-4" id="ivr-pin" type="text">
+                <input class="form-control form-restriction-1-16"  maxlength="1" id="ivr-pin" type="text">
+                <input class="form-control form-restriction-1-16"  maxlength="1" id="ivr-pin-1" type="text">
+                <input class="form-control form-restriction-1-16"  maxlength="1" id="ivr-pin-2" type="text">
+                <input class="form-control form-restriction-1-16"  maxlength="1" id="ivr-pin-3" type="text">
             </div>
             <p><button class="button" id="next" type="submit">Next</button></p>
         </form>

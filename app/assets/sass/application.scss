@@ -100,6 +100,9 @@ table th {
 .form-control-1-8 {
   width: 12.5%;
 }
+.form-restriction-1-16 {
+  width: 6.25%;
+}
 .form-control-uppercase {
   text-transform: uppercase;
 }
@@ -166,6 +169,9 @@ table th {
 }
 .js-enabled.debug .js-hidden {
   display: block;
+}
+input.form-restriction-1-16 {
+    text-align: center;
 }
 .note {
   background: #ffff00;
