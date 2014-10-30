@@ -1,0 +1,62 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Account setup(LRDS){{/h1}}
+
+    {{$column-1}}
+        <form>
+             <p class="form-group">
+                <label class="form-label" for="name-first">User name</label>
+                <input class="form-control form-control-1-2" id="name-first" type="text">
+            </p>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <ul class="list-bullet list-bullet-account">
+                    <li>must begin with a letter</li>
+                    <li>contain at least 1 digit</li>
+                    <li>be at least 8 characters long</li>
+                </ul>
+                <input class="form-control form-control-1-2" id="password" type="password">
+            </div>
+            <p class="form-group">
+                <label class="form-label" for="password-confirm">Confirm password</label>
+                <input class="form-control form-control-1-2" id="password-confirm" type="password">
+            </p>
+            <div class="form-group">
+                <label class="form-label" for="ivr-pin">Contact Centre Pin</label>
+                <ul class="list-bullet list-bullet-account">
+                    <li>create your pin number</li>
+                    <li>pin must be 4 digits long</li>
+                    <li>this would be used to verify your identity if you contact us by phone</li>
+                </ul>
+                <input class="form-control form-control-1-4" id="ivr-pin" type="text">
+            </div>
+            <p><button class="button" id="next" type="submit">Next</button></p>
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        func = function() {
+            console.log(el.buttonNext);
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = '../vehicle';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}
