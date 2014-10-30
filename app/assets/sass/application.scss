@@ -42,7 +42,9 @@ table th {
 .border-left {
     border-left: 1px solid #bfc1c3;
 }
-
+.button.inline{
+    display: inline !important;
+}
 .confirmation-message{
     background-color: $turquoise;
     color: white;
@@ -193,17 +195,14 @@ p.panel-inline-indent {
 .start .grid-1-3 .inner-block {
     padding-right: 30px;
 }
-
 .info-notice {
   background: none;
   border-left: 10px solid #bfc1c3;
   margin-bottom: 1em;
 }
-
 .application-notice {
   padding: 0.1em 0 0.1em 1em;
 }
-
 .beta-label {
   clear: both;
   margin: 0;
@@ -232,7 +231,6 @@ p.panel-inline-indent {
       margin-right: 10px;
     }
 }
-
 .route {
     margin-top: 2em;
     margin-bottom: 1em;
