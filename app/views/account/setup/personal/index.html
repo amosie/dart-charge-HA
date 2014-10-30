@@ -20,6 +20,7 @@
                     <p class="form-group">
                         <label class="form-label" for="company-number">Company number</label>
                         <input class="form-control form-control-1-2" id="company-number" type="text">
+                        <button class="button inline" id="find-company">Find company</button>
                     </p>
                 </div>
             </fieldset>
@@ -184,6 +185,9 @@
                 setDisabled(el.buttonNext, false);
                 testLocal(el.postcode);
             }, false);
+            el.findCompany.addEventListener('click', function(e) {
+                e.preventDefault();
+            }, false);
         }
     {{/js-initialisation}}
 
@@ -202,6 +206,7 @@
             companyNumber: $('#company-number'),
             discountInvite: $('#discount-invite'),
             findAddress: $('#find-address'),
+            findCompany: $('#find-company'),
             localDiscount: $('#local-discount'),
             postcode: $('#postcode'),
             townCity: $('#town-city')
