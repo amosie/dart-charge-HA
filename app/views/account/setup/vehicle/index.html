@@ -26,7 +26,6 @@
             <p class="form-force form-group js-hidden" id="vehicle-add-another">
                 <button class="button support" id="vehicle-add-another-button">Add another vehicle</button>
             </p>
-            <p>
     			<fieldset class="inline" id="vehicle-input">
                     <label class="form-label" for="vehicle-registration">
                         Country of registration
@@ -299,7 +298,6 @@
                         <option value="ZW">Zimbabwe</option>
                         </optgroup>
                     </select>
-                </p>
 				<p class="form-group">
 					<label class="form-label" for="vehicle-registration">
 						Vehicle registration number
@@ -345,9 +343,6 @@
 					</p>
 				</div>
 			</fieldset>
-			<!--
-			<p class="form-group">You can add <span id="vehicles-remaining">5</span> more vehicles</p>
-			-->
 			<p><button class="button" id="next" type="submit">Next</button></p>
 		</form>
 	{{/column-1}}
@@ -386,10 +381,14 @@
         destroyTableRow = function(target) {
             var rows = $$('#vehicle-list tr');
             el.vehicleList.removeChild(rows[target]);
+            vehicleCounter -= 1;
             if (rows.length === 1) {
                 setDisplay(el.vehicleAddAnother, false);
                 setDisplay(el.vehicleInput, true);
                 setDisplay(el.vehicles, false);
+            }
+            if(vehicleCounter < 5 && vehicleCounter > 0){
+                setDisplay(el.vehicleAddAnother, true);
             }
         },
 		testRegistration = function() {

@@ -3,7 +3,7 @@
 	{{$h1}}Local resident discount{{/h1}}
 
 	{{$column-1}}
-         <p class="lead">
+         <p>
             Local resident discount can be applied to only one car per resident per account. More cars can be added by logging into your account, standard rates will be applied to other cards.
         </p>
 		<form>
@@ -30,11 +30,9 @@
 				</div>
 			</fieldset>
             <div class="form-group">
-                <h2 class="heading-24">Apply later</h2>
                 <label class="form-checkbox" for="apply-later">
-                    <span class="form-hint">If you prefer, you can apply for your discount later</span>
-                    <input id="apply-later" type="checkbox" value="apply-later">
-                    Apply later
+                    <input id="terms-conditions" type="checkbox" value="terms-conditions">
+                    I accept the Terms and Conditions
                 </label>
             </div>
 			<p>
@@ -45,7 +43,7 @@
 
 	{{$js-functions}}
 		testNext = function() {
-			if (el.applyLater.checked || (el.crossingsLimited.checked || el.crossingsUnlimited.checked)) {
+			if ((el.crossingsLimited.checked || el.crossingsUnlimited.checked) && el.termsConditions.checked) {
 				setDisabled(el.buttonNext, false);
 			} else {
 				setDisabled(el.buttonNext, true);
@@ -64,35 +62,26 @@
                     return false;
                 }
             });
-			el.applyLater.addEventListener('click', function() {
-                
-                    el.crossingsLimited.checked = false;
-                    el.crossingsUnlimited.checked = false;
-                
-				testNext();
-			}, false);
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
-                if(el.applyLater.checked){
-                    window.location = 'payment';
-                } else {
-                    window.location = './local/residency-proof';
-                }
+                window.location = './local/residency-proof';
 			});
 			el.discountBoolean.addEventListener('click', function() {
-				el.applyLater.checked = false;
 				testNext();
 			}, false);
+            el.termsConditions.addEventListener('click', function() {
+                testNext();
+            }, false);
 		}
 	{{/js-initialisation}}
 
 	{{$js-objects}}
 		el = {
-			applyLater: $('#apply-later'),
 			buttonNext: $('#next'),
 			crossingsLimited: $('#crossings-limited'),
 			crossingsUnlimited: $('#crossings-unlimited'),
-			discountBoolean: $('#discount-boolean')
+			discountBoolean: $('#discount-boolean'),
+            termsConditions: $('#terms-conditions')
 		}
 	{{/js-objects}}
 
