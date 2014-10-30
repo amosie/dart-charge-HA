@@ -27,6 +27,11 @@
                     <p class="panel-inline-indent">
                         You will need to remember to add funds to your account yourself when your balance is low.
                     </p>
+                    <div class="panel-indent js-hidden" id="type-manual">
+                        <p class="non-form">
+                            When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
+                        </p>
+                    </div>
             		<label class="block-label" for="top-up-automatic">
             			<input id="top-up-automatic" type="radio" name="topup-group" value="No">
             			Automatically
@@ -36,15 +41,7 @@
                     </p>
             	</div>
             	<div class="js-hidden" id="top-up-types">
-            		<div class="panel-indent js-hidden" id="type-manual">
-            			<p class="non-form">
-                            When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
-                        </p>
-            			<!-- <p class="form-group">
-            				<label class="form-label" for="manual-start">Initial payment</label>
-            				£ <input class="form-control form-control-1-4" id="manual-start" type="text" value="10.00" />
-            			</p> -->
-            		</div>
+            		
             		<div class="panel-indent js-hidden" id="type-automatic">
             			<p class="form-group">
             				<label class="form-label" for="automatic-start">Top-up my account by:</label>
