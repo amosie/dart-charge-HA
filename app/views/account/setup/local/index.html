@@ -3,6 +3,9 @@
 	{{$h1}}Local resident discount{{/h1}}
 
 	{{$column-1}}
+         <p class="lead">
+            Local resident discount can be applied to only one car per resident per account. More cars can be added by logging into your account, standard rates will be applied to other cards.
+        </p>
 		<form>
 			<fieldset>
 				<div class="form-group-compound" id="discount-boolean">
@@ -71,7 +74,7 @@
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
                 if(el.applyLater.checked){
-                    window.location = 'vehicle';
+                    window.location = 'payment';
                 } else {
                     window.location = './local/residency-proof';
                 }
