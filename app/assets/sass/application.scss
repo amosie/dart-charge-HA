@@ -188,13 +188,20 @@ input.form-restriction-1-16 {
 .panel-indent .heading-24 {
   margin-top: 0;
 }
-p.panel-inline-indent {
+
+p.panel-inline-indent, 
+div.panel-inline-indent{
    margin-left:7em; 
    margin-right:auto;
    margin-bottom: 1em; 
    padding-left:5em;
    width: 25em;
 }
+
+div.panel-inline-indent p{
+    margin-top: 1em;
+}
+
 .start .grid-2-3 .inner-block {
     padding-left: 30px;
 }
