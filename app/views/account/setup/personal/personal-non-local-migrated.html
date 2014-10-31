@@ -1,0 +1,214 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Your details{{/h1}}
+
+    {{$column-1}}
+        <p>In order to set up your Dart Charge account, we need to get some information from you.</p>
+        <form>
+            <fieldset class="form-group inline">
+                <p>
+                    <label class="form-checkbox" for="behalf-of-company">
+                        <input id="behalf-of-company" type="checkbox" value="behalf-of-company">
+                        Are you applying on behalf of a company?
+                    </label>
+                </p>
+                <div class="panel-indent js-hidden" id="company">
+                    <p class="form-group">
+                        <label class="form-label" for="company-name">Company name</label>
+                        <input class="form-control form-control-3-4" id="company-name" type="text">
+                    </p>
+                    <p class="form-group">
+                        <label class="form-label" for="company-number">Company number</label>
+                        <input class="form-control form-control-1-2" id="company-number" type="text">
+                        <button class="button inline" id="find-company">Find company</button>
+                    </p>
+                </div>
+            </fieldset>
+            <p class="form-group">
+                <label class="form-label" for="name-first">First name</label>
+                <input class="form-control form-control-1-2" id="name-first" type="text" value="John">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="name-last">Last name</label>
+                <input class="form-control form-control-1-2" id="name-last" type="text" value="Brown">
+            </p>
+            
+            <p class="form-group">
+                <label class="form-label" for="email-address">Email address</label>
+                <input class="form-control form-control-3-4" id="email-address" type="email" value="jon.brown@gmail.com">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="email-confirm">Confirm your email address</label>
+                <input class="form-control form-control-3-4" id="email-confirm" type="email">
+            </p>
+            
+            <p class="form-group">
+                <label class="form-label" for="telephone">Telephone</label>
+                <input class="form-control form-control-1-2" id="telephone" type="email" value="07789123456">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="secondary-telephone">Secondary telephone number (optional)</label>
+                <input class="form-control form-control-1-2" id="secondary-telephone" type="email">
+            </p>
+            <h2 class="heading-24">Address details</h2>
+            <p class="form-group">
+                <label class="form-label" for="country">
+                    Country
+                </label>
+                <input class="autocomplete form-control form-control-1-2" id="country" type="text" value="United Kingdom">
+            </p>
+            <p class="form-group inline mini">
+                <label class="form-label" for="postcode">
+                    Postcode
+                </label>
+                <input class="form-control form-control-1-4 form-control-uppercase" id="postcode" type="text" value="BA13 3BN">
+                <button class="button inline" id="find-address">Find address</button>
+            </p>
+            <div class="panel-indent js-hidden" id="address">
+                <p class="form-group">
+                    <label for="address-found">Select your address</label>
+                    <select class="form-control-1" id="address-found" name="address-found">
+                        <option value="address-01">1 Anystreet, Townsville</option>
+                        <option value="address-01">2 Anystreet, Townsville</option>
+                        <option value="address-01">3 Anystreet, Townsville</option>
+                        <option value="address-01">4 Anystreet, Townsville</option>
+                        <option value="address-01">5 Anystreet, Townsville</option>
+                    </select>
+                </p>
+                <fieldset class="form-group inline">
+                    <p>
+                        <label class="form-checkbox" for="address-not-found">
+                            <input id="address-not-found" type="checkbox" value="address-not-found">
+                            I can’t find my address in the list
+                        </label>
+                    </p>
+                    <div class="panel-indent js-hidden" id="address-detail">
+                        <fieldset>
+                            <legend>Address</legend>
+                            <p class="form-group mini">
+                                <label class="visuallyhidden" for="address-1">Address line 1</label>
+                                <input class="form-control form-control-1-2" id="address-1" type="text">
+                            </p>
+                            <p class="form-group">
+                                <label class="visuallyhidden" for="address-2">Address line 2</label>
+                                <input class="form-control form-control-1-2" id="address-2" type="text">
+                            </p>
+                            <p class="form-group">
+                                <label class="form-label" for="town-city">Town or city</label>
+                                <input class="form-control form-control-1-2" id="town-city" type="text">
+                            </p>
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+           <!--  <div class="form-group js-hidden" id="discount-invite">
+                <label class="form-checkbox" for="local-discount">
+                    <input id="local-discount" type="checkbox" value="local-discount"> 
+                        Would you like to apply for a local discount?
+                    <span class="form-hint">You will need to prove that you live in the Dartford-Thurrock area</span>
+                </label>
+                <span class="form-hint">To progress you will need to provide scans of:</span>
+                 <ul class="list-bullet">
+                    <li>proof of residency</li>
+                    <li>proof of vehicle ownership at the registered address</li>
+                </ul>
+            </div> -->
+            <p><button class="button" disabled="disabled" id="next" type="submit">Save and continue</button></p>
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        showAddresses = function() {
+            setDisplay(el.address, true);
+            var addressValues = el.addressFound[el.addressFound.selectedIndex].text.split(',');
+            el.addressOne.value = addressValues[0];
+            el.townCity.value = addressValues[1];
+            setDisplay(el.addressDetail, true);
+        },
+        showAddressForm = function(target) {
+            if (target.checked == true) {
+                setDisplay(el.addressDetail, true);
+            } else {
+                setDisplay(el.addressDetail, false);
+            }
+        },
+        setAddress = function(target) {
+            var addressValues = target[target.selectedIndex].text.split(',');
+            el.addressOne.value = addressValues[0];
+            el.townCity.value = addressValues[1];
+        },
+        testCompany = function(target) {
+            if (target.checked == true) {
+                setDisplay(el.company, true);
+            } else {
+                setDisplay(el.company, false);
+                el.companyNumber.value = '';
+            }
+        },
+        testLocal = function(target) {
+            if (el.discountInvite) {
+                var postcode = target.value.toUpperCase();
+                if (postcode.match(/^(BR8|CM13|DA(1[01347]*|[23459])|RM(1[456789]|20)|SS1[67])\s*\d[A-Z]{2}$/)) {
+                    setDisplay(el.discountInvite, true);
+                } else {
+                    setDisplay(el.discountInvite, false);
+                }
+            }
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            showAddresses();
+            setDisabled(el.buttonNext, false);
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.addressFound.addEventListener('change',function(e) {
+                setAddress(e.target);
+            });
+            el.addressNotFound.addEventListener('click', function(e) {
+                showAddressForm(e.target);
+            }, false);
+            el.behalfCompany.addEventListener('change', function(e) {
+                testCompany(e.target);
+            }, false);
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'account-setup-non-local-migrated';
+            });
+            el.findAddress.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAddresses();
+                setDisabled(el.buttonNext, false);
+                testLocal(el.postcode);
+            }, false);
+            el.findCompany.addEventListener('click', function(e) {
+                e.preventDefault();
+            }, false);
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            address: $('#address'),
+            addressOne: $('#address-1'),
+            addressTwo: $('#address-2'),
+            addressDetail: $('#address-detail'),
+            addressFound: $('#address-found'),
+            addressNotFound: $('#address-not-found'),
+            body: $('body'),
+            buttonNext: $('#next'),
+            behalfCompany: $('#behalf-of-company'),
+            company: $('#company'),
+            companyNumber: $('#company-number'),
+            discountInvite: $('#discount-invite'),
+            findAddress: $('#find-address'),
+            findCompany: $('#find-company'),
+            localDiscount: $('#local-discount'),
+            postcode: $('#postcode'),
+            townCity: $('#town-city')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}
