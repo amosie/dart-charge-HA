@@ -43,7 +43,7 @@
 				if (getComputedStyle(el.dartVerify)['display'] == 'block') {
 					setDisplay(el.dartVerify, false);
 				}
-				setDisabled(el.buttonNext, true);
+                setDisabled(el.buttonNext, false);
 			}
 		},
 		testVerify = function() {
@@ -57,6 +57,7 @@
 
 	{{$js-initialisation}}
 		init = function() {
+            setDisabled(el.buttonNext, true);
 			if (window.location.search.match(/=debug/)) {
 				el.body.classList.add('debug');
 			}
