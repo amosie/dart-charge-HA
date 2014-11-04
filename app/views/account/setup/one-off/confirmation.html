@@ -1,0 +1,60 @@
+{{<layouts/2-column}}
+
+	{{$h1}}Confirmation{{/h1}}
+
+	{{$column-1}}
+
+   <form>
+        <fieldset>
+            <div class="confirmation-message form-group">
+                <div class="confirmation-text">
+                   
+                        <p>You have paid £5.00 for 2 crossings</p>
+                    
+                        <p>Your confirmation number is:</p>
+                   
+                        <p>100013102</p>
+                    
+                        <p>Your payment confirmation number is:</p>
+                    
+                        <p>513905</p>
+                </div>
+            </div>
+            <p class="lead">
+                Your receipt has been sent to you by email.
+            </p>
+            <h2 class="heading-19">
+                What would you like to do next?
+            </h2>
+            <p>
+                If you have any questions about your payment, contact <a href='http://www.gov.uk/dart-charge'>Dart Charge</a>.
+            </p>
+        </fieldset>
+    </form><!--Comment this section since this is needed to be run from within the site -->
+
+
+
+	{{/column-1}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-objects}}
+
+{{/layouts/2-column}}
