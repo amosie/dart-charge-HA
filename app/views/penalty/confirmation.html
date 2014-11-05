@@ -1,0 +1,53 @@
+{{<layouts/2-column}}
+
+	{{$h1}}Confirmation{{/h1}}
+
+	{{$column-1}}
+
+   <form>
+        <fieldset>
+            <div class="confirmation-message form-group">
+                <div class="confirmation-text">
+                    <p>You have paid £37.50 for the penalty charge<br> and crossing fee</p>
+                    <p>Your confirmation number is:</p>
+                    <p>100025162</p>
+                    <p>Your payment confirmation number is:</p>
+                    <p>671309</p><br>
+                </div>
+            </div>
+            <h2 class="heading-24">What happens next</h2>
+        <p>We'll send your receipt to you by email.</p>
+        <p>If you have any questions about your payment, contact <a href='http://www.gov.uk/dart-charge'>Dart Charge</a>.</p>
+        </fieldset>
+    </form><!--Comment this section since this is needed to be run from within the site -->
+        <div class="page-numbers-container">
+        <p>&nbsp;</p>
+        <p><a href='../'>What did you think of this service?</a> (Takes 30 seconds)</p>
+        <p><a href='../'>Set up an account</a> to avoid receiving a penalty charge notice in the future.</p>
+        </div>
+
+
+	{{/column-1}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-objects}}
+
+{{/layouts/2-column}}
