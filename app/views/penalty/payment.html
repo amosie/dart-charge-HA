@@ -1,0 +1,60 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Payment{{/h1}}
+
+    {{$column-1}}
+        <h2>Penalty charge: £35.00</h2>
+        <p>In addition to the penalty charge you must also pay the applicable road user charge of £2.50.</p>
+        <h3 class="heading-24">Total cost: £37.50</h3>
+        <div class="panel-indent">
+            <p>If you pay the penalty charge 14 days after 8/11/2014 the charge will increase.
+            <a href="dartford-crossing-fees-exemptions-penalties">Find out about late payment charges</a>.</p>
+        </div>
+        <h3 class="heading-24">Where shall we send your receipt?</h3>
+            <p class="form-group">
+            <label class="form-label" for="email-address">Email address</label>
+            <span class="form-hint">We won't use your email address for marketing.</span>
+            <input class="form-control form-control-3-4" id="email-address" type="email">
+            </p>
+            <p class="form-group">
+            <label class="form-label" for="email-confirm">Confirm your email address</label>
+            <input class="form-control form-control-3-4" id="email-confirm" type="email">
+            </p>
+            <p class="form-group form-final-force">
+               <label class="form-checkbox" for="terms">
+               <input id="terms" type="checkbox" value="terms">
+               I accept the Terms and Conditions
+               </label>
+               <a href="/account/setup/payment/terms">Read the Terms and Conditions</a>
+            </p>
+            </fieldset>
+        </form>
+        <p><button class="button" id="next" type="submit">Next</button></p>
+  {{/column-1}}
+
+    {{$js-functions}}
+        func = function() {
+            console.log(el.buttonNext);
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'card.html';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}
