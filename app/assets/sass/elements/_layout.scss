@@ -4,8 +4,10 @@
 #wrapper {
   text-align: center;
   padding-bottom: $gutter;
+  min-height: none;
   @include media(desktop) {
     padding-bottom: $gutter*3;
+  min-height: 35em;
   }
 }
 
