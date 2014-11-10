@@ -93,3 +93,10 @@
 .button-link:focus {
   outline: 3px solid $yellow;
 }
+
+// Warning buttons YH
+.button-warning,
+.button-warning:visited {
+background-color: #b10e1e;
+top: 0;
+}  

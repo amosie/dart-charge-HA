@@ -7,7 +7,7 @@
   min-height: none;
   @include media(desktop) {
     padding-bottom: $gutter*3;
-  min-height: 35em;
+  min-height: 35em; // min-height for short pages
   }
 }
 
@@ -82,3 +82,13 @@
     width: 75%;
   }
 }
+
+// other YH
+
+hr {
+border:0;
+height: 1px;
+background: #bfc1c3; }
+
+b, strong {
+font-weight: 600; }
