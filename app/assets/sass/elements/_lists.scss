@@ -30,3 +30,45 @@ ol li {
   list-style-type: decimal;
   margin-left: 25px;
 }
+
+// Header menu YH
+
+.header-proposition ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+.header-proposition li {
+  margin: 0;
+  padding-right: 10px;
+  display: inline;
+  font-weight: bold;
+  color: white; }
+
+.header-proposition a {
+  text-decoration: none;
+  color: white; }
+
+.header-proposition a:hover {
+  text-decoration: underline; }
+
+.related {
+margin-top: -3.1em;
+border-top: 10px solid #005ea5; }
+
+.related h2 {
+font-family: "nta",Arial,sans-serif;
+font-size: 24px;
+line-height: 1.25;
+font-weight: 400;
+text-transform: none;
+font-weight: 600;
+color: #0b0c0c;
+margin-top: 0.3em;
+margin-bottom: 0.5em;
+position: relative;
+}
+
+.related li, .related a {
+font-size: 16px; }
+
