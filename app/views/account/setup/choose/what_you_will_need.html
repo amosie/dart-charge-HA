@@ -1,0 +1,68 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Before you start{{/h1}}
+
+    {{$column-1}}
+        <form>
+             <fieldset>
+                <div class="form-group">
+                    <h2 class="heading-24">
+                        To set up a standard or commercial account you’ll need:
+                    </h2>
+                     <div>
+                        <ul class="list-bullet">
+                            <li>your personal details, or company details for a commercial account</li>
+                            <li>details of each vehicle you’re registering</li>
+                            <li>a debit or credit card</li>
+                            <li>You must start a standard account with £10. If you close your account, any remaining balance will be refunded.</li>
+                        </ul>
+                    </div>
+                    <p>
+                        Register for a standard account if your company isn’t registered with Companies House.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="heading-24">
+                        Apply for a local resident discount
+                    </h2>
+
+                    <p>
+                        You can only get a discount for 1 vehicle. You must provide evidence - you can upload or photograph your documents, or send them by post for checking.
+                    </p>
+
+                    <div> 
+                        <p>You’ll need:</p>
+                        <ul class="list-bullet">
+                            <li>your vehicle details</li>
+                            <li>a current Council Tax bill that matches the address in your application</li>
+                            <li>proof you live in Dartford or Thurrock, eg a gas, electricity or water bill (less than 3 months old), bank or credit card statement (less than 3 months old), income support book, rent document or driving licence</li>
+                            <li>proof your vehicle is registered in Dartford or Thurrock, eg a copy of your V5C vehicle registration or a vehicle lease in your name</li>
+                            <li>a debit or credit card</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="form-group">
+                    You can’t get a local resident discount if your vehicle is registered to a company.
+                </p>
+            </fieldset>
+            <p class="form-group"></p>
+            <p><button class="button" id="next" type="submit">Next</button></p>
+        </form>
+    {{/column-1}}
+
+
+    {{$pageScript}}
+
+        <script>
+            
+            $("#next").on("click",function(e){
+                e.preventDefault();
+                window.location = "../personal";
+            })
+
+        </script>
+
+    {{/pageScript}}
+
+{{/layouts/1-column}}

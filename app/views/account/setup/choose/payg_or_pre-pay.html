@@ -1,0 +1,73 @@
+{{<layouts/1-column}}
+    {{$h1}}{{/h1}}
+    {{$column-1}}
+        <form>
+            <fieldset class="">
+                <legend></legend>
+                <h2 class="heading-24">
+                    What kind of an account do you want?
+                </h2>
+                <div class="form-group form-group-compound mini" id="dart-boolean">
+                    <label class="block-label" for="pre-pay">
+                        <input id="pre-pay" type="radio" name="account-group" value="Yes">
+                        Pre pay
+                    </label>
+                    <p class="panel-inline-indent">
+                        Pre-pay and save up to a third on every crossing. Minimum initial payment of £10 is required.
+                    </p>
+                    <div class="panel-indent js-hidden" id="type-manual">
+                        <p class="non-form">
+                            When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
+                        </p>
+                    </div>
+                    <p class="form-group"></p>
+                    <label class="block-label" for="pay-go">
+                        <input id="pay-go" type="radio" name="account-group" value="No">
+                        Pay as you GO
+                    </label>
+                    <p class="panel-inline-indent">
+                        Pay automatically. No initial payment, no discount.
+                    </p>
+                </div>
+            </fieldset>
+            <p>
+                <button class="button" id="next" type="submit">Next</button>
+            </p>
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        clearDirectDebit = function() {
+            setDisplay(el.sectionDirectDebit, false);
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (el.prePay.checked) {
+                    window.location = './what_you_will_need';
+                }
+                if(el.payGo.checked) {
+                    window.location = '../one-off';  <!-- PAYGO address needs to go here-->
+                }
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next'),
+            checkTerms: $('#terms'),
+            payGo: $('#pay-go'),
+            prePay: $('#pre-pay')
+        }
+    {{/js-objects}}
+
+
+{{/layouts/1-column}}
