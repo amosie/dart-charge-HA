@@ -4,9 +4,9 @@
 
 	{{$column-1}}
         <form method="post" action="/Secure/iTransact.ashx" id="payment" autocomplete="off" style="margin-bottom: 0 !important;">
-            <p class="form-group">
-                Payment amount:
-                <span id="labelAmount">£5.00</span>
+            <p class="heading-24">
+                Total cost:
+                <span id="labelAmount">£5</span>
             </p>
 
             <fieldset>
@@ -82,6 +82,7 @@
                 </p>
                 <p class="form-group">
                     <label for='CV2' class="form-label">Card Security Code</label>
+                    <span class="form-hint">The last 3 digits found on the signature strip on the back of the card. For Amex the 4 digits after the card number on the front.</span>
                     <input name="CV2" maxlength="4" id="CV2" title="The last 3 digits found on the signature strip on the back of the card. For Amex the 4 digits after the card number on the front." class="text small" autocomplete="off" type="text" pattern="[0-9]*" />
                 </p>
                 <p class="form-group">
