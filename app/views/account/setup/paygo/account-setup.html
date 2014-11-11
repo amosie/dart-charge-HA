@@ -1,0 +1,60 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Account setup{{/h1}}
+
+    {{$column-1}}
+        <form>
+            <p class="form-group">
+                <label class="form-label" for="email-address">Email address</label>
+                <span class="form-hint">
+                        This will be your user name.
+                    </span>
+                <input class="form-control form-control-3-4" id="email-address" type="email">
+            </p>
+            <p class="form-group">
+                <label class="form-label" for="email-confirm">Confirm your email address</label>
+                <input class="form-control form-control-3-4" id="email-confirm" type="email">
+            </p>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <ul class="list-bullet">
+                    <li>must begin with a letter</li>
+                    <li>contain at least 1 digit</li>
+                    <li>be at least 8 characters long</li>
+                </ul>
+                <input class="form-control form-control-1-2" id="password" type="password">
+            </div>
+            <p class="form-group">
+                <label class="form-label" for="password-confirm">Confirm password</label>
+                <input class="form-control form-control-1-2" id="password-confirm" type="password">
+            </p>
+            <p><button class="button" id="next" type="submit">Next</button></p>
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        func = function() {
+            console.log(el.buttonNext);
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = '../vehicle/vehicle-paygo';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}

@@ -24,5 +24,9 @@ module.exports = {
       res.render('account/setup/payment/card', {'assetPath' : assetPath});
     });
 
+    app.post('/account/setup/paygo', function (req, res) {
+      res.render('account/setup/paygo/index', {'assetPath' : assetPath});
+    });
+
   }
 };
