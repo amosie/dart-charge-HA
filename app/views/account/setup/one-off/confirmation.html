@@ -1,38 +1,24 @@
-{{<layouts/2-column}}
-
-	{{$h1}}Confirmation{{/h1}}
+{{<layouts/1-column}}
 
 	{{$column-1}}
-
-   <form>
-        <fieldset>
-            <div class="confirmation-message form-group">
-                <div class="confirmation-text">
-                   
-                        <p>You have paid £5.00 for 2 crossings</p>
-                    
-                        <p>Your confirmation number is:</p>
-                   
-                        <p>100013102</p>
-                    
-                        <p>Your payment confirmation number is:</p>
-                    
-                        <p>513905</p>
+       <form>
+            <fieldset>
+                <div class="confirmation-message form-group">
+                    <div class="confirmation-text">
+                        <h1 class="heading-48">You have paid £5</h1>
+                        <p>Confirmation number: 100013102 / 513905</p>
+                        <p></p>
+                     </div>
                 </div>
-            </div>
-            <p class="lead">
-                Your receipt has been sent to you by email.
-            </p>
-            <h2 class="heading-19">
-                What would you like to do next?
-            </h2>
-            <p>
-                If you have any questions about your payment, contact <a href='http://www.gov.uk/dart-charge'>Dart Charge</a>.
-            </p>
-        </fieldset>
-    </form><!--Comment this section since this is needed to be run from within the site -->
-
-
+            </fieldset>
+        </form><!--Comment this section since this is needed to be run from within the site -->
+        <h2 class="heading-24 form-block">Check your email</h2>
+        <p>We've sent your receipt to account.holder@gmail.com.</p>
+        <p>If you have any questions about your payment, contact <a href='http://www.gov.uk/dart-charge'>Dart Charge</a>.</p>
+        <h2 class="heading-24 form-block">Set up an account</h2>
+        <p>Save your details for next time - no need to remember to pay. <a href="../personal">Set up an account</a> and pay automatically or pre-pay and save up to a third on every crossing.</p>
+        <hr class="what-did-you-think">
+        <p><a href='../'>What did you think of this service?</a> (Takes 30 seconds)</p>
 
 	{{/column-1}}
 
@@ -57,4 +43,4 @@
 		}
 	{{/js-objects}}
 
-{{/layouts/2-column}}
+{{/layouts/1-column}}
