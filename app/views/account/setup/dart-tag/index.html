@@ -5,19 +5,20 @@
 	{{$column-1}}
 		<form>
 			<fieldset class="inline">
-				<p>If you are a DART Tag customer then you should have received an email or letter explaining how to migrate your DART Tag account.</p>
-				<legend class="heading-24">Do you have a DART Tag migration email or letter?</legend>
-				<p class="form-group form-group-compound" id="dart-boolean">
-					<label class="block-label" for="dart-yes">
-						<input id="dart-yes" type="radio" name="dart-group" value="Yes">
-						Yes
-					</label>
-					<label class="block-label" for="dart-no">
-						<input id="dart-no" type="radio" name="dart-group" value="No">
-						No
-					</label>
-				</p>
+                <p class="form-group form-group-compound" id="dart-boolean">
+                        <label class="block-label" for="dart-yes">
+                            <input id="dart-yes" type="radio" name="dart-group" value="Yes">
+                            Yes
+                        </label>
+                        <label class="block-label" for="dart-no">
+                            <input id="dart-no" type="radio" name="dart-group" value="No">
+                            No
+                        </label>
+                    </p>
 				<div class="panel-indent js-hidden" id="dart-verify">
+                    <p class="form-group">
+                        If you are a DART Tag customer then you should have received an email or letter explaining how to migrate your DART Tag account. If you don't have this informaiton please call Customer Services at 030XXXXX
+                    </p>
 					<p class="form-group">
 						<label class="form-label" for="dart-account">DART Tag account number</label>
 						<input class="form-control form-control-1-2" id="dart-account" type="text">
@@ -26,7 +27,14 @@
 						<label class="form-label" for="dart-verification">Verification code</label>
 						<input class="form-control form-control-1-2" id="dart-verification" type="text">
 					</p>
-				</div>
+                    <div class="form-group">
+                        <p>To migrate your account you will need:</p>
+                        <ul class="list-bullet">
+                            <li>Payment details</li>
+                            <li>Your car registration</li>
+                        </ul>
+                    </div>
+                </div>
 			</fieldset>
 			<p><button class="button" id="next" type="submit">Next</button></p>
 		</form>
