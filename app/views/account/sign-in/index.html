@@ -19,4 +19,29 @@
         </form>
 	{{/column-1}}
 
+    {{$js-functions}}
+        func = function() {
+            console.log(el.buttonNext);
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'your-details';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#sign-in')
+        }
+    {{/js-objects}}
+
 {{/layouts/start}}
