@@ -57,6 +57,12 @@ table th {
 .confirmation-text h1{
     text-align: center;
 }
+.confirmation-text h1:before {
+  content: url(../../public/images/tick-icon.png);
+  position: relative;
+  top: 4px;
+  left: -15px;
+}
 .direct-debit-guarantee-container{
     border: 1px solid;
 }
@@ -74,7 +80,7 @@ table th {
 .direct-debit-print img{
     vertical-align: middle;
 }
-.direct-debit-print a{ 
+.direct-debit-print a{
     @include core-16;
     margin-left: 1.5em;
 }
