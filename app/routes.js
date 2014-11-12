@@ -31,5 +31,9 @@ module.exports = {
     app.post('/account/sign-in', function (req, res) {
       res.render('account/sign-in/index', {'assetPath' : assetPath});
     });
+
+    app.post('/query', function (req, res) {
+      res.render('query/index', {'assetPath' : assetPath});
+    });
   }
 };
