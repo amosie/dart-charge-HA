@@ -1,0 +1,67 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Payment{{/h1}}
+
+    {{$column-1}}
+        <form>
+            <fieldset>
+                <div id="pre-payment">
+                    <p>You need to ensure that you have enough money in your account to pay for any crossings you make before your application for the local residents' discount scheme is approved.</p>
+
+                    <br />
+
+                    <p>It can take up to 5 days to verify your proof of residency and vehicle ownership documents after you upload them or we receive them in the post.</p>
+
+                    <br />
+
+                    <p>If you would like to add funds to your account to cover any crossings you make before your application is approved, please add them below.  You can also make additional payments once your account is set up.</p>
+                    <div class="panel-indent">
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">Local residents' discount scheme application fee</label> 
+                            £ 20.00
+                        </p>
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">Additional funds to pay for crossings until your application is approved</label> 
+                            £ <input class="form-control form-control-1-4"
+                                id="additional-payment"
+                                type="text"
+                                value="10.00">
+                        </p>
+                        
+                    </div>
+                    <h2 class="heading-24">Total payment: £30.00</h2>
+<br />
+                </div>
+            </fieldset>
+
+            <div>
+                <p>            
+                    <button class="button" id="next" type="submit">Make payment</button>
+                </p>
+                </div>
+
+        </form>
+    {{/column-1}}
+
+    {{$js-functions}}
+        func = function() {
+            //
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            el.buttonSignIn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = '../payment/card';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonSignIn: $('#next')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}
