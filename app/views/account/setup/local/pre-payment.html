@@ -43,4 +43,25 @@
         </form>
     {{/column-1}}
 
+    {{$js-functions}}
+        func = function() {
+            //
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            el.buttonSignIn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = '../payment/card';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonSignIn: $('#next')
+        }
+    {{/js-objects}}
+
 {{/layouts/1-column}}
