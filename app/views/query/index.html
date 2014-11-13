@@ -1,0 +1,56 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Query a Dart Charge payment{{/h1}}
+
+    {{$column-1}}
+
+        <form action="show.html" method="get">
+            
+            <fieldset class="inline" id="transaction-input">
+                <div class="form-group">
+                    <label class="form-label" for="automatic-start">Payment number</label>
+                    <p class="form-hint">
+                        This can be found on your payment receipt or confirmation email.
+                    </p>
+                    <input class="form-control form-control-1-4"
+                        id="automatic-start"
+                        type="text"
+                        value="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="vehicle-registration">
+                        Vehicle registration number
+                    </label>
+                    <input class="form-control form-control-1-4 form-control-uppercase" id="vehicle-registration" type="text">
+                </div>
+                <div class="form-group">
+                    <input class="button" id="next" type="submit" value="Continue">
+                </div>
+            </fieldset>
+        </form>
+            
+
+    {{/column-1}}
+
+    {{$js-functions}}
+        func = function() {
+            //
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            el.buttonSignIn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'show';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonSignIn: $('#next')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}
