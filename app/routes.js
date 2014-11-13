@@ -32,6 +32,10 @@ module.exports = {
       res.render('account/sign-in/index', {'assetPath' : assetPath});
     });
 
+    app.post('/fees-exemptions-penalties', function (req, res) {
+      res.render('fees-exemptions-penalties/index', {'assetPath' : assetPath});
+    });
+
     app.post('/query', function (req, res) {
       res.render('query/index', {'assetPath' : assetPath});
     });
