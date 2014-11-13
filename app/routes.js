@@ -28,5 +28,8 @@ module.exports = {
       res.render('account/setup/paygo/index', {'assetPath' : assetPath});
     });
 
+    app.post('/account/sign-in', function (req, res) {
+      res.render('account/sign-in/index', {'assetPath' : assetPath});
+    });
   }
 };
