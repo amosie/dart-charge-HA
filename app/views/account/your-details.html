@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="cur_password" class="form-label required">Your account password</label>
-                            <input class="form-control form-control-1-2"type="password" name="cur_password" id="cur_password" value="" autocomplete="off">
+                            <input class="form-control" type="password" name="cur_password" id="cur_password" value="" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="new_email" class="form-label equired">New email address</label>
@@ -51,8 +51,46 @@
                 </div>
                 <hr>
                 <h2 class="heading-24" id="section4">Change your password</h2>
+                <div class="form">
+                    <form autcomplete="off" name="change-your-password" class="form" action="/user/account" method="POST">
+                    <input type="hidden" name="csrf" value="775df7a142b633541368599ecbccc045" id="csrf">        
+                        <div class="form-group">
+                            <label for="cur_password" class="form-label required">Current password</label>
+                            <input class="form-control" type="password" name="cur_password" id="cur_password" value="" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="new_password" class="form-label required">New password</label>
+                            <input class="form-control" type="password" name="new_password" id="new_password" value="" class="user-password" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="password_confirm" class="form-label required">Re-enter new password</label>
+                            <input class="form-control" type="password" name="password_confirm" id="password_confirm" value="" autocomplete="off">
+                        </div>
+                        <div class="form-group form-hint">
+                            <label class="form-label" for="password">Password</label>
+                            <ul class="list-bullet">
+                                <li>must begin with a letter</li>
+                                <li>contain at least 1 digit</li>
+                                <li>be at least 8 characters long</li>
+                            </ul>
+                        </div>
+                        <p class="action group">
+                            <input type="submit" name="submitpassword" id="submitpassword" value="Save new password" class="button">
+                        </p>
+                    </form>
+                </div>
                 <hr>
                 <h2 class="heading-24" id="section5">Change your PIN</h2>
+                <div class="form-group">
+                    <label class="form-label" for="ivr-pin">PIN</label>
+                    <input class="form-control form-restriction-1-16" maxlength="1" id="ivr-pin" type="text">
+                    <input class="form-control form-restriction-1-16" maxlength="1" id="ivr-pin-1" type="text">
+                    <input class="form-control form-restriction-1-16" maxlength="1" id="ivr-pin-2" type="text">
+                    <input class="form-control form-restriction-1-16" maxlength="1" id="ivr-pin-3" type="text">
+                </div>
+                <div class="form-group form-hint">
+                    <p>Use your PIN to verify your identity if you contact us by phone.</p>
+                </div>
                 <hr>
                 <h2 class="heading-24" id="section6">Change your payment details</h2>
                 <hr>
