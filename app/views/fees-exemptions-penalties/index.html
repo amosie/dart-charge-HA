@@ -1,0 +1,148 @@
+{{<layouts/2-column}}
+
+    {{$h1}}Dartford Crossing fees, </br>exemptions and penalties{{/h1}}
+
+    {{$column-1}}
+        <div class="beta-label">
+          <span class="beta">beta</span> This part of GOV.UK is being rebuilt – <a href="/help/beta"> find out what this means</a>
+        </div>
+        <section class="intro">
+                <div class="application-notice info-notice">
+                    <p>From 30 November 2014, you’ll no longer pay at the barriers when you use the Dartford Crossing. The new payment service is called Dart Charge.</p>
+                </div>
+                    <p>
+                    You must pay to use the Dartford Crossing between 6am and 10pm. You must pay by midnight the day you cross.
+                    </p>
+                    <p>
+                        The fee depends on your vehicle type and whether you’ve set up an account. You can get a discount if you live in Dartford or Thurrock.
+                    </p>
+                    <p>
+                        <a href="/">Set up an account or apply for a local resident discount</a> online. 
+                    </p>
+                <div class="application-notice info-notice">
+                    <p>Cameras read your number plate when you cross.</p>
+                </div>
+        </section>
+        <section class="form-group">
+            <h2 class="heading-24">Charges from 30 November</h2>
+            <table>
+            <thead><tr>
+            <th>Vehicle class</th>
+                  <th>Type of vehicle</th>
+                  <th>Single payment</th>
+                  <th>Standard or commercial account</th>
+                  <th>Local resident discount account</th>
+                </tr></thead>
+            <tbody>
+            <tr>
+            <td>B</td>
+                  <td>Cars (including trailers), motorhomes, vans and buses with less than 9 seats</td>
+                  <td>£2.50</td>
+                  <td>£1.67</td>
+                  <td>£10 a year for 50 crossings and 20p per extra crossing, or £20 a year for unlimited crossings</td>
+                </tr>
+            <tr>
+            <td>C</td>
+                  <td>2 axle heavy goods vehicles (including vans)</td>
+                  <td>£3.00</td>
+                  <td>£2.63</td>
+                  <td>-</td>
+                </tr>
+            <tr>
+            <td>D</td>
+                  <td>Multi-axle goods vehicles</td>
+                  <td>£6.00</td>
+                  <td>£5.19</td>
+                  <td>-</td>
+                </tr>
+            </tbody>
+            </table>
+        </section>
+
+        <section>
+            <p>You must pay for droppable axles whether they are up or down. Trailer axles aren’t included but semi-trailer axles are. </p>
+            <p>The <abbr title="heavy goods vehicle">HGV</abbr> levy doesn’t include the Dartford Crossing charge.</p>
+            <p>You don’t have to pay if you cross with a moped, motorcycle, motor tricycle or quad bike.</p>
+        </section>
+
+        <div class="application-notice help-notice">
+            <p>You’ll get a Penalty Charge Notice if you don’t pay the Dartford Crossing charge.</p>
+        </div>
+
+        <section>
+        <h2 class="heading-24">Exemptions if you’re disabled</h2>
+
+        <p>
+            You may not have to pay the charge if you don’t pay 
+            <a href="/financial-help-disabled/vehicles-and-transport">vehicle tax because you’re disabled</a>.
+        </p>
+
+        <p>You’ll still have to pay if:</p>
+
+        <ul class="list-bullet">
+            <li>
+                you have a 
+                <a href="/blue-badge-scheme-information-council">Blue Badge</a> 
+                but aren’t exempt from paying vehicle tax
+            </li>
+            <li>
+                you travel in a vehicle that isn’t exempt
+            </li>
+        </ul>
+        <p>
+            You don’t need to do anything to get the exemption. Your vehicle details will be checked with 
+            <abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr> 
+            when crossings are made in your vehicle.
+        </p>
+        </section>
+
+        <section>
+        <h2 class="heading-24">Penalty charges</h2>
+        <p>
+            You’ll be sent a Penalty Charge Notice if you don’t pay by midnight on the day after you made your crossing.
+        </p>
+        <p>
+            The penalty charge is £70 and must be paid within 28 days. It’s reduced to £35 if you pay within 14 days and increased to £105 if you don’t pay. You also have to pay the crossing charge. 
+        </p>
+        <p>
+            The Penalty Charge Notice will tell you how to pay.
+        </p>
+        </section>
+      
+    {{/column-1}}
+
+    {{$column-2}}
+            <h2 class="heading-24">Dart Charge</h2>
+            <ul>
+                <li><a href="../" rel="" data-transaction-slug="">Pay the Dartford crossing charge</a>
+                </li>
+                <li><a href="/penalty/" rel="" data-transaction-slug="">Pay a penalty charge</a>
+                </li>
+                <li><a href="/query/" rel="" data-transaction-slug="">Check for paid crossings</a>
+                </li>
+            </ul>
+
+    {{/column-2}}
+
+    {{$js-functions}}
+        func = function() {
+            //
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            el.buttonSignIn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'account';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonSignIn: $('#sign-in')
+        }
+    {{/js-objects}}
+
+{{/layouts/2-column}}

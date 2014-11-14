@@ -303,7 +303,7 @@
                         Be careful not to mix up the letter 'I' and 'O' with the numbers '1' and '0'.
                     </span>
     				<input class="form-control form-control-1-4 form-control-uppercase" id="vehicle-registration" type="text">
-    				<button class="button inline" id="vehicle-add">Add vehicle</button>
+    				<button class="button inline" id="vehicle-add">Find vehicle</button>
     			</p>
     			<div class="panel-indent js-hidden" id="vehicle-not-found">
     				<p class="form-group mini">
@@ -411,6 +411,7 @@
 
 	{{$js-initialisation}}
 		init = function() {
+            setDisabled(el.buttonNext, true);
 			if (window.location.search.match(/=debug/)) {
 				el.body.classList.add('debug');
 			}
