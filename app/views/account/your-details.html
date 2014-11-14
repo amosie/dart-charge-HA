@@ -19,12 +19,19 @@
                 </style>
                 <div class="form">
                     <form autcomplete="off" class="form" name="update-your-details" action="/user/account#update" method="POST">
-                        <input class="form-control" type="hidden" name="csrf" value="9888df81c093c4254e9120bb8bbced63" id="csrf">
+                        <input class="form-control" type="hidden" name="csrf" value="" id="csrf">
                         <fieldset class="form-group inline">
-                            <p>
-                                <label class="form-checkbox" for="behalf-of-company">
-                                    <input id="behalf-of-company" type="checkbox" value="behalf-of-company">
-                                    Are you applying on behalf of a company?
+                            <p class="form-group">
+                                Are you applying on behalf of a company?
+                            </p>
+                            <p class="form-group form-group-compound" id="dart-boolean">
+                                <label class="block-label" for="dart-yes">
+                                    <input id="dart-yes" type="radio" name="dart-group" value="Yes">
+                                    Yes
+                                </label>
+                                <label class="block-label" for="dart-no">
+                                    <input id="dart-no" type="radio" name="dart-group" value="No" checked>
+                                    No
                                 </label>
                             </p>
                             <div class="panel-indent js-hidden" id="company">
@@ -38,8 +45,6 @@
                                     <button class="button inline" id="find-company">Find company</button>
                                 </p>
                             </div>
-                        </fieldset>
-                        <fieldset>
                             <legend class="heading-24">Your name</legend>
                             <p class="group"></p>
                             <div class="form-group">
@@ -118,20 +123,407 @@
                                 </fieldset>
                             </div>
                         </fieldset>
-                        <div class="form-group">
-                            <label for="cur_password" class="form-label required">Your account password</label>
-                            <input class="form-control" type="password" name="cur_password" id="cur_password" value="" autocomplete="off">
-                        </div>
                         <p></p>
                         <p class="action group">
-                        <input type="submit" name="submitdetails" id="submitdetails" value="Save your details" class="button"></p>
+                        <input type="submit" name="submitdetails" id="submitdetails" value="Save new details" class="button"></p>
                     </form>
                 </div>
                 <hr>
-                <h2 class="heading-24" id="section2">Add or change vehicles</h2>
-                        <p></p>
+                <h2 class="heading-24" id="section2">Add or change vehicle details</h2>
+                <div class="form">
+                    <form autcomplete="off" class="form" name="add-or-change-vehicles" action="/user/account" method="POST">
+                        <input class="form-control" type="hidden" name="csrf" value="" id="csrf">
+                        <fieldset class="form-group inline">
+                            <p class="form-group">
+                                Do you need to add more than five vehicles?
+                            </p>
+                            <p class="form-group form-group-compound" id="dart-boolean">
+                                <label class="block-label" for="dart-yes">
+                                    <input id="dart-yes" type="radio" name="dart-group" value="Yes" checked>
+                                    Yes
+                                </label>
+                                <label class="block-label" for="dart-no">
+                                    <input id="dart-no" type="radio" name="dart-group" value="No">
+                                    No
+                                </label>
+                            </p>
+                            <div class="panel-indent" id="more-than-five-vehicles">
+                                <p class="form-group">
+                                Fill in the form below and then add vehicles using the uploader.
+                                </p>
+                                <section class="attachment embedded" id="attachment_csv">
+                                    <div class="attachment-thumb">
+                                        <a href="five-or-more-vehicles-dart-charge.csv" class="thumbnail"><img alt="" src="../../../public/images/pub-cover-spreadsheet-dart-charge.png"></a>
+                                    </div>
+                                    <div class="attachment-details">
+                                        <h2 class="title"><a href="upload-five-or-more-vehicles-to-dart-charge.csv">Upload five or more vehicles to Dart Charge</a></h2>
+                                        <p class="metadata">
+                                            <span class="type">CSV spreadsheet</span>, <span class="file-size">32KB</span>
+                                        </p>
+                                        <div class="accessibility-warning js-toggle-accessibility-warning toggleable" id="attachment-788739-accessibility-help">
+                                            <h2>This file may not be suitable for users of assistive technology.
+                                            <span class="toggler" tabindex="0">Request a different format.</span>
+                                            </h2>
+                                            <p class="help-block visuallyhidden"><span class="arrow"></span>
+                                              If you use assistive technology and need a version of this document in a more accessible format, please contact Dart Charge.
+                                            </p>
+                                            <div class="contact help-block visuallyhidden">
+                                                <p><strong>Dart Charge</strong><br>
+                                                Telephone: 0300 3000 120 (+44 300 300 0120 from abroad)<br>
+                                                <!-- Textphone: <br>
+                                                <!-- Monday to Friday, 8am to 7pm<br>
+                                                Saturday, 8am to 2pm<br>
+                                                Fax: 0300 123 0798<br> -->
+                                                <a href="../call-charges">Find out about call charges</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="panel-indent js-hidden" id="up-to-five-vehicles">
+                                <fieldset class="js-hidden form-group" id="vehicles">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Registration number</th>
+                                                <th>Class</th>
+                                                <th>Make</th>
+                                                <th>Model</th>
+                                                <th>Colour</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="vehicle-list">
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                                <p class="form-force form-group js-hidden" id="vehicle-add-another">
+                                    <button class="button support" id="vehicle-add-another-button">Add another vehicle</button>
+                                </p>
+                                <fieldset class="inline" id="vehicle-input">
+                                    <label class="form-label" for="vehicle-registration">
+                                        Country of registration
+                                    </label>
+                                    <select class="form-control-1-2 form-group" data-val="true" data-val-required="The Name field is required." id="CountryCodeField" name="MailingAddress.CountryCode"><optgroup label="" value="1" >
+                                        <option selected="selected" value="GB">United Kingdom</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="BE">Belgium</option>
+                                        <option value="CZ">Czech Republic</option>
+                                        <option value="IE">Ireland</option>
+                                        <option value="IT">Italy</option>
+                                        <option value="FR">France</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="LT">Lithuania</option>
+                                        <option value="NL">Netherlands</option>
+                                        <option value="PL">Poland</option>
+                                        <option value="PT">Portugal</option>
+                                        <option value="RO">Romania</option>
+                                        <option value="SK">Slovakia</option>
+                                        <option value="ES">Spain</option>
+                                        <option value="UA">Ukraine</option>
+                                        </optgroup>
+                                        <optgroup label="" value="3" disabled>
+                                        <option value="">--------------------------------</option>
+                                        </optgroup>
+                                        <optgroup label="" value="2" >
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AX">Ĺland Islands</option>
+                                        <option value="AL">Albania</option>
+                                        <option value="DZ">Algeria</option>
+                                        <option value="AS">American Samoa</option>
+                                        <option value="AD">Andorra</option>
+                                        <option value="AO">Angola</option>
+                                        <option value="AI">Anguilla</option>
+                                        <option value="AQ">Antarctica</option>
+                                        <option value="AG">Antigua and Barbuda</option>
+                                        <option value="AR">Argentina</option>
+                                        <option value="AM">Armenia</option>
+                                        <option value="AW">Aruba</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="AZ">Azerbaijan</option>
+                                        <option value="BS">Bahamas</option>
+                                        <option value="BH">Bahrain</option>
+                                        <option value="BD">Bangladesh</option>
+                                        <option value="BB">Barbados</option>
+                                        <option value="BY">Belarus</option>
+                                        <option value="BE">Belgium</option>
+                                        <option value="BZ">Belize</option>
+                                        <option value="BJ">Benin</option>
+                                        <option value="BM">Bermuda</option>
+                                        <option value="BT">Bhutan</option>
+                                        <option value="BO">Bolivia</option>
+                                        <option value="BA">Bosnia and Herzegovina</option>
+                                        <option value="BW">Botswana</option>
+                                        <option value="BV">Bouvet Island</option>
+                                        <option value="BR">Brazil</option>
+                                        <option value="IO">British Indian Ocean Territory</option>
+                                        <option value="BN">Brunei Darussalam</option>
+                                        <option value="BG">Bulgaria</option>
+                                        <option value="BF">Burkina Faso</option>
+                                        <option value="BI">Burundi</option>
+                                        <option value="KH">Cambodia</option>
+                                        <option value="CM">Cameroon</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="CV">Cape Verde</option>
+                                        <option value="KY">Cayman Islands</option>
+                                        <option value="CF">Central African Republic</option>
+                                        <option value="TD">Chad</option>
+                                        <option value="CL">Chile</option>
+                                        <option value="CN">China</option>
+                                        <option value="CX">Christmas Island</option>
+                                        <option value="CC">Cocos (Keeling) Islands</option>
+                                        <option value="CO">Colombia</option>
+                                        <option value="KM">Comoros</option>
+                                        <option value="CG">Congo</option>
+                                        <option value="CD">Congo, The Democratic Republic of The</option>
+                                        <option value="CK">Cook Islands</option>
+                                        <option value="CR">Costa Rica</option>
+                                        <option value="CI">Cote D&#39;ivoire</option>
+                                        <option value="HR">Croatia</option>
+                                        <option value="CU">Cuba</option>
+                                        <option value="CY">Cyprus</option>
+                                        <option value="CZ">Czech Republic</option>
+                                        <option value="DK">Denmark</option>
+                                        <option value="DJ">Djibouti</option>
+                                        <option value="DM">Dominica</option>
+                                        <option value="DO">Dominican Republic</option>
+                                        <option value="EC">Ecuador</option>
+                                        <option value="EG">Egypt</option>
+                                        <option value="SV">El Salvador</option>
+                                        <option value="GQ">Equatorial Guinea</option>
+                                        <option value="ER">Eritrea</option>
+                                        <option value="EE">Estonia</option>
+                                        <option value="ET">Ethiopia</option>
+                                        <option value="FK">Falkland Islands (Malvinas)</option>
+                                        <option value="FO">Faroe Islands</option>
+                                        <option value="FJ">Fiji</option>
+                                        <option value="FI">Finland</option>
+                                        <option value="FR">France</option>
+                                        <option value="GF">French Guiana</option>
+                                        <option value="PF">French Polynesia</option>
+                                        <option value="TF">French Southern Territories</option>
+                                        <option value="GA">Gabon</option>
+                                        <option value="GM">Gambia</option>
+                                        <option value="GE">Georgia</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="GH">Ghana</option>
+                                        <option value="GI">Gibraltar</option>
+                                        <option value="GR">Greece</option>
+                                        <option value="GL">Greenland</option>
+                                        <option value="GD">Grenada</option>
+                                        <option value="GP">Guadeloupe</option>
+                                        <option value="GU">Guam</option>
+                                        <option value="GT">Guatemala</option>
+                                        <option value="GG">Guernsey</option>
+                                        <option value="GN">Guinea</option>
+                                        <option value="GW">Guinea-bissau</option>
+                                        <option value="GY">Guyana</option>
+                                        <option value="HT">Haiti</option>
+                                        <option value="HM">Heard Island and Mcdonald Islands</option>
+                                        <option value="VA">Holy See (Vatican City State)</option>
+                                        <option value="HN">Honduras</option>
+                                        <option value="HK">Hong Kong</option>
+                                        <option value="HU">Hungary</option>
+                                        <option value="IS">Iceland</option>
+                                        <option value="IN">India</option>
+                                        <option value="ID">Indonesia</option>
+                                        <option value="IR">Iran, Islamic Republic of</option>
+                                        <option value="IQ">Iraq</option>
+                                        <option value="IE">Ireland</option>
+                                        <option value="IM">Isle of Man</option>
+                                        <option value="IL">Israel</option>
+                                        <option value="IT">Italy</option>
+                                        <option value="JM">Jamaica</option>
+                                        <option value="JP">Japan</option>
+                                        <option value="JE">Jersey</option>
+                                        <option value="JO">Jordan</option>
+                                        <option value="KZ">Kazakhstan</option>
+                                        <option value="KE">Kenya</option>
+                                        <option value="KI">Kiribati</option>
+                                        <option value="KP">Korea, Democratic People&#39;s Republic of</option>
+                                        <option value="KR">Korea, Republic of</option>
+                                        <option value="KW">Kuwait</option>
+                                        <option value="KG">Kyrgyzstan</option>
+                                        <option value="LA">Lao People&#39;s Democratic Republic</option>
+                                        <option value="LV">Latvia</option>
+                                        <option value="LB">Lebanon</option>
+                                        <option value="LS">Lesotho</option>
+                                        <option value="LR">Liberia</option>
+                                        <option value="LY">Libyan Arab Jamahiriya</option>
+                                        <option value="LI">Liechtenstein</option>
+                                        <option value="LT">Lithuania</option>
+                                        <option value="LU">Luxembourg</option>
+                                        <option value="MO">Macao</option>
+                                        <option value="MK">Macedonia, The Former Yugoslav Republic of</option>
+                                        <option value="MG">Madagascar</option>
+                                        <option value="MW">Malawi</option>
+                                        <option value="MY">Malaysia</option>
+                                        <option value="MV">Maldives</option>
+                                        <option value="ML">Mali</option>
+                                        <option value="MT">Malta</option>
+                                        <option value="MH">Marshall Islands</option>
+                                        <option value="MQ">Martinique</option>
+                                        <option value="MR">Mauritania</option>
+                                        <option value="MU">Mauritius</option>
+                                        <option value="YT">Mayotte</option>
+                                        <option value="MX">Mexico</option>
+                                        <option value="FM">Micronesia, Federated States of</option>
+                                        <option value="MD">Moldova, Republic of</option>
+                                        <option value="MC">Monaco</option>
+                                        <option value="MN">Mongolia</option>
+                                        <option value="ME">Montenegro</option>
+                                        <option value="MS">Montserrat</option>
+                                        <option value="MA">Morocco</option>
+                                        <option value="MZ">Mozambique</option>
+                                        <option value="MM">Myanmar</option>
+                                        <option value="NA">Namibia</option>
+                                        <option value="NR">Nauru</option>
+                                        <option value="NP">Nepal</option>
+                                        <option value="NL">Netherlands</option>
+                                        <option value="AN">Netherlands Antilles</option>
+                                        <option value="NC">New Caledonia</option>
+                                        <option value="NZ">New Zealand</option>
+                                        <option value="NI">Nicaragua</option>
+                                        <option value="NE">Niger</option>
+                                        <option value="NG">Nigeria</option>
+                                        <option value="NU">Niue</option>
+                                        <option value="NF">Norfolk Island</option>
+                                        <option value="MP">Northern Mariana Islands</option>
+                                        <option value="NO">Norway</option>
+                                        <option value="OM">Oman</option>
+                                        <option value="PK">Pakistan</option>
+                                        <option value="PW">Palau</option>
+                                        <option value="PS">Palestinian Territory, Occupied</option>
+                                        <option value="PA">Panama</option>
+                                        <option value="PG">Papua New Guinea</option>
+                                        <option value="PY">Paraguay</option>
+                                        <option value="PE">Peru</option>
+                                        <option value="PH">Philippines</option>
+                                        <option value="PN">Pitcairn</option>
+                                        <option value="PL">Poland</option>
+                                        <option value="PT">Portugal</option>
+                                        <option value="PR">Puerto Rico</option>
+                                        <option value="QA">Qatar</option>
+                                        <option value="RE">Reunion</option>
+                                        <option value="RO">Romania</option>
+                                        <option value="RU">Russian Federation</option>
+                                        <option value="RW">Rwanda</option>
+                                        <option value="SH">Saint Helena</option>
+                                        <option value="KN">Saint Kitts and Nevis</option>
+                                        <option value="LC">Saint Lucia</option>
+                                        <option value="PM">Saint Pierre and Miquelon</option>
+                                        <option value="VC">Saint Vincent and The Grenadines</option>
+                                        <option value="WS">Samoa</option>
+                                        <option value="SM">San Marino</option>
+                                        <option value="ST">Sao Tome and Principe</option>
+                                        <option value="SA">Saudi Arabia</option>
+                                        <option value="SN">Senegal</option>
+                                        <option value="RS">Serbia</option>
+                                        <option value="SC">Seychelles</option>
+                                        <option value="SL">Sierra Leone</option>
+                                        <option value="SG">Singapore</option>
+                                        <option value="SK">Slovakia</option>
+                                        <option value="SI">Slovenia</option>
+                                        <option value="SB">Solomon Islands</option>
+                                        <option value="SO">Somalia</option>
+                                        <option value="ZA">South Africa</option>
+                                        <option value="GS">South Georgia and The South Sandwich Islands</option>
+                                        <option value="ES">Spain</option>
+                                        <option value="LK">Sri Lanka</option>
+                                        <option value="SD">Sudan</option>
+                                        <option value="SR">Suriname</option>
+                                        <option value="SJ">Svalbard and Jan Mayen</option>
+                                        <option value="SZ">Swaziland</option>
+                                        <option value="SE">Sweden</option>
+                                        <option value="CH">Switzerland</option>
+                                        <option value="SY">Syrian Arab Republic</option>
+                                        <option value="TW">Taiwan, Province of China</option>
+                                        <option value="TJ">Tajikistan</option>
+                                        <option value="TZ">Tanzania, United Republic of</option>
+                                        <option value="TH">Thailand</option>
+                                        <option value="TL">Timor-leste</option>
+                                        <option value="TG">Togo</option>
+                                        <option value="TK">Tokelau</option>
+                                        <option value="TO">Tonga</option>
+                                        <option value="TT">Trinidad and Tobago</option>
+                                        <option value="TN">Tunisia</option>
+                                        <option value="TR">Turkey</option>
+                                        <option value="TM">Turkmenistan</option>
+                                        <option value="TC">Turks and Caicos Islands</option>
+                                        <option value="TV">Tuvalu</option>
+                                        <option value="UG">Uganda</option>
+                                        <option value="UA">Ukraine</option>
+                                        <option value="AE">United Arab Emirates</option>
+                                        <option selected="selected" value="GB">United Kingdom</option>
+                                        <option value="US">United States</option>
+                                        <option value="UM">United States Minor Outlying Islands</option>
+                                        <option value="UY">Uruguay</option>
+                                        <option value="UZ">Uzbekistan</option>
+                                        <option value="VU">Vanuatu</option>
+                                        <option value="VE">Venezuela</option>
+                                        <option value="VN">Viet Nam</option>
+                                        <option value="VG">Virgin Islands, British</option>
+                                        <option value="VI">Virgin Islands, U.S.</option>
+                                        <option value="WF">Wallis and Futuna</option>
+                                        <option value="EH">Western Sahara</option>
+                                        <option value="YE">Yemen</option>
+                                        <option value="ZM">Zambia</option>
+                                        <option value="ZW">Zimbabwe</option>
+                                        </optgroup>
+                                    </select>
+                                    <p class="form-group">
+                                        <label class="form-label" for="vehicle-registration">
+                                            Vehicle registration number
+                                        </label>
+                                        <span class="form-hint">
+                                            Be careful not to mix up the letter 'I' and 'O' with the numbers '1' and '0'.
+                                        </span>
+                                        <input class="form-control form-control-1-4 form-control-uppercase" id="vehicle-registration" type="text">
+                                        <button class="button inline" id="vehicle-add">Add vehicle</button>
+                                    </p>
+                                    <div class="panel-indent js-hidden" id="vehicle-not-found">
+                                        <p class="form-group mini">
+                                            <label for="vehicle-class-group">Vehicle class</label>
+                                            <fieldset class="inline">
+                                                <label class="block-label" for="vehicle-class-b">
+                                                    <input id="vehicle-class-b" type="radio" name="vehicle-class-group" value="Yes">
+                                                    Car - Including trailers, motorhomes, vans and buses with less than 9 seats
+                                                </label>
+                                                <label class="block-label" for="vehicle-class-c">
+                                                    <input id="vehicle-class-c" type="radio" name="vehicle-class-group" value="Yes">
+                                                    2 axle heavy goods vehicles (including vans)
+                                                </label>
+                                                <label class="block-label" for="vehicle-class-d">
+                                                    <input id="vehicle-class-d" type="radio" name="vehicle-class-group" value="Yes">
+                                                    Multi axle goods vehicles
+                                                </label>
+                                            </fieldset>
+                                        </p>
+                                        <p class="form-group">
+                                            <label class="form-label" for="vehicle-make">Make</label>
+                                            <input class="form-control form-control-1-2 form-control-capital" id="vehicle-make" type="text">
+                                        </p>
+                                        <p class="form-group">
+                                            <label class="form-label" for="vehicle-model">Model</label>
+                                            <input class="form-control form-control-1-2 form-control-capital" id="vehicle-model" type="text">
+                                        </p>
+                                        <p class="form-group">
+                                            <label class="form-label" for="vehicle-colour">Colour</label>
+                                            <input class="form-control form-control-1-2 form-control-capital" id="vehicle-colour" type="text">
+                                        </p>
+                                        <p>
+                                            <button class="button inline" id="vehicle-add-manual">Add vehicle</button>
+                                        </p>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </fieldset>
                         <p class="action group">
-                        <input type="submit" name="submitdetails" id="submitdetails" value="Save your details" class="button"></p>
+                            <input class="button"type="submit" name="submitvehicles" id="submitvehicles" value="Save new vehicle details" class="button">
+                        </p>
+                    </form>
+                </div>
                 <hr>
                 <h2 class="heading-24" id="section3">Change your sign-in email address</h2>
                 <div class="form">
@@ -227,6 +619,62 @@
                 </div>
                 <hr>
                 <h2 class="heading-24" id="section6">Change your payment details</h2>
+                <div class="form">
+                    <form autcomplete="off" name="change-your-pin" class="form" action="/user/account" method="POST">
+                        <input type="hidden" name="csrf" value="775df7a142b633541368599ecbccc045" id="csrf">
+                        <legend class="heading-24">How would you like to top-up your account?</legend>
+                <div class="form-group form-group-compound mini" id="dart-boolean">
+                    <label class="block-label" for="top-up-manual">
+                        <input id="top-up-manual" type="radio" name="topup-group" value="Yes" checked>
+                        Manually
+                    </label>
+                    <p class="panel-inline-indent">
+                        You will need to remember to add funds to your account yourself when your balance is low.
+                    </p>
+                    <div class="panel-indent" id="type-manual">
+                        <p class="non-form">
+                            When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
+                        </p>
+                    </div>
+                    <label class="block-label" for="top-up-automatic">
+                        <input id="top-up-automatic" type="radio" name="topup-group" value="No">
+                        Automatically
+                    </label>
+                    <p class="panel-inline-indent">
+                        No need to remember to top-up, funds to your account are added automatically when balance goes below specified amount.
+                    </p>
+                </div>
+                <div class="js-hidden" id="top-up-types">
+                    <div class="panel-indent js-hidden" id="type-automatic">
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">Top-up my account by:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">When my account reaches:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <legend class="heading-24">Payment type</legend>
+                        <p class="form-group form-group-compound mini inline" id="payment-method">
+                            <label class="block-label" for="payment-direct-debit">
+                                <input id="payment-direct-debit" type="radio" name="payment-group" value="Yes">
+                                Direct debit
+                            </label>
+                            <label class="block-label" for="payment-card">
+                                <input id="payment-card" type="radio" name="payment-group" value="No">
+                                Debit or Credit card
+                            </label>
+                        </p>
+                    </div>
+                    <p class="form-group form-final-force">
+                        By continuing with this service you accept the <a href="../../terms-and-conditions">terms and conditions</a>.
+                    </p>
+                </div>
+            </fieldset>
+                        <p class="action group">
+                        <input type="submit" name="submitdetails" id="submitdetails" value="Save new payment details" class="button"></p>
+                    </form>
+                </div>
                 <hr>
                 <h2 class="heading-24" id="section7">Close your account</h2>
                 <p>Please contact Dart Charge to receive a refund of your account balance.</p>
@@ -253,99 +701,12 @@
     {{/column-1}}
 
     {{$js-functions}}
-        showAddresses = function() {
-            setDisplay(el.address, true);
-            var addressValues = el.addressFound[el.addressFound.selectedIndex].text.split(',');
-            el.addressOne.value = addressValues[0];
-            el.townCity.value = addressValues[1];
-            setDisplay(el.addressDetail, true);
-        },
-        showAddressForm = function(target) {
-            if (target.checked == true) {
-                setDisplay(el.addressDetail, true);
-            } else {
-                setDisplay(el.addressDetail, false);
-            }
-        },
-        setAddress = function(target) {
-            var addressValues = target[target.selectedIndex].text.split(',');
-            el.addressOne.value = addressValues[0];
-            el.townCity.value = addressValues[1];
-        },
-        testCompany = function(target) {
-            if (target.checked == true) {
-                setDisplay(el.company, true);
-            } else {
-                setDisplay(el.company, false);
-                el.companyNumber.value = '';
-            }
-        },
-        testLocal = function(target) {
-            if (el.discountInvite) {
-                var postcode = target.value.toUpperCase();
-                if (postcode.match(/^(BR8|CM13|DA(1[01347]*|[23459])|RM(1[456789]|20)|SS1[67])\s*\d[A-Z]{2}$/)) {
-                    setDisplay(el.discountInvite, true);
-                } else {
-                    setDisplay(el.discountInvite, false);
-                }
-            }
-        }
     {{/js-functions}}
 
     {{$js-initialisation}}
-        init = function() {
-            if (window.location.search.match(/=debug/)) {
-                el.body.classList.add('debug');
-            }
-            el.addressFound.addEventListener('change',function(e) {
-                setAddress(e.target);
-            });
-            el.addressNotFound.addEventListener('click', function(e) {
-                showAddressForm(e.target);
-            }, false);
-            el.behalfCompany.addEventListener('change', function(e) {
-                testCompany(e.target);
-            }, false);
-            el.buttonNext.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (el.localDiscount.checked) {
-                    window.location = './personal/account-setup-LRDS';
-                } else {
-                    window.location = './personal/account-setup';
-                }
-            });
-            el.findAddress.addEventListener('click', function(e) {
-                e.preventDefault();
-                showAddresses();
-                setDisabled(el.buttonNext, false);
-                testLocal(el.postcode);
-            }, false);
-            el.findCompany.addEventListener('click', function(e) {
-                e.preventDefault();
-            }, false);
-        }
     {{/js-initialisation}}
 
     {{$js-objects}}
-        el = {
-            address: $('#address'),
-            addressOne: $('#address-1'),
-            addressTwo: $('#address-2'),
-            addressDetail: $('#address-detail'),
-            addressFound: $('#address-found'),
-            addressNotFound: $('#address-not-found'),
-            body: $('body'),
-            buttonNext: $('#next'),
-            behalfCompany: $('#behalf-of-company'),
-            company: $('#company'),
-            companyNumber: $('#company-number'),
-            discountInvite: $('#discount-invite'),
-            findAddress: $('#find-address'),
-            findCompany: $('#find-company'),
-            localDiscount: $('#local-discount'),
-            postcode: $('#postcode'),
-            townCity: $('#town-city')
-        }
     {{/js-objects}}
 
 {{/layouts/1-column}}
