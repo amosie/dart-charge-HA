@@ -33,7 +33,12 @@
                     <label class="form-label" for="email-confirm">Confirm your email address</label>
                     <input class="form-control form-control-3-4" id="email-confirm" type="email">
                 </p>
-                <p class="form-group form-final-force">By continuing with this service you accept the <a href="../../terms-and-conditions">terms and conditions</a>.
+                <p class="form-group form-final-force">
+                    <label class="form-checkbox" for="terms">
+                        <input id="terms" type="checkbox" value="terms">
+                        I accept the Terms and Conditions
+                    </label>
+                    <a href="/account/setup/payment/terms">Read the Terms and Conditions</a>
                 </p>
             </fieldset>
             <p>
@@ -46,6 +51,11 @@
     {{$js-initialisation}}
 
         init = function() {
+            if (el.termsConditions.checked) {
+                setDisabled(el.buttonNext, false);
+            } else {
+                setDisabled(el.buttonNext, true);
+            }
             if (window.location.search.match(/=debug/)) {
                 el.body.classList.add('debug');
             }
@@ -59,7 +69,13 @@
                 e.preventDefault();
                 window.location = 'card';
             });
-
+            el.termsConditions.addEventListener('click', function(e) {
+                if (el.termsConditions.checked) {
+                    setDisabled(el.buttonNext, false);
+                } else {
+                    setDisabled(el.buttonNext, true);
+                }
+            });
         }
     {{/js-initialisation}}
 
@@ -79,7 +95,8 @@
             vehicleList: $('#vehicle-list'),
             vehicleNotFound: $('#vehicle-not-found'),
             vehicles: $('#vehicles'),
-            vehicleRegistration: $('#vehicle-registration')
+            vehicleRegistration: $('#vehicle-registration'),
+            termsConditions: $('#terms')
         },
         vehicleCounter = 0,
         vehicles = [
