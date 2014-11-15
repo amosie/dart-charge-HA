@@ -438,3 +438,17 @@ a {
   margin-top: -45px;
   padding: 0 8px 0 10px;
 }
+
+form textarea {
+display: block;
+font-family: "nta",Arial,sans-serif;
+font-size: 19px;
+line-height: 1.31579;
+font-weight: 400;
+text-transform: none;
+margin: 0 0 1em 0;
+background-color: #f8f8f8;
+border: 1px inset #bfc1c3;
+padding: 0.25em 0 0.25em 0.4em;
+width: 95%;
+}
