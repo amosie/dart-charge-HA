@@ -1,0 +1,84 @@
+{{<layouts/account}}
+    {{$h1}}Your details{{/h1}}
+
+    {{$column-1}}
+        <ul class="page-nav">
+            <li><a href="">Update your details</a></li>
+            <li><a href="apply-local-residents-discount">Apply for a local resident's discount</a></li>
+            <li><a href="change-vehicle-details.html">Add or change your vehicle details</a></li>
+            <li><a href="change-payment-details.html">Change your payment details</a></li>
+            <li><a href="change-email-address-password-pin.html">Change your sign-in email address, password and PIN</a></li>
+            <li><a href="change-close-account">Change account type or close your account</a></li>
+        </ul>
+    {{/column-1}}
+
+    {{$column-2}}
+        <h2 class="heading-24" id="section1">Update your details</h2>
+        <div class="form">
+            <form autcomplete="off" class="form" name="update-your-details" action="/user/account#update" method="POST">
+                <input class="form-control" type="hidden" name="csrf" value="" id="csrf">
+                <fieldset class="form-group inline">
+                    <legend class="heading-24">Your name</legend>
+                    <p class="group"></p>
+                    <div class="form-group">
+                        <label for="firstname" class="form-label required">First name</label>
+                        <input class="form-control form-control-1-2" type="text" name="firstname" id="firstname" value="Lucy" autocomplete="off" maxlength="50">
+                    </div>
+                    <p class="group"></p>
+                    <div class="group">
+                        <label for="surname" class="form-label required">Last name</label>
+                        <input class="form-control form-control-1-2" type="text" name="surname" id="surname" value="Shaw" autocomplete="off" maxlength="50">
+                    </div>
+                </fieldset>
+                <fieldset class="form-group inline">
+                    <legend class="heading-24">Your phone number</legend>
+                    <div class="form-group">
+                        <label class="form-label required" for="telephone">Phone number</label>
+                        <input class="form-control form-control-1-2" id="telephone" value="0207 890 1234" autocomplete="off" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label optional" for="secondary-telephone">Secondary phone number <span class="form-hint">Optional</span></label>
+                        <input class="form-control form-control-1-2" id="secondary-telephone" value="" autocomplete="off" maxlength="50">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <legend class="heading-24">Your postal address</legend>
+                        <fieldset>
+                            <legend>Address</legend>
+                            <div class="form-group mini">
+                                <label class="visuallyhidden" for="address-1">Address line 1</label>
+                                <input class="form-control form-control-1-2" id="address-1" type="text" value="1 Anytown Street">
+                            </div>
+                            <div class="form-group">
+                                <label class="visuallyhidden" for="address-2">Address line 2</label>
+                                <input class="form-control form-control-1-2" id="address-2" type="text" value="">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="town-city">Town or city</label>
+                                <input class="form-control form-control-1-2" id="town-city" type="text" value="Townsville">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="country">Country</label>
+                                <input class="form-control form-control-1-2" id="country" type="text" value="United Kingdom">
+                            </div>
+                            <p></p>
+                        </fieldset>
+                    </div>
+                </fieldset>
+                <p class="action group">
+                <input type="submit" name="submitdetails" id="submitdetails" value="Save new details" class="button"></p>
+            </form>
+        </div>
+    {{/column-2}}
+
+    {{$js-functions}}
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+    {{/js-objects}}
+
+{{/layouts/account}}

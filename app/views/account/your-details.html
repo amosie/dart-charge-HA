@@ -1,17 +1,18 @@
-{{<layouts/1-column}}
+{{<layouts/account}}
     {{$h1}}Your details{{/h1}}
 
     {{$column-1}}
-                <ul class="page-nav">
-                    <li><a href="#section1">Update your details</a></li>
-                    <li><a href="#section2">Add or change vehicles</a></li>
-                    <li><a href="#section3">Change your sign-in email address</a></li>
-                    <li><a href="#section4">Change your password</a></li>
-                    <li><a href="#section5">Change your PIN</a></li>
-                    <li><a href="#section6">Change your payment details</a></li>
-                    <li><a href="#section7">Close your account</a></li>
-                </ul>
-                <hr>
+        <ul class="page-nav">
+            <li><a href="index.html">Update your details</a></li>
+            <li><a href="change-vehicle-details">Add or change your vehicle details</a></li>
+            <li><a href="change-payment-details">Change your payment details</a></li>
+            <li><a href="change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
+            <li><a href="change-account-type">Change your account type or close your account</a></li>
+        </ul>
+    {{/column-1}}
+
+    {{$column-2}}
+
                 <h2 class="heading-24" id="section1">Update your details</h2>
                 <style>
                     p.success_message {background-color: #FFF3CF; border: 1px solid #B01117; color: #B01117; margin: 0 0 -0.5em -0.5em; padding: 0.5em;}
@@ -703,7 +704,7 @@
                 </div>
 
 
-    {{/column-1}}
+    {{/column-2}}
 
     {{$js-functions}}
     {{/js-functions}}
@@ -714,4 +715,4 @@
     {{$js-objects}}
     {{/js-objects}}
 
-{{/layouts/1-column}}
+{{/layouts/account}}

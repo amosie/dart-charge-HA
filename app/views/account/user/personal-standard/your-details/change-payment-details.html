@@ -1,0 +1,84 @@
+{{<layouts/account}}
+    {{$h1}}Your details{{/h1}}
+
+    {{$column-1}}
+        <ul class="page-nav">
+            <li><a href="index.html">Update your details</a></li>
+            <li><a href="change-account-type">Apply for a local resident's discount</a></li>
+            <li><a href="change-vehicle-details">Add or change your vehicle details</a></li>
+            <li><a href="change-payment-details">Change your payment details</a></li>
+            <li><a href="change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
+            <li><a href="change-close-account">Change account type or close your account</a></li>
+        </ul>
+    {{/column-1}}
+
+    {{$column-2}}
+                <h2 class="heading-24" id="section6">Change your payment details</h2>
+                <div class="form">
+                    <form autcomplete="off" name="change-your-pin" class="form" action="/user/account" method="POST">
+                        <input type="hidden" name="csrf" value="775df7a142b633541368599ecbccc045" id="csrf">
+                        <legend class="heading-24">How would you like to top-up your account?</legend>
+                <div class="form-group form-group-compound mini" id="dart-boolean">
+                    <label class="block-label" for="top-up-manual">
+                        <input id="top-up-manual" type="radio" name="topup-group" value="Yes" checked>
+                        Manually
+                    </label>
+                    <p class="panel-inline-indent">
+                        You will need to remember to add funds to your account yourself when your balance is low.
+                    </p>
+                    <div class="panel-indent" id="type-manual">
+                        <p class="non-form">
+                            When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
+                        </p>
+                    </div>
+                    <label class="block-label" for="top-up-automatic">
+                        <input id="top-up-automatic" type="radio" name="topup-group" value="No">
+                        Automatically
+                    </label>
+                    <p class="panel-inline-indent">
+                        No need to remember to top-up, funds to your account are added automatically when balance goes below specified amount.
+                    </p>
+                </div>
+                <div class="js-hidden" id="top-up-types">
+                    <div class="panel-indent js-hidden" id="type-automatic">
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">Top-up my account by:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">When my account reaches:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <legend class="heading-24">Payment type</legend>
+                        <p class="form-group form-group-compound mini inline" id="payment-method">
+                            <label class="block-label" for="payment-direct-debit">
+                                <input id="payment-direct-debit" type="radio" name="payment-group" value="Yes">
+                                Direct debit
+                            </label>
+                            <label class="block-label" for="payment-card">
+                                <input id="payment-card" type="radio" name="payment-group" value="No">
+                                Debit or Credit card
+                            </label>
+                        </p>
+                    </div>
+                    <p class="form-group form-final-force">
+                        By continuing with this service you accept the <a href="../../terms-and-conditions">terms and conditions</a>.
+                    </p>
+                </div>
+            </fieldset>
+                        <p class="action group">
+                        <input type="submit" name="submitdetails" id="submitdetails" value="Save new payment details" class="button"></p>
+                    </form>
+                </div>
+    {{/column-2}}
+
+    {{$js-functions}}
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+    {{/js-objects}}
+
+{{/layouts/account}}

@@ -363,3 +363,78 @@ cursor: pointer;
 contact help-block {
   width: 60%;
 }
+
+#global-nav {
+text-align: right;
+margin: 0;
+position: relative;
+z-index: 60;
+  @include media(mobile) {
+    text-align: left;
+  }
+}
+
+#global-nav nav {
+clear: none;
+background: transparent;
+position: static;
+margin-bottom: 0;
+}
+
+#global-nav nav #navigation {
+margin: 0;
+padding: 0;
+  @include media(mobile) {
+  }
+}
+
+#global-nav nav ul {
+list-style: none;
+}
+
+#global-nav nav li {
+display: inline;
+color: #000;
+font-family: "nta", Arial, sans-serif;
+font-size: 16px;
+line-height: 1.25;
+font-weight: 300;
+text-transform: none;
+position: relative;
+vertical-align: middle;
+  @include media(mobile) {
+    font-size: 14px;
+    line-height: 1.14286;
+  }
+}
+
+#global-nav nav a {
+text-decoration: underline;
+display: inline-block;
+padding: 10px 8px;
+  @include media(mobile) {
+    display: block;
+  }
+}
+
+#global-nav nav .user {
+margin-right: 8px;
+}
+
+a, a:visited {
+color: #2e3191;
+}
+
+a {
+-webkit-tap-highlight-color: rgba(0,0,0,0.3);
+}
+
+.account-column-1 {
+  margin-right: 15px;
+  padding-right: 0;
+}
+
+.account-column-2 {
+  margin-top: -45px;
+  padding: 0 8px 0 10px;
+}
