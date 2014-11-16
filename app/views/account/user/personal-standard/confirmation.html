@@ -1,16 +1,16 @@
-{{<layouts/1-column}}
+{{<layouts/account}}
 
 	{{$column-1}}
        <form>
             <fieldset>
                 <div class="confirmation-message form-group">
                     <div class="confirmation-text">
-                        <h1 class="heading-48">You have paid £5</h1>
+                        <h1 class="heading-48">You have paid £10</h1>
                      </div>
                 </div>
             </fieldset>
         </form><!--Comment this section since this is needed to be run from within the site -->
-        <h2 class="heading-24 form-block">Payment reference: 513905</h2>
+        <h2 class="heading-24 form-block">Payment reference: 681425</h2>
         <p>We've sent your receipt to you by email.</p><p>If you have any questions about your payment, contact Dart Charge.</p>
         <div class="contact">
             <p><strong>Dart Charge</strong><br>
@@ -21,35 +21,18 @@
             Fax: 0300 123 0798<br> -->
             <a href="../call-charges">Find out about call charges</a></p>
         </div>
-        <p>You can use your payment reference to <a href="../../check-for-paid-crossings">check for paid crossings</a>.</p>
-        <p>If you need to pay for another vehicle <a href="../">start again</a>.</p>
-        <p>
-        <h2 class="heading-24 form-block">Set up an account</h2>
-        <p>Save your details for next time - no need to remember to pay.</p><p><a href="../paygo">Set up an account</a> and pay automatically or pre-pay and save up to a third on every crossing.</p>
         <hr class="what-did-you-think">
         <p><a href='../'>What did you think of this service?</a> (Takes 30 seconds)</p>
 
 	{{/column-1}}
 
 	{{$js-functions}}
-		func = function() {
-			console.log(el.buttonNext);
-		}
-	{{/js-functions}}
+    {{/js-functions}}
 
-	{{$js-initialisation}}
-		init = function() {
-			el.body.addEventListener('click', function() {
-				func();
-			}, false);
-		}
-	{{/js-initialisation}}
+    {{$js-initialisation}}
+    {{/js-initialisation}}
 
-	{{$js-objects}}
-		el = {
-			body: $('body'),
-			buttonNext: $('#next')
-		}
-	{{/js-objects}}
+    {{$js-objects}}
+    {{/js-objects}}
 
-{{/layouts/1-column}}
+{{/layouts/account}}
