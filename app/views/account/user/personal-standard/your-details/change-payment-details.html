@@ -4,7 +4,7 @@
     {{$column-1}}
         <ul class="page-nav">
             <li><a href="index.html">Update your details</a></li>
-            <li><a href="change-account-type">Apply for a local resident's discount</a></li>
+            <li><a href="apply-local-residents-discount">Apply for a local resident's discount</a></li>
             <li><a href="change-vehicle-details">Add or change your vehicle details</a></li>
             <li><a href="change-payment-details">Change your payment details</a></li>
             <li><a href="change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
@@ -14,19 +14,17 @@
 
     {{$column-2}}
                 <h2 class="heading-24" id="section6">Change your payment details</h2>
-                <div class="form">
-                    <form autcomplete="off" name="change-your-pin" class="form" action="/user/account" method="POST">
-                        <input type="hidden" name="csrf" value="775df7a142b633541368599ecbccc045" id="csrf">
-                        <legend class="heading-24">How would you like to top-up your account?</legend>
+                <form>
+                <legend class="heading-24">How would you like to top-up your account?</legend>
                 <div class="form-group form-group-compound mini" id="dart-boolean">
                     <label class="block-label" for="top-up-manual">
-                        <input id="top-up-manual" type="radio" name="topup-group" value="Yes" checked>
+                        <input id="top-up-manual" type="radio" name="topup-group" value="Yes" checked="checked">
                         Manually
                     </label>
                     <p class="panel-inline-indent">
                         You will need to remember to add funds to your account yourself when your balance is low.
                     </p>
-                    <div class="panel-indent" id="type-manual">
+                    <div class="panel-indent js-hidden" id="type-manual">
                         <p class="non-form">
                             When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
                         </p>
@@ -40,6 +38,7 @@
                     </p>
                 </div>
                 <div class="js-hidden" id="top-up-types">
+                    
                     <div class="panel-indent js-hidden" id="type-automatic">
                         <p class="form-group">
                             <label class="form-label" for="automatic-start">Top-up my account by:</label>
@@ -62,23 +61,93 @@
                         </p>
                     </div>
                     <p class="form-group form-final-force">
-                        By continuing with this service you accept the <a href="../../terms-and-conditions">terms and conditions</a>.
+                        <label class="form-checkbox" for="terms">
+                            <input id="terms" type="checkbox" value="terms">
+                            I accept the Terms and Conditions
+                        </label>
+                        <a href="/account/setup/payment/terms">Read the Terms and Conditions</a>
                     </p>
                 </div>
             </fieldset>
+            <p>
+                <button class="button" id="next" type="submit">Next</button>
+            </p>
+        </form>
                         <p class="action group">
                         <input type="submit" name="submitdetails" id="submitdetails" value="Save new payment details" class="button"></p>
-                    </form>
-                </div>
     {{/column-2}}
 
     {{$js-functions}}
+        clearDirectDebit = function() {
+            setDisplay(el.sectionDirectDebit, false);
+        },
+        showAutomatic = function() {
+            el.checkTerms.checked = false;
+            setDisplay(el.sectionTopUp, true);
+            setDisplay(el.sectionTopUpAutomatic, true);
+            setDisplay(el.sectionTopUpManual, false);
+        },
+        showDirectDebit = function() {
+            setDisplay(el.sectionDirectDebit, true);
+        },
+        showManual = function() {
+            el.checkTerms.checked = false;
+            el.radioPaymentDirectDebit.checked = false;
+            setDisplay(el.sectionTopUp, true);
+            setDisplay(el.sectionTopUpAutomatic, false);
+            setDisplay(el.sectionTopUpManual, true);
+        },
+        testForm = function() {
+            setDisabled(el.buttonNext, false);
+        }
     {{/js-functions}}
 
     {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                if ($('#payment-direct-debit:checked')) {
+                    window.location = 'payment/direct-debit';
+                } else {
+                    window.location = 'payment/card';
+                }
+            });
+            el.checkTerms.addEventListener('click', function(elem) {
+                testForm();
+            }, false);
+            el.radioPaymentDirectDebit.addEventListener('click', function() {
+                showDirectDebit();
+            }, false);
+            el.radioPaymentCard.addEventListener('click', function() {
+                clearDirectDebit();
+            }, false);
+            el.radioTopUpAutomatic.addEventListener('click', function() {
+                showAutomatic();
+            }, false);
+            el.radioTopUpManual.addEventListener('click', function() {
+                showManual();
+            }, false);
+        }
     {{/js-initialisation}}
 
     {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next'),
+            checkTerms: $('#terms'),
+            radioPaymentCard: $('#payment-card'),
+            radioPaymentDirectDebit: $('#payment-direct-debit'),
+            radioTopUpAutomatic: $('#top-up-automatic'),
+            radioTopUpManual: $('#top-up-manual'),
+            sectionDirectDebit: $('#direct-debit'),
+            sectionTopUp: $('#top-up-types'),
+            sectionTopUpAutomatic: $('#type-automatic'),
+            sectionTopUpAll: $$('.top-up > div'),
+            sectionTopUpManual: $('#type-manual')
+        }
     {{/js-objects}}
 
 {{/layouts/account-your-details}}

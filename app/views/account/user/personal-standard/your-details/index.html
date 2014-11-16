@@ -2,7 +2,7 @@
     {{$h1}}Your details{{/h1}}
 
     {{$column-1}}
-        <ul class="page-nav">
+        <ul class="page-nav" id="top">
             <li><a href="">Update your details</a></li>
             <li><a href="apply-local-residents-discount">Apply for a local resident's discount</a></li>
             <li><a href="change-vehicle-details.html">Add or change your vehicle details</a></li>
@@ -43,11 +43,13 @@
                 </fieldset>
                 <fieldset>
                     <div class="form-group">
-                        <legend class="heading-24">Your postal address</legend>
                         <fieldset>
-                            <legend>Address</legend>
+                            <legend class="heading-24">Your postal address</legend>
+                            <div class="panel-indent">
+                            <p>You may qualify for a local resident's discount. <a href="apply-local-residents-discount">Find out about applying for a local resident's discount</a></p>
+                            </div>
                             <div class="form-group mini">
-                                <label class="visuallyhidden" for="address-1">Address line 1</label>
+                                <label class="form-label" for="address-1">Address</label>
                                 <input class="form-control form-control-1-2" id="address-1" type="text" value="1 Anytown Street">
                             </div>
                             <div class="form-group">
