@@ -12,20 +12,24 @@ module.exports = {
       res.render('account/setup/personal/index', {'assetPath' : assetPath});
     });
 
-    app.post('/account/setup/vehicle', function (req, res) {
-      res.render('account/setup/vehicle/index', {'assetPath' : assetPath});
-    });
-
     app.post('/account/setup/payment', function (req, res) {
       res.render('account/setup/payment/index', {'assetPath' : assetPath});
+    });
+
+    app.post('/account/setup/paygo', function (req, res) {
+      res.render('account/setup/paygo/index', {'assetPath' : assetPath});
+    });
+
+    app.post('/account/setup/one-off', function (req, res) {
+      res.render('account/setup/one-off/index', {'assetPath' : assetPath});
     });
 
     app.post('/account/setup/payment/card', function (req, res) {
       res.render('account/setup/payment/card', {'assetPath' : assetPath});
     });
 
-    app.post('/account/setup/paygo', function (req, res) {
-      res.render('account/setup/paygo/index', {'assetPath' : assetPath});
+    app.post('/account/setup/vehicle', function (req, res) {
+      res.render('account/setup/vehicle/index', {'assetPath' : assetPath});
     });
 
     app.post('/account/sign-in', function (req, res) {
