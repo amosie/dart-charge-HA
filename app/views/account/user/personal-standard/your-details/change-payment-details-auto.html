@@ -14,10 +14,37 @@
 
     {{$column-2}}
         <h2 class="heading-24" id="section1">Change your payment details</h2>
-        <h3 class="heading-24">Top-up method: manual</h3>
-        <p>You must remember to add funds to your account yourself when your balance is low.
-        <p class="panel-indent">When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.</p>
-        <a href="change-payment-details-auto" class="button" id="next" type="submit">Pay automatically</a>
+        <h3 class="heading-24">Pay automatically</h3>
+        <p class="panel-indent">
+            No need to remember to top-up, funds to your account are added automatically when balance goes below specified amount.
+        </p>
+        <div class="" id="top-up-types">
+                    <div class="" id="type-automatic">
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">Top-up my account by:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">When my account reaches:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <legend class="heading-24">Payment type</legend>
+                        <p class="form-group form-group-compound mini inline" id="payment-method">
+                            <label class="block-label" for="payment-direct-debit">
+                                <input id="payment-direct-debit" type="radio" name="payment-group" value="Yes">
+                                Direct debit
+                            </label>
+                            <label class="block-label" for="payment-card">
+                                <input id="payment-card" type="radio" name="payment-group" value="No">
+                                Debit or Credit card
+                            </label>
+                        </p></div>
+        </div>
+        <p class="form-group form-final-force">By continuing with this service you accept the <a href="../../terms-and-conditions">terms and conditions</a>.
+        </p>
+        <p>
+            <button class="button" id="next" type="submit">Next</button>
+        </p>
     {{/column-2}}
 
     {{$js-functions}}
