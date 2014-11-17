@@ -1,0 +1,64 @@
+{{<layouts/account-home}}
+    {{$h1}}Account home{{/h1}}
+
+    {{$column-1}}
+        <ul>
+            <li><a href="index">Account overview</a></li>
+            <li><a href="crossing-history">Crossing history</a></li>
+            <li><a href="payment-history">Payment history</a></li>
+        </ul>
+        <ul>
+            <li>Account number<br>1000068960</li>
+            <li>Account type <br>Standard</li>
+            <li>Top up method <br>Manual</li>
+        </ul>
+    {{/column-1}}
+
+    {{$column-2}}
+        <h2 class="heading-24">Account balance</h2>
+        <p class="data-80">£10</p>
+        <form action="card">
+            <fieldset>
+                <p class="form-group">
+                    <label class="form-label" for="vehicle-registration">Top-up amount</label>
+                    £ <input class="form-control form-control-1-4 form-control-uppercase" id="vehicle-registration" type="text">
+                </p><br>
+            </fieldset>
+            <p><button class="button" id="next" type="submit">Continue</button></p>
+        </form>
+        <h3 class="heading-24">Vehicle details&emsp;<span class="copy-16"><a href="your-details/change-vehicle-details">Change your vehicle details</a></span></h3>
+        <table>
+            <thead>
+                    <tr>
+                        <th>Registration number</th>
+                        <th>Class</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Colour</th>
+                        <th>Price per crossing</th>
+                    </tr>
+                </thead>
+                <tbody id="vehicle-list">
+                    <tr>
+                        <td>GX05DTY</td>
+                        <td>B</td>
+                        <td>Honda</td>
+                        <td>Civic</td>
+                        <td>Red</td>
+                        <td>£2.50</td>
+                    </tr>
+                </tbody>
+        </table>
+        <br>
+    {{/column-2}}
+
+    {{$js-functions}}
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+    {{/js-objects}}
+
+{{/layouts/account-home}}

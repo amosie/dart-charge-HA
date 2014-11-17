@@ -1,0 +1,128 @@
+{{<layouts/1-column}}
+    {{$h1}}Your details{{/h1}}
+
+    {{$column-1}}
+        <ul class="page-nav">
+            <li><a href="index.html">Update your details</a></li>
+            <li><a href="change-account-type">Apply for a local resident's discount</a></li>
+            <li><a href="change-vehicle-details">Add or change your vehicle details</a></li>
+            <li><a href="change-payment-details">Change your payment details</a></li>
+            <li><a href="change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
+            <li><a href="change-close-account">Change account type or close your account</a></li>
+        </ul>
+    {{/column-1}}
+
+    {{$column-2}}
+                <h2 class="heading-24" id="section1">Update your details</h2>
+                <div class="form">
+                    <form autcomplete="off" class="form" name="update-your-details" action="/user/account#update" method="POST">
+                        <input class="form-control" type="hidden" name="csrf" value="" id="csrf">
+                        <fieldset class="form-group inline">
+                            <legend class="heading-24">Your company</legend>
+                            <p class="group"></p>
+                            <div class="form-group">
+                                <label for="companyname" class="form-label required">Company name</label>
+                                <input class="form-control form-control-3-4" type="text" name="companyname" id="companyname" value="Shaw Plumbing Services" autocomplete="off" maxlength="50">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="company-number required">Company number</label>
+                                <input class="form-control form-control-1-2" id="company-number" type="text" name="companynumber" id="companynumber" value="12345678" autocomplete="off" maxlength="50">
+                                <button class="button inline" id="find-company">Find company</button>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group inline">
+                            <legend class="heading-24">Your name</legend>
+                            <p class="group"></p>
+                            <div class="form-group">
+                                <label for="firstname" class="form-label required">First name</label>
+                                <input class="form-control form-control-1-2" type="text" name="firstname" id="firstname" value="Lucy" autocomplete="off" maxlength="50">
+                            </div>
+                            <p></p>
+                            <p class="group"></p>
+                            <div class="group">
+                                <label for="surname" class="form-label required">Last name</label>
+                                <input class="form-control form-control-1-2" type="text" name="surname" id="surname" value="Shaw" autocomplete="off" maxlength="50">
+                            </div>
+                            <p></p>
+                        </fieldset>
+                        <fieldset class="form-group inline">
+                            <legend class="heading-24">Your phone number</legend>
+                            <div class="form-group">
+                                <label class="form-label required" for="telephone">Phone number</label>
+                                <input class="form-control form-control-1-2" id="telephone" value="0207 890 1234" autocomplete="off" maxlength="50">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label optional" for="secondary-telephone">Secondary phone number <span class="form-hint">Optional</span></label>
+                                <input class="form-control form-control-1-2" id="secondary-telephone" value="" autocomplete="off" maxlength="50">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <legend class="heading-24">Your postal address</legend>
+                                <label class="form-label" for="country">
+                                    Country
+                                </label>
+                                <input class="autocomplete form-control form-control-1-2" id="country" type="text" value="United Kingdom">
+                            </div>
+                            <div class="form-group inline mini">
+                                <label class="form-label" for="postcode">
+                                    Postcode
+                                </label>
+                                <input class="form-control form-control-1-4 form-control-uppercase" id="postcode" type="text">
+                                <button class="button inline" id="find-address">Find address</button>
+                            </div>
+                            <div class="panel-indent js-hidden" id="address">
+                                <div class="form-group">
+                                    <label for="address-found">Select your address</label>
+                                    <select class="form-control-1" id="address-found" name="address-found">
+                                        <option value="address-01">1 Anystreet, Townsville</option>
+                                        <option value="address-01">2 Anystreet, Townsville</option>
+                                        <option value="address-01">3 Anystreet, Townsville</option>
+                                        <option value="address-01">4 Anystreet, Townsville</option>
+                                        <option value="address-01">5 Anystreet, Townsville</option>
+                                    </select>
+                                </div>
+                                <fieldset class="form-group inline">
+                                    <p>
+                                        <label class="form-checkbox" for="address-not-found">
+                                            <input id="address-not-found" type="checkbox" value="address-not-found">
+                                            I can’t find my address in the list
+                                        </label>
+                                    </p>
+                                    <div class="panel-indent js-hidden" id="address-detail">
+                                        <fieldset>
+                                            <legend>Address</legend>
+                                            <div class="form-group mini">
+                                                <label class="visuallyhidden" for="address-1">Address line 1</label>
+                                                <input class="form-control form-control-1-2" id="address-1" type="text">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="visuallyhidden" for="address-2">Address line 2</label>
+                                                <input class="form-control form-control-1-2" id="address-2" type="text">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="town-city">Town or city</label>
+                                                <input class="form-control form-control-1-2" id="town-city" type="text">
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </fieldset>
+                        <p></p>
+                        <p class="action group">
+                        <input type="submit" name="submitdetails" id="submitdetails" value="Save new details" class="button"></p>
+                    </form>
+                </div>
+    {{/column-2}}
+
+    {{$js-functions}}
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+    {{/js-objects}}
+
+{{/layouts/1-column}}
