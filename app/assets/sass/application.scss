@@ -430,7 +430,7 @@ a {
 }
 
 .account-column-1 {
-  margin-right: 20px;
+  margin-right: 10px;
   padding-right: 0;
 }
 
@@ -473,4 +473,38 @@ font-weight: 600;
 background: url(https://assets.digital.cabinet-office.gov.uk/static/icon-file-download-87670f937962413682fa7de1322c70a5.png) no-repeat scroll 0 0;
 min-height: 2.5em;
 padding: 0 0 0 2.5em;
+}
+
+.upload-file {
+position: absolute;
+padding-top:10px;
+}
+
+.toggle {
+display: block;
+margin: 1em 0 00;
+}
+
+.toggle-closed {
+background: url("../../public/images/icon-caret-right.png") left 0.3em no-repeat;
+padding-left: 0.75em;
+}
+
+.toggle-open {
+background: url("../../public/images/icon-caret-down.png") left 0.5em no-repeat;
+padding-left: 0.75em;
+margin-bottom: 0;
+}
+.help-content {
+border-left: #bfc1c3 solid 4px;
+padding: 14px 0 14px 20px;
+margin-bottom: 1em;
+clear: both;
+margin-right:auto;
+margin-bottom: 1em;
+width: 25em;
+}
+.visuallyhidden {
+position: absolute;
+left: -9999em;
 }

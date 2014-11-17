@@ -5,7 +5,7 @@
         <ul class="page-nav">
             <li><a href="index.html">Update your details</a></li>
             <li><a href="change-account-type">Apply for a local resident's discount</a></li>
-            <li><a href="change-vehicle-details">Change your vehicle details</a></li>
+            <li><a href="change-vehicle-details">Add or change your vehicle details</a></li>
             <li><a href="change-payment-details">Change your payment details</a></li>
             <li><a href="change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
             <li><a href="change-close-account">Change account type or close your account</a></li>
@@ -338,7 +338,16 @@
                     </p>
                 </div>
             </fieldset>
-            <a href="change-multiple-vehicle-details" class="toggle-closed">About changing multiple vehicles</a>
+            <a href="change-vehicle-details" class="toggle-open">About changing multiple vehicles</a>
+            <div class="help-content help-content-open">
+                <h3 class="heading-24 visuallyhidden">About changing multiple vehicles</h3>
+                <p>To change multiple vehicles, edit and then upload the form below.</p><br>
+                <p class="history-download"><a href="vehicle-details.csv">Download vehicle details (CSV)</a></p><br>
+                <a href="upload-vehicle-details" class="toggle">Upload your new vehicle details</a><br>
+                        <input type="submit" name="uploadcsv" id="uploadcsv" value="Upload file" class="button support">&emsp;<span class="upload-file copy-16">my-vehicle-details.csv&ensp;<a href="upload-vehicle-details">Remove file</a></span>
+                        <h4 class="heading-19">Thank you</h4>
+                        <p>Dart Charge will check registrations within five days.</p>
+            </div>
             <fieldset class="js-hidden form-group" id="vehicles" style="display: block;">
                 <table>
                     <thead>
