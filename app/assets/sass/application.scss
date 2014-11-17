@@ -43,7 +43,7 @@ table th {
     border-left: 1px solid #bfc1c3;
 }
 .button.inline{
-    display: inline !important;
+    display: inline;
 }
 .confirmation-message{
     background-color: $turquoise;
@@ -508,6 +508,7 @@ width: 25em;
 position: absolute;
 left: -9999em;
 }
+<<<<<<< HEAD
 
 .pagination {
 display: block;
@@ -623,3 +624,5 @@ text-transform: none;
 padding-top: 6px;
 padding-bottom: 4px;
 }
+=======
+>>>>>>> origin/master
