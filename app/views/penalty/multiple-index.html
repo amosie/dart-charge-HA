@@ -1,0 +1,72 @@
+{{<layouts/2-column}}
+
+    {{$h1}}Pay the Dartford penalty charge{{/h1}}
+
+    {{$column-1}}
+        <div class="beta-label">
+          <span class="beta">beta</span> This part of GOV.UK is being rebuilt – <a href="/help/beta"> find out what this means</a>
+        </div>
+        <section class="intro">
+            <div class="get-started-intro">
+                <div class="application-notice info-notice">
+                    <p>Pay a penalty charge if you used the Dartford crossing without paying the <a href="/fees-exemptions-penalties/" rel="" data-transaction-slug="">crossing fee</a> within 24 hours of crossing.</p>
+                </div>
+            </div>
+            <p class="visuallyhidden"><a href="#what-you-need-to-know">What you need to know</a></p>
+            <p id="get-started" class="get-started group">
+              <a href="find-details-multiple" rel="external" data-transaction-slug="pay-dartford-crossing-charge" class="button">Start now</a></p>
+        </section>
+        <section class="more">
+            <div id="before-you-start">
+                <h2 class="heading-24">Before you start</h2>
+                <p>You'll need:</p>
+                <ul class="list-bullet">
+                    <li>the penalty charge notice number</li>
+                    <li>the registration number of the vehicle</li>
+                </ul>
+                <h2 class="heading-24">Challenge a penalty charge notice</h2>
+                <p>Your penalty charge notice will tell you how and why you can appeal. Fill in the form on the notice and post it to:</p>
+                <div class="contact">
+                    <p><strong>Dart Charge Enforcement</strong><br>PO BOX 842<br>Leeds<br>LSI TQF</p>
+                </div>
+            </div>
+        </section>
+    {{/column-1}}
+
+    {{$column-2}}
+        <h2 class="heading-24">Dart Charge</h2>
+        <ul>
+            <li><a href="/fees-exemptions-penalties/" rel="" data-transaction-slug="">Dartford Crossing fees, exemptions and penalties
+            </a>
+            </li>
+            <li><a href="../" rel="" data-transaction-slug="">Pay the Dartford crossing charge</a>
+            </li>
+            <li><a href="/query/" rel="" data-transaction-slug="">Check for paid crossings</a>
+            </li>
+        </ul>
+            
+            
+    {{/column-2}}
+
+    {{$js-functions}}
+        func = function() {
+            //
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            el.buttonSignIn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'account';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonSignIn: $('#sign-in')
+        }
+    {{/js-objects}}
+
+{{/layouts/2-column}}
