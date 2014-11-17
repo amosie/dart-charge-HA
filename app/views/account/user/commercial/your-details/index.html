@@ -4,7 +4,6 @@
     {{$column-1}}
         <ul class="page-nav" id="top">
             <li><a href="">Update your details</a></li>
-            <li><a href="apply-local-residents-discount">Apply for a local resident's discount</a></li>
             <li><a href="change-vehicle-details.html">Change your vehicle details</a></li>
             <li><a href="change-payment-details.html">Change your payment details</a></li>
             <li><a href="change-email-address-password-pin.html">Change your sign-in email address, password and PIN</a></li>
@@ -17,6 +16,19 @@
         <div class="form">
             <form autcomplete="off" class="form" name="update-your-details" action="" method="POST">
                 <input class="form-control" type="hidden" name="csrf" value="" id="csrf">
+                <fieldset class="form-group inline">
+                    <legend class="heading-24">Your company</legend>
+                    <p class="group"></p>
+                    <div class="form-group">
+                        <label for="firstname" class="form-label required">Company name</label>
+                        <input class="form-control form-control-1-2" type="text" name="firstname" id="firstname" value="Shaw Plumbing Services" autocomplete="off" maxlength="50">
+                    </div>
+                    <p class="group"></p>
+                    <div class="group">
+                        <label for="surname" class="form-label required">Company number</label>
+                        <input class="form-control form-control-1-2" type="text" name="surname" id="surname" value="0987654321" autocomplete="off" maxlength="50">
+                    </div>
+                </fieldset>
                 <fieldset class="form-group inline">
                     <legend class="heading-24">Your name</legend>
                     <p class="group"></p>
@@ -48,9 +60,6 @@
                             <p>1 Anytown Street<br>
                             Townsville<br>
                             B32 2PD</p>
-                        </div>
-                        <div class="panel-indent">
-                            <p>You may qualify for a local resident's discount.</p><p><a href="apply-local-residents-discount">Applying for a local resident's discount</a></p>
                         </div>
                         <p class="form-group">
                             <label class="form-label" for="country">

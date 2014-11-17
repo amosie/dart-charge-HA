@@ -1,0 +1,128 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Credit/debit card details{{/h1}}
+
+	{{$column-1}}
+        <form method="post" action="/Secure/iTransact.ashx" id="payment" autocomplete="off" style="margin-bottom: 0 !important;">
+            <p class="form-group">
+                Payment amount:
+                <span id="labelAmount">£10.00</span>
+            </p>
+
+            <fieldset>
+                <p class="form-group">
+                    <label for='QAName' class="form-label">Name:</label>
+                    <input name="QAName" type="text" value="" maxlength="50" id="QAName" title="The card holder&#39;s name exactly as printed on the card" class="text long" autocomplete="off" />
+                </p>
+                <p class="form-group">
+                    <label for='CardNumber' class="form-label">Card Number:</label>
+                    <input name="CardNumber" maxlength="22" id="CardNumber" title="The full card number without spaces" class="text long" type="text" pattern="[0-9]*" autocomplete="off" />
+                </p>
+                <p class="form-group">
+                    <label for='ExpMonth' class="form-label">Expiry Date</label>
+                    <select name="ExpMonth" id="ExpMonth" class="month">
+                        <option value=""></option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select name="ExpYear" id="ExpYear" class="year">
+                        <option value=""></option>
+                        <option value="14">2014</option>
+                        <option value="15">2015</option>
+                        <option value="16">2016</option>
+                        <option value="17">2017</option>
+                        <option value="18">2018</option>
+                        <option value="19">2019</option>
+                        <option value="20">2020</option>
+                        <option value="21">2021</option>
+                        <option value="22">2022</option>
+                        <option value="23">2023</option>
+                    </select>
+                </p>
+                <p class="form-group">
+                    <label for='StartMonth' class="form-label">Start Date (if available)</label>
+                    <select name="StartMonth" id="StartMonth" class="month" Name="StartMonth">
+                        <option value=""></option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select name="StartYear" id="StartYear" class="year" Name="StartYear">
+                        <option value=""></option>
+                        <option value="14">2014</option>
+                        <option value="13">2013</option>
+                        <option value="12">2012</option>
+                        <option value="11">2011</option>
+                        <option value="10">2010</option>
+                        <option value="09">2009</option>
+                        <option value="08">2008</option>
+                        <option value="07">2007</option>
+                        <option value="06">2006</option>
+                        <option value="05">2005</option>
+                    </select>
+                </p>
+                <p class="form-group">
+                    <label for='CV2' class="form-label">Card Security Code</label>
+                    <input name="CV2" maxlength="4" id="CV2" title="The last 3 digits found on the signature strip on the back of the card. For Amex the 4 digits after the card number on the front." class="text small" autocomplete="off" type="text" pattern="[0-9]*" />
+                </p>
+                <p class="form-group">
+                    <label for='QAAAddress' class="form-label">Billing Address</label>
+                    <textarea name="QAAddress" rows="4" cols="25" id="QAAddress" Name="QAAddress" autocomplete="off"></textarea>
+                </p>
+                <p class="form-group">
+                    <label for='QAAAddress' class="form-label">Postcode</label>
+                    <input name="QAPostcode" type="text" value="" maxlength="10" id="QAPostcode" class="text medium" autocomplete="off" />
+                </p>
+            </fieldset>
+            <p class="form-group"></p>
+            <p class="form-group">
+                <button class="button" id="next" type="submit">Make payment</button>
+            </p>
+        </form>
+	{{/column-1}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			if (window.location.search.match(/=debug/)) {
+				el.body.classList.add('debug');
+			}
+			el.buttonNext.addEventListener('click', function(e) {
+				e.preventDefault();
+				window.location = '../summary';
+			});
+		}
+	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-objects}}
+
+{{/layouts/1-column}}
