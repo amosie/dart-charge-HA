@@ -4,6 +4,26 @@ module.exports = {
       res.render('index', {'assetPath' : assetPath});
     });
 
+    app.post('/account/user', function (req, res) {
+      res.render('account/user', {'assetPath' : assetPath});
+    });
+
+    app.post('/account/user/personal-standard', function (req, res) {
+      res.render('account/userpersonal-standard/index', {'assetPath' : assetPath});
+    });
+
+    app.post('/account/user/personal-standard/your-details', function (req, res) {
+      res.render('account/user/personal-standard/your-details/index', {'assetPath' : assetPath});
+    });
+
+    app.post('/accountuser/user/personal-standard/your-details/apply-local-residents-discount', function (req, res) {
+      res.render('account/user/personal-standard/your-details/apply-local-residents-discount.html', {'assetPath' : assetPath});
+    });
+
+     app.post('/account/user/commercial/your-details', function (req, res) {
+      res.render('account/user/commercial/your-details/index', {'assetPath' : assetPath});
+    });
+
     app.post('/account/setup/success', function (req, res) {
       res.render('account/setup/success', {'assetPath' : assetPath});
     });
