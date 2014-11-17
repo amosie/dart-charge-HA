@@ -1,0 +1,64 @@
+{{<layouts/account-home}}
+
+	{{$h1}}Account home{{/h1}}
+
+    {{$column-1}}
+        <ul>
+            <li><a href="index">Account overview</a></li>
+            <li><a href="crossing-history">Crossing history</a></li>
+            <li><a href="payment-history">Payment history</a></li>
+        </ul>
+        <ul>
+            <li>Account number<br>1000068960</li>
+            <li>Account type <br>Standard</li>
+            <li>Top up method <br>Manual</li>
+        </ul>
+    {{/column-1}}
+
+	{{$column-2}}
+        <h2 class="heading-24">Payment history&emsp;<span class="copy-16"><a href="your-details/change-payment-details">Change your payment details</a></span></h2>
+        <legend class="heading-19">2014</legend>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Payment reference</th>
+                </tr>
+                <tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>24 October</td>
+                    <td>£10</td>
+                    <td>1234567890</td>
+                </tr>
+                <tr>
+                    <td>5 October</td>
+                    <td>£10</td>
+                    <td>1234567890</td>
+                </tr>
+                <tr>
+                    <td>14 September</td>
+                    <td>£10</td>
+                    <td>1234567890</td>
+                </tr>
+                <tr>
+                    <td>5 September</td>
+                    <td>£10</td>
+                    <td>1234567890</td>
+                </tr>
+                <tr>
+                    <td>30 August</td>
+                    <td>£10</td>
+                    <td>1234567890</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="history-download">
+            <p><a href="crossing-history.csv">Download payment history (CSV)</a></p>
+        </div>
+	{{/column-2}}
+
+{{/layouts/account-home}}
