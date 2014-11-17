@@ -1,0 +1,163 @@
+{{<layouts/1-column}}
+
+    {{$h1}}Pay penalty charge{{/h1}}
+
+    {{$column-1}}
+
+        <form>
+            <fieldset class="form-group" id="vehicles">
+                <p>
+                  Total outstanding charges for vehicle YG59RZW: £75.00
+                </p>
+                 <table>
+                  <thead>
+                    <tr>
+                      <th>Vehicles</th>
+                       <td>Mini Clubman 2009, Blue YG59RZW</td> 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Registered keeper</th>
+                      <td>J Smith</br>
+                          1 Main Street</br>
+                          Smallville</br>
+                          LONDON</br>
+                          W17HE</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="route">
+                  In addition to the penalty charge you must also pay any applicable crossing charges. The following charges are awaiting payment.
+                </p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>PCN number</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Direction</th>
+                      <th>Crossing Charge</th>
+                      <th>Penalty</th>
+                      <th>Total</th>
+                      <th>Pay</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1234</td>
+                      <td>01/11/2014</td>
+                      <td>20:23:33</td>
+                      <td>Northbound</td>
+                      <td>£2.50</td>
+                      <td>£35.00</td>
+                      <td>£37.50</td>
+                      <td><input id="penalty-0" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                      <td>5678</td>
+                      <td>02/11/2014</td>
+                      <td>19:23:33</td>
+                      <td>Southbound</td>
+                      <td>£2.50</td>
+                      <td>£35.00</td>
+                      <td>£37.50</td>
+                      <td><input id="penalty-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <th>TOTAL</th>
+                      <th>£75.00</th>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </fieldset>
+
+            <div class="panel-indent">
+              <p>
+                If you pay the penalty charge 14 days after 8/11/2014 the charge will increase. Find out about the payment charges.
+              </p>
+            </div>
+
+            <h2 class="heading-24">Where shall we send your receipt?</h2>
+               <p class="form-group">
+            <label class="form-label" for="email-address">Email address</label>
+            <span class="form-hint">We won't use your email address for marketing.</span>
+            <input class="form-control form-control-3-4" id="email-address" type="email">
+            </p>
+            <p class="form-group">
+            <label class="form-label" for="email-confirm">Confirm your email address</label>
+            <input class="form-control form-control-3-4" id="email-confirm" type="email">
+            </p>
+            <p class="form-group form-final-force">
+                  <label class="form-checkbox" for="terms">
+                    <input id="terms" type="checkbox" value="terms">
+                    I accept the Terms and Conditions
+                  </label>
+                  <a href="/account/setup/payment/terms">Read the Terms and Conditions</a>
+                </p>
+        </form>
+        <p><button class="button" id="next" type="submit">Next</button></p>
+
+    {{/column-1}}
+
+    {{$js-functions}}
+      func = function() {
+        console.log(el.buttonNext);
+      },
+      pcnSelected = function() {
+        if(el.pcnOne.checked){
+          return true;
+        }
+        if(el.pcnTwo.checked){
+          return true;
+        }
+         return false;
+      }
+      test = function() {
+        if(el.terms.checked && pcnSelected()){
+          setDisabled(el.buttonNext,false);
+        } else {
+        setDisabled(el.buttonNext,true);
+        }
+      }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+          if (window.location.search.match(/=debug/)) {
+            el.body.classList.add('debug');
+          }
+          setDisabled(el.buttonNext,true);
+          el.buttonNext.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location = 'card.html';
+          });
+          el.pcnOne.addEventListener('click', function(e) {
+            test();
+          });
+          el.pcnTwo.addEventListener('click', function(e) {
+            test();
+          });
+          el.terms.addEventListener('click', function(e) {
+            test();
+          });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            body: $('body'),
+            buttonNext: $('#next'),
+            pcnOne: $('#penalty-0'),
+            pcnTwo: $('#penalty-1'),
+            terms: $('#terms')
+        }
+    {{/js-objects}}
+
+{{/layouts/1-column}}
