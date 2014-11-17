@@ -1,0 +1,142 @@
+{{<layouts/account-your-details}}
+    {{$h1}}Your details{{/h1}}
+
+    {{$column-1}}
+        <ul class="page-nav">
+            <li><a href="index.html">Update your details</a></li>
+            <li><a href="change-account-type">Apply for a local resident's discount</a></li>
+            <li><a href="change-vehicle-details">Add or change your vehicle details</a></li>
+            <li><a href="change-payment-details">Change your payment details</a></li>
+            <li><a href="change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
+            <li><a href="change-close-account">Change account type or close your account</a></li>
+        </ul>
+    {{/column-1}}
+
+    {{$column-2}}
+        <h2 class="heading-24" id="section1">Apply for a local resident's discount</h2>
+        <div class="panel-indent"><h3 class="heading-19">Application status</h3>Your documents are being checked by dart charge. Please note that you must pay the standard crossing fee until your application is approved.</div>
+        <a href="apply-local-residents-discount-upload" class="toggle-closed">Providing documents</a>
+        <form>
+            <fieldset>
+                <div id="proof">
+                    <h2 class="heading-24">Proof of residency and vehicle ownership</h2>
+                    <ul class="list-bullet">
+                        <li>Documentation is valid for 2 years. You will be notified close to expiration to re-submit.</li>
+                        <li>It takes up to 5 days to approve documents, in the meantime you will be charged standard rate.</li>
+                    </ul>
+                    <h2 class="heading-24">Required documentation</h2>
+                    <ol class="list-number">
+                        <li>Proof of residency
+                            <ul class="list-number">
+                                <li>clear copy of a current council tax bill for the application address</li>
+                                <li>one other of the following documents, showing the applicant's name and address:
+                                    <ul class="list-bullet">
+                                        <li>a bank or credit card statement no more than 3 months old</li>
+                                        <li>
+                                            utility bill (gas, electric or water bill but not a mobile phone bill) no more than 3 months old
+                                        </li>
+                                        <li>an income support book or housing association rent document</li>
+                                        <li>applicant's driving license</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Proof of ownership
+                            <ul class="list-bullet">
+                                <li>
+                                    vehicle V5 document (Registered Keeper) that shows that the vehicle is regitered to the application name and address
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </fieldset>
+        </form>
+    {{/column-2}}
+{{$js-functions}}
+        testNext = function() {
+            if (
+                el.proofOfOwnership.files.length > 0 &&
+                el.proofOfResidence1.files.length > 0 &&
+                el.proofOfResidence2.files.length > 0
+            ) {
+                setDisabled(el.buttonNext, false);
+            } else {
+                setDisabled(el.buttonNext, true);
+            }
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            if (window.location.search.match(/=debug/)) {
+                el.body.classList.add('debug');
+            }
+
+            if (
+                el.proofOfOwnership.files.length > 0 &&
+                el.proofOfResidence1.files.length > 0 &&
+                el.proofOfResidence2.files.length > 0
+            ) {
+                setDisabled(el.buttonNext, false);
+            } else {
+                setDisabled(el.buttonNext, true);
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode == 13 || e.which == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            el.buttonNext.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = './pre-payment';
+            });
+            el.proofOfOwnership.addEventListener('change', function(e) {
+                testNext();
+            }, false);
+            el.proofOfResidence1.addEventListener('change', function(e) {
+                testNext();
+            }, false);
+            el.proofOfResidence2.addEventListener('change', function(e) {
+                testNext();
+            }, false);
+            el.proofNow.addEventListener('click', function(e) {
+                setDisplay(el.uploadNow, true);
+                setDisplay(el.uploadLater, false);
+                setDisplay(el.uploadMail, false);
+                setDisabled(el.buttonNext, true);
+            }, false);
+            el.proofLater.addEventListener('click', function(e) {
+                setDisplay(el.uploadNow, false);
+                setDisplay(el.uploadLater, true);
+                setDisplay(el.uploadMail, false);
+                setDisabled(el.buttonNext, false);
+            }, false);
+            el.proofMail.addEventListener('click', function(e) {
+                setDisplay(el.uploadNow, false);
+                setDisplay(el.uploadLater, false);
+                setDisplay(el.uploadMail, true);
+                setDisabled(el.buttonNext, false);
+            }, false);
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonNext: $('#next'),
+            proof: $('#proof'),
+            proofOfOwnership: $('#proof-of-ownership'),
+            proofOfResidence1: $('#proof-of-residence-1'),
+            proofOfResidence2: $('#proof-of-residence-2'),
+            proofMail: $('#proof-mail'),
+            proofNow: $('#proof-now'),
+            proofLater: $('#proof-later'),
+            uploadLater: $('#upload-later'),
+            uploadMail: $('#upload-mail'),
+            uploadNow: $('#upload-now')
+        }
+    {{/js-objects}}
+
+{{/layouts/account-your-details}}
