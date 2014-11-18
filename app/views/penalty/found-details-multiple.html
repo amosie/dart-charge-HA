@@ -139,20 +139,22 @@
             window.location = 'card.html';
           });
           el.pcnOne.addEventListener('click', function(e) {
-            test();
-            if(el.pcnOne.checked){
-                var penaltyOne = el.pcnOne.getAttribute('value');
-                var total = el.total.getAttribute('value');
-                var g_total = Number(penaltyOne) + Number(total);
-                el.total.textContent = '£' + g_total;
+            if(e.handled !== true) {
+                test();
+                if(el.pcnOne.checked){
+                    var penaltyOne = el.pcnOne.getAttribute('value');
+                    var total = el.total.getAttribute('value');
+                    var g_total = Number(penaltyOne) + Number(total);
+                    el.total.textContent = '£' + g_total;
+                }
             }
           });
           el.pcnTwo.addEventListener('click', function(e) {
             test();
             if(el.pcnTwo.checked){
-                var penaltyOne = el.pcnOne.getAttribute('value');
+                var penaltyTwo = el.pcnTwo.getAttribute('value');
                 var total = el.total.getAttribute('value');
-                var g_total = Number(penaltyOne) + Number(total);
+                var g_total = Number(penaltyTwo) + Number(total);
                 el.total.textContent = '£' + g_total;
             }
           });
