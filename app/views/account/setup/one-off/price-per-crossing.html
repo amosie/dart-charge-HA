@@ -1,51 +1,48 @@
 {{<layouts/1-column}}
 
-	{{$h1}}Make a one-off payment{{/h1}}
+	{{$h1}}Price per crossing{{/h1}}
 
 	{{$column-1}}
-
-        <p>You can check for paid crossings at the end of this transaction.</p>
-        <h2 class="heading-24">Price per crossing: £2.50</h2>
-        <form>
-            <fieldset class="form-group">
-                <label class="form-label" for="email-address">How many crossings do you need to pay for?</label>
-                <p class="form-hint">
-                    A crossing is a single journey from A to B. 
-                </p>
-                <p class="form-hint">
-                    These crossings are valid up to a year or till they are used.
-                </p>
-                <input class="form-control form-control-1-4" id="automatic-start" type="text" value="2">
-                <button class="button inline" id="vehicle-add">Calculate cost</button>
-                <p class="heading-19" form-block>Total cost: £5</p>
-                <div class="panel-indent">
-                    <p class="form-block">If you need to pay for more than 10 crossings, <a href="../personal">set up an account</a> and save up to a third.</p>
-                </div>
-                <legend class="heading-24">Where shall we send your receipt?</legend>
-                <p class="form-group">
-                    <label class="form-label" for="email-address">Email address</label>
-                    <span class="form-hint">
-                        We won't use your email address for marketing.
-                    </span>
-                    <input class="form-control form-control-3-4" id="email-address" type="email">
-                </p>
-                <p class="form-group">
-                    <label class="form-label" for="email-confirm">Confirm your email address</label>
-                    <input class="form-control form-control-3-4" id="email-confirm" type="email">
-                </p>
-                <p class="form-group form-final-force">
-                    <label class="form-checkbox" for="terms">
-                        <input id="terms" type="checkbox" value="terms">
-                        I accept the Terms and Conditions
-                    </label>
-                    <a href="/account/setup/payment/terms">Read the Terms and Conditions</a>
-                </p>
-            </fieldset>
+        <section>
             <p>
-                <button class="button" id="next" type="submit">Next</button>
+                A crossing costs £2.50 each way. A return journey is £5.
             </p>
-        </form>
-
+            <p>
+                <a href="/account/setup/">Set up an account</a> if you want to pay for more than 10 crossings. You’ll pay a reduced rate.
+            </p>
+            <form action="card">
+                <fieldset class="form-group">
+                    <legend class="heading-24">How many crossings do you need to pay for?</legend>
+                    <label class="form-label" for="email-address">Number of crossings</label>
+                    <input class="form-control form-control-1-4" id="automatic-start" type="text" value="2">
+                    <button class="button inline" id="vehicle-add">Calculate cost</button>
+                    <p class="form-block">
+                        <strong>Total cost: £5</strong>
+                    </p>
+                    <legend class="heading-24">Where do you want your receipt sent?</legend>
+                    <p class="form-group">
+                        <label class="form-label" for="email-address">Email address</label>
+                        <span class="form-hint">
+                            We won't use your email address for marketing.
+                        </span>
+                        <input class="form-control form-control-3-4" id="email-address" type="email">
+                    </p>
+                    <p class="form-group">
+                        <label class="form-label" for="email-confirm">Confirm your email address</label>
+                        <input class="form-control form-control-3-4" id="email-confirm" type="email">
+                    </p>
+                    <p class="form-group form-block">
+                        After you’ve paid, you can see which journeys you’ve paid for. You must <a href="/account/setup/">set up an account</a> to see any journeys you haven’t paid for.
+                    </p>
+                    <p class="form-group form-final-force">
+                        By continuing with this service you accept the <a href="/account/setup/payment/terms">terms and conditions</a>.
+                    </p>
+                </fieldset>
+                <p>
+                     <button class="button" id="next" type="submit">Continue</button>
+                </p>
+            </form>
+        </section>
 	{{/column-1}}
 
     {{$js-initialisation}}

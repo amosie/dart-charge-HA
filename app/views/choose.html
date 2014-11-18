@@ -1,0 +1,93 @@
+{{<layouts/2-column-left}}
+
+	{{$h1}}Dart Charge{{/h1}}
+
+    {{$column-1}}
+        <h2 class="heading-24">Manage your account</h2>
+        <form action="/account">
+        <p class="form-group mini">
+            <label class="form-label" for="dart-account">Email address</label>
+            <input class="form-control form-control-1" id="dart-account" type="email" />
+        </p>
+        <p class="form-group mini">
+            <label class="form-label" for="dart-verification">Password</label>
+            <input class="form-control form-control-1" id="dart-verification" type="password" />
+        </p>
+        <p class="form-group">
+            <a href="../forgot-password">Forgot your password?</a>
+        </p>
+        <p class="form-group">
+            <button class="button" id="sign-in" type="submit">Sign in</button>
+        </p>
+        <p class="form-hint copy-16">Sign in to:</p>
+        <ul class="list-bullet form-hint copy-16">
+            <li>update your account details</li>
+            <li>add or change vehicles</li>
+            <li>check and top up your balance</li>
+            <li>change payment type</li>
+            <li>apply for local residents’ discount</li>
+        </ul>
+        </form>
+    {{/column-1}}
+
+	{{$column-2}}
+        <section>
+        <h2 class="heading-24">Make a one-off payment</h2>
+        <p>
+            Pay without registering for an account.
+            <a href="/account/setup/one-off/">Make a one-off payment</a> for a crossing you’ve just made and for crossings you’ll make in the next 12 months.
+        </p>
+        <p>
+            The <a href="/dartford-crossing-fees-exemptions-penalties">crossing fee</a> depends on your vehicle and account type.
+        </p>
+        <h2 class="heading-24">Check which crossings you've paid for</h2>
+        <p>
+            After you’ve paid, you can <a href="/check-for-paid-crossings/">check which crossings you’ve paid for.</a>
+        <p>
+            You must <a href="/account/setup/">set up an account</a> to see any journeys you haven’t paid for.
+        </p>
+        <h2 class="heading-24">Register a Dart Charge account</h2>
+        <p>
+            <a href="register-dart-charge.html">Register a Dart Charge account</a> to use the Crossing at a discounted rate.
+        </p>
+        <p>
+            To activate an account you must add a minimum of £10 to your balance when you register.
+        </p>
+        <h2 class="heading-24">Migrate your DART-Tag account</h2>
+        <p>
+            If you are an existing DART-Tag account holder, you can <a href="migrate-dart-tag.html">migrate your DART-Tag account</a>.
+        </p>
+        <p>
+            You'll need you Personal verification code to migrate your account online (this will be emailed/posted to you).
+        </p>
+        <h2 class="heading-24">Apply for a local residents' discount</h2>
+        <p>
+            If you live in the Dartford or Thurrock council boundaries, you can <a href="apply-local-discount.html">apply for a local residents' discount</a>.
+        <p>
+            You can’t get a local resident discount if your vehicle is registered to a company. You can only get a discount for 1 vehicle per account.</p>
+        </p>
+        </section>
+	{{/column-2}}
+
+    {{$js-functions}}
+        func = function() {
+            //
+        }
+    {{/js-functions}}
+
+    {{$js-initialisation}}
+        init = function() {
+            el.buttonSignIn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location = 'account';
+            });
+        }
+    {{/js-initialisation}}
+
+    {{$js-objects}}
+        el = {
+            buttonSignIn: $('#sign-in')
+        }
+    {{/js-objects}}
+
+{{/layouts/2-column-left}}
