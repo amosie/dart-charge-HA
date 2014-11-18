@@ -149,6 +149,12 @@
           });
           el.pcnTwo.addEventListener('click', function(e) {
             test();
+            if(el.pcnTwo.checked){
+                var penaltyOne = el.pcnOne.getAttribute('value');
+                var total = el.total.getAttribute('value');
+                var g_total = Number(penaltyOne) + Number(total);
+                el.total.textContent = '£' + g_total;
+            }
           });
           el.terms.addEventListener('click', function(e) {
             test();
