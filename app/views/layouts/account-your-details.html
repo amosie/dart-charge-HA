@@ -14,19 +14,9 @@
                             <span>This is a new service – your <a href="mailto:webfeedback@sanefoperations.co.uk">feedback</a> will help us to improve it.</span>
                         </p>
                     </div>
-                    <div class="js-toggle-nav phase-banner" id="global-nav">
-                        <nav role="navigation" class="content">
-                            <ul id="navigation">
-                                <li class="user">User or company name</li>
-                                <li><a href="/account/user/personal-standard">Account home</a>
-                                </li>
-                                <li><a href="/account/personal-standard/your-details">Your details</a>
-                                </li>
-                                <li><a href="/account/sign-out">Sign out</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+
+                    {{$account-nav}}{{/account-nav}}
+
                 </div>
                 <div class="inner-block">
                     <h1 class="heading-36">{{$h1}}{{/h1}}</h1>
