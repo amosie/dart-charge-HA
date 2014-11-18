@@ -18,7 +18,7 @@
                         <nav role="navigation" class="content">
                             <ul id="navigation">
                                 <li class="user">User or company name</li>
-                                <li><a href="/account/user">Account home</a>
+                                <li><a href="/account/user/personal-standard">Account home</a>
                                 </li>
                                 <li><a href="/account/personal-standard/your-details">Your details</a>
                                 </li>
@@ -52,6 +52,23 @@
             </div><!-- / #content -->
         </main>
     {{/content}}
+
+    {{$footerSupportLinks}}
+        <ul>
+            <li>
+                <a href="/Help">Help</a>
+            </li>
+            <li>
+                <a href="/Static/Cookies">Cookies</a>
+            </li>
+            <li>
+                    <a href="/Static/ContactUsUnauthenticatedUser">Contact Us</a>    
+            </li>
+            <li>
+                <a href="/Static/TermsAndConditions">Terms and conditions</a>
+            </li>
+        </ul>
+    {{/footerSupportLinks}}
 
     {{$bodyEnd}}
         {{>includes/js}}

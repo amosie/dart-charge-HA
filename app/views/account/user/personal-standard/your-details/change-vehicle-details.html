@@ -1,14 +1,15 @@
 {{<layouts/account-your-details}}
+    
     {{$h1}}Your details{{/h1}}
 
     {{$column-1}}
         <ul class="page-nav">
-             <li><a href="/account/user/personal-standard">Update your details</a></li>
-            <li><a href="/account/user/personal-standard/apply-local-residents-discount">Apply for a local resident's discount</a></li>
-            <li><a href="/account/user/personal-standard/change-vehicle-details">Change your vehicle details</a></li>
-            <li><a href="/account/user/personal-standard/change-payment-details">Change your payment details</a></li>
-            <li><a href="/account/user/personal-standard/change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
-            <li><a href="/account/user/personal-standard/change-close-account">Change account type or close your account</a></li>
+             <li><a href="/account/user/personal-standard/your-details">Update your details</a></li>
+            <li><a href="/account/user/personal-standard/your-details/apply-local-residents-discount">Apply for a local resident's discount</a></li>
+            <li><a href="/account/user/personal-standard/your-details/change-vehicle-details">Change your vehicle details</a></li>
+            <li><a href="/account/user/personal-standard/your-details/change-payment-details">Change your payment details</a></li>
+            <li><a href="/account/user/personal-standard/your-details/change-sign-in-password-pin">Change your sign-in email address, password and PIN</a></li>
+            <li><a href="/account/user/personal-standard/your-details/change-close-account">Change account type or close your account</a></li>
         </ul>
     {{/column-1}}
 
@@ -16,7 +17,7 @@
         <h2 class="heading-24" id="section1">Change your vehicle details</h2>
         <form>
             <p class="form-block">
-                You can add up to five vehicles manually.
+                You can add up to twenty vehicles manually.
             </p>
             <p class="form-force form-group js-hidden" id="vehicle-add-another" style="display: block;">
                 <button class="button" id="vehicle-add-another-button">Add another vehicle</button>
@@ -338,13 +339,7 @@
                     </p>
                 </div>
             </fieldset>
-            <a href="/account/user/personal-standard/change-vehicle-details" class="toggle-open">Changing multiple vehicles</a>
-            <div class="help-content help-content-open">
-                <h3 class="heading-24 visuallyhidden">Changing multiple vehicles</h3>
-                <p>To change multiple vehicles, edit and then upload the form below.</p><br>
-                <p class="history-download"><a href="vehicle-details.csv">Download vehicle details (CSV)</a></p>
-                <a href="/account/user/personal-standard/upload-vehicle-details" class="toggle">Upload your new vehicle details</a>
-            </div>
+            <a href="/account/user/personal-standard/your-details/change-multiple-vehicle-details" class="toggle-closed">Changing multiple vehicles</a>
             <fieldset class="js-hidden form-group" id="vehicles" style="display: block;">
                 <table>
                     <thead>
