@@ -624,3 +624,11 @@ text-transform: none;
 padding-top: 6px;
 padding-bottom: 4px;
 }
+
+.list-bullet-hint {
+list-style-type: circle;
+list-style-image: url(https://assets.digital.cabinet-office.gov.uk/static/bullet-disc-5px-4180cb91fb35028365a59ddfcfd36e34.gif);
+margin-left: 0.7em;
+font-size: 0.8em;
+color: #6E6E6E;
+}
