@@ -1,28 +1,16 @@
 {{<layouts/account-home}}
     
     {{$account-nav}}
-        <div class="js-toggle-nav phase-banner" id="global-nav">
-            <nav role="navigation" class="content">
-                <ul id="navigation">
-                    <li class="user">User or company name</li>
-                    <li><a href="/account/user/personal-standard">Account home</a>
-                    </li>
-                    <li><a href="/account/user/personal-standard/your-details">Your details</a>
-                    </li>
-                    <li><a href="/account/sign-out">Sign out</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        {{>account/user/personal-discount/nav}}
     {{/account-nav}}
 
     {{$h1}}Account home{{/h1}}
 
     {{$column-1}}
         <ul>
-            <li><a href="index">Account overview</a></li>
-            <li><a href="crossing-history">Crossing history</a></li>
-            <li><a href="payment-history">Payment history</a></li>
+            <li><a href="/account/user/personal-discount">Account overview</a></li>
+            <li><a href="/account/user/personal-discount/crossing-history">Crossing history</a></li>
+            <li><a href="/account/user/personal-discount/payment-history">Payment history</a></li>
         </ul>
         <ul>
             <li>Account number<br>1000068960</li>

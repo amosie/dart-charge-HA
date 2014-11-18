@@ -1,16 +1,21 @@
 {{<layouts/account-home}}
+
+    {{$account-nav}}
+        {{>account/user/personal-discount/nav}}
+    {{/account-nav}}
+    
     {{$h1}}Account home{{/h1}}
 
     {{$column-1}}
-        <ul>
-            <li><a href="index">Account overview</a></li>
-            <li><a href="crossing-history">Crossing history</a></li>
-            <li><a href="payment-history">Payment history</a></li>
+         <ul>
+            <li><a href="/account/user/personal-discount">Account overview</a></li>
+            <li><a href="/account/user/personal-discount/crossing-history">Crossing history</a></li>
+            <li><a href="/account/user/personal-discount/payment-history">Payment history</a></li>
         </ul>
         <ul>
             <li>Account number<br>1000068960</li>
-            <li>Account type <br>Standard</li>
-            <li>Top up method <br>Manual</li>
+            <li>Account type <br>Local Resident's discount</li>
+            <li>Top up method <br>Automatical</li>
         </ul>
     {{/column-1}}
 
