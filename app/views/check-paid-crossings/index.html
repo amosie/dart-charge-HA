@@ -1,11 +1,16 @@
 {{<layouts/1-column}}
 
-    {{$h1}}Query a Dart Charge payment{{/h1}}
+    {{$h1}}Check for paid crossings{{/h1}}
 
     {{$column-1}}
-
+        <section>
+            <p>
+            After you’ve made a one-off payment, you can check which crossings you’ve paid for.
+            </p>
+            <p>
+            Please note it can take up to one day for your payment to be matched to crossings</p>
+            </p>
         <form action="show.html" method="get">
-            
             <fieldset class="inline" id="transaction-input">
                 <div class="form-group">
                     <label class="form-label" for="automatic-start">Payment number</label>
@@ -28,7 +33,7 @@
                 </div>
             </fieldset>
         </form>
-            
+        </section>   
 
     {{/column-1}}
 
@@ -42,7 +47,7 @@
         init = function() {
             el.buttonSignIn.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location = 'query/show';
+                window.location = 'show';
             });
         }
     {{/js-initialisation}}
