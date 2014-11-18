@@ -36,6 +36,10 @@ module.exports = {
       res.render('account/sign-in/index', {'assetPath' : assetPath});
     });
 
+    app.post('/account/user/personal-standard/sign-out', function (req, res) {
+      res.render('account/sign-out/index', {'assetPath' : assetPath});
+    });
+
     app.post('/fees-exemptions-penalties', function (req, res) {
       res.render('fees-exemptions-penalties/index', {'assetPath' : assetPath});
     });
