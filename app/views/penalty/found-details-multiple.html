@@ -52,7 +52,7 @@
                       <td>£2.50</td>
                       <td>£35.00</td>
                       <td>£37.50</td>
-                      <td><input id="penalty-0" type="checkbox" value=""></td>
+                      <td><input id="penalty-0" type="checkbox" value="37.50"></td>
                     </tr>
                     <tr>
                       <td>5678</td>
@@ -62,7 +62,7 @@
                       <td>£2.50</td>
                       <td>£35.00</td>
                       <td>£37.50</td>
-                      <td><input id="penalty-1" type="checkbox" value=""></td>
+                      <td><input id="penalty-1" type="checkbox" value="37.50"></td>
                     </tr>
                     <tr>
                       <td></td>
@@ -71,7 +71,7 @@
                       <td></td>
                       <td></td>
                       <th>TOTAL</th>
-                      <th>£75.00</th>
+                      <th id="total" value="0.00">£0.00</th>
                       <td></td>
                     </tr>
                   </tbody>
@@ -140,6 +140,12 @@
           });
           el.pcnOne.addEventListener('click', function(e) {
             test();
+            if(el.pcnOne.checked){
+                var penaltyOne = el.pcnOne.getAttribute('value');
+                var total = el.total.getAttribute('value');
+                var g_total = Number(penaltyOne) + Number(total);
+                el.total.textContent = '£' + g_total;
+            }
           });
           el.pcnTwo.addEventListener('click', function(e) {
             test();
@@ -156,7 +162,8 @@
             buttonNext: $('#next'),
             pcnOne: $('#penalty-0'),
             pcnTwo: $('#penalty-1'),
-            terms: $('#terms')
+            terms: $('#terms'),
+            total: $('#total')
         }
     {{/js-objects}}
 

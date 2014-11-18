@@ -5,7 +5,7 @@
 	{{$column-1}}
 		<form>
 			<p class="form-group">
-                You can add up to five vehicles via this form. If you need to register more than five vehicles for Dart Charge, you can add them once your account is set up.
+                You can add up to twenty vehicles via this form. If you need to register more than twenty vehicles for Dart Charge, you can add them once your account is set up.
             </p>
 			<fieldset class="js-hidden form-group" id="vehicles">
 				<table>
@@ -373,7 +373,7 @@
                 el.vehicleRegistration.value = '';
                 setDisplay(el.vehicles, true);
                 setDisabled(el.buttonNext, false);
-                if(vehicleCounter < 5){
+                if(vehicleCounter < 20){
                     setDisplay(el.vehicleAddAnother, true);
                 }
             }
@@ -387,7 +387,7 @@
                 setDisplay(el.vehicleInput, true);
                 setDisplay(el.vehicles, false);
             }
-            if(vehicleCounter < 5 && vehicleCounter > 0){
+            if(vehicleCounter < 20 && vehicleCounter > 0){
                 setDisplay(el.vehicleAddAnother, true);
             }
         },
