@@ -1,16 +1,21 @@
 {{<layouts/account-home}}
+
+    {{$account-nav}}
+        {{>account/user/commercial/nav}}
+    {{/account-nav}}
+    
     {{$h1}}Account home{{/h1}}
 
     {{$column-1}}
         <ul>
-            <li><a href="index">Account overview</a></li>
-            <li><a href="crossing-history">Crossing history</a></li>
-            <li><a href="payment-history">Payment history</a></li>
+            <li><a href="/account/user/commercial">Account overview</a></li>
+            <li><a href="/account/user/commercial/crossing-history">Crossing history</a></li>
+            <li><a href="/account/user/commercial/payment-history">Payment history</a></li>
         </ul>
         <ul>
-            <li>Account number<br>1000068960</li>
-            <li>Account type <br>Standard</li>
-            <li>Top up method <br>Manual</li>
+            <li>Account number<br>103428370</li>
+            <li>Account type <br>Commercial</li>
+            <li>Top up method <br>Automatic</li>
         </ul>
     {{/column-1}}
 

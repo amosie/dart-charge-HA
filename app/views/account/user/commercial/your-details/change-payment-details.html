@@ -1,13 +1,23 @@
 {{<layouts/account-your-details}}
+
+    {{$account-nav}}
+        {{>account/user/commercial/nav}}
+    {{/account-nav}}
+    
     {{$h1}}Your details{{/h1}}
 
     {{$column-1}}
-        <ul class="page-nav" id="top">
-            <li><a href="">Update your details</a></li>
-            <li><a href="change-vehicle-details.html">Change your vehicle details</a></li>
-            <li><a href="change-payment-details.html">Change your payment details</a></li>
-            <li><a href="change-sign-in-password-pin.html">Change your sign-in email address, password and PIN</a></li>
-            <li><a href="change-close-account">Change account type or close your account</a></li>
+       <ul class="page-nav" id="top">
+            <li><a href="/account/user/commercial/your-details">
+                Update your details</a></li>
+            <li><a href="/account/user/commercial/your-details/change-vehicle-details">
+                Change your vehicle details</a></li>
+            <li><a href="/account/user/commercial/your-details/change-payment-details">
+                Change your payment details</a></li>
+            <li><a href="/account/user/commercial/your-details/change-sign-in-password-pin">
+                Change your sign-in email address, password and PIN</a></li>
+            <li><a href="/account/user/commercial/your-details/change-close-account">
+                Change account type or close your account</a></li>
         </ul>
     {{/column-1}}
 
