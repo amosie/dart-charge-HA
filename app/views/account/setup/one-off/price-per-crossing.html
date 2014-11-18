@@ -10,7 +10,7 @@
             <p>
                 <a href="/account/setup/personal/">Set up an account</a> if you want to pay for more than 10 crossings. You’ll pay a reduced rate.
             </p>
-            <form action="card">
+            <form>
                 <fieldset class="form-group">
                     <legend class="heading-24">How many crossings do you need to pay for?</legend>
                     <label class="form-label" for="email-address">Number of crossings</label>
@@ -35,21 +35,23 @@
                         By continuing with this service you accept the <a href="/account/setup/payment/terms">terms and conditions</a>.
                     </p>
                 </fieldset>
-                <p>
+            </form>
+             <p>
                      <button class="button" id="next" type="submit">Continue</button>
                 </p>
-            </form>
         </section>
 	{{/column-1}}
 
     {{$js-initialisation}}
 
         init = function() {
-            if (el.termsConditions.checked) {
+            
+           /* if (el.termsConditions.checked) {
                 setDisabled(el.buttonNext, false);
             } else {
                 setDisabled(el.buttonNext, true);
-            }
+            }*/
+
             if (window.location.search.match(/=debug/)) {
                 el.body.classList.add('debug');
             }
@@ -59,17 +61,23 @@
                     return false;
                 }
             });
+            el.vehicleAdd.addEventListener('click', function(e) {
+                e.preventDefault();
+                //window.location = 'card';
+            });
             el.buttonNext.addEventListener('click', function(e) {
                 e.preventDefault();
                 window.location = 'card';
             });
+
+            /*
             el.termsConditions.addEventListener('click', function(e) {
                 if (el.termsConditions.checked) {
                     setDisabled(el.buttonNext, false);
                 } else {
                     setDisabled(el.buttonNext, true);
                 }
-            });
+            });*/
         }
     {{/js-initialisation}}
 
