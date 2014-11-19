@@ -639,13 +639,9 @@ color: #6E6E6E;
 }
 
 #upgPay {
-  width: 1000px;
-  height: 980px;
-}
-
-#wrapper {
-  text-align: center;
-  padding-bottom: 30px;
-  min-height: none; 
+    width: 1000px;
+    height: 980px;
+    overflow: hidden;
+    border: none;
 }
 
