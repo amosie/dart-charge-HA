@@ -4,7 +4,7 @@
 #wrapper {
   text-align: center;
   padding-bottom: $gutter;
-  min-height: none;
+  min-height: 0;
   @include media(desktop) {
     padding-bottom: $gutter*3;
   min-height: 35em; // min-height for short pages
