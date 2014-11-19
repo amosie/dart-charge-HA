@@ -3,9 +3,6 @@
 	{{$h1}}Pay the Dartford crossing charge{{/h1}}
 
 	{{$column-1}}
-        <div class="beta-label">
-          <span class="beta">beta</span> This part of GOV.UK is being rebuilt – <a href="/help/beta"> find out what this means</a>
-        </div>
         <section class="intro">
             <div class="get-started-intro">
                 <div class="application-notice info-notice">
@@ -21,7 +18,11 @@
             </div>
             <p class="visuallyhidden"><a href="#what-you-need-to-know">What you need to know</a></p>
             <p id="get-started" class="get-started group">
+<<<<<<< HEAD
                 <a href="/account/setup/choose" rel="external" data-transaction-slug="pay-dartford-crossing-charge" class="button">
+=======
+                <a href="account/setup/choose" rel="external" data-transaction-slug="pay-dartford-crossing-charge" class="button">
+>>>>>>> origin/feature
                     Start now
                 </a>
             </p>
@@ -107,7 +108,7 @@
         init = function() {
             el.buttonSignIn.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location = 'account';
+                window.location = 'account/sign-in/';
             });
         }
     {{/js-initialisation}}
