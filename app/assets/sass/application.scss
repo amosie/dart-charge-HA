@@ -651,6 +651,10 @@ input[type=password] {
     font-family: Arial, sans-serif;
 }
 
+#wrapper {
+    display: block;   //For IE 8
+}
+
 .back-to-previous {
 font-family: "nta",Arial,sans-serif;
 font-size: 16px;
