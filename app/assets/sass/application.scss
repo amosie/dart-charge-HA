@@ -1,5 +1,8 @@
 @import "elements";
 
+$local-directory: "/public/images/";
+//$local-directory: "/Content/Images/";
+
 form p {
   margin: 0;
 }
@@ -58,7 +61,7 @@ table th {
     text-align: center;
 }
 .confirmation-text h1:before {
-  content: url(../../public/images/tick-icon.png);
+  content: url(#{$local-directory}tick-icon.png);
   position: relative;
   top: 4px;
   left: -15px;
@@ -488,12 +491,12 @@ margin: 1em 0 00;
 }
 
 .toggle-closed {
-background: url("../../public/images/icon-caret-right.png") left 0.3em no-repeat;
+background: url(#{$local-directory}icon-caret-right.png) left 0.3em no-repeat;
 padding-left: 0.75em;
 }
 
 .toggle-open {
-background: url("../../public/images/icon-caret-down.png") left 0.5em no-repeat;
+background: url(#{$local-directory}icon-caret-down.png) left 0.5em no-repeat;
 padding-left: 0.75em;
 margin-bottom: 0;
 }
@@ -662,7 +665,7 @@ position: static;
 text-decoration: none;
 border-bottom: #0b0c0c 1px solid;
 width: 2.25em;
-background: url("../../public/images/icon-caret-left.png") left 0.2em no-repeat;
+background: url(#{$local-directory}icon-caret-left.png) left 0.2em no-repeat;
 padding-left: 0.75em;
 text-align: right;
 margin: 0 0 15px 0;
