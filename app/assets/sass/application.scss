@@ -1,8 +1,5 @@
 @import "elements";
 
-$local-directory: "/public/images/";
-//$local-directory: "/Content/Images/";
-
 form p {
   margin: 0;
 }
@@ -61,7 +58,7 @@ table th {
     text-align: center;
 }
 .confirmation-text h1:before {
-  content: url(#{$local-directory}tick-icon.png);
+  content: url(../../public/images/tick-icon.png);
   position: relative;
   top: 4px;
   left: -15px;
@@ -244,6 +241,13 @@ input.form-restriction-1-16 {
 }
 .panel-indent .heading-24 {
   margin-top: 0;
+}
+
+#upgPay {
+    width: 1000px;
+    height: 950px;
+    overflow: hidden;
+    border: none;
 }
 
 p.panel-inline-indent, 
@@ -484,12 +488,12 @@ margin: 1em 0 00;
 }
 
 .toggle-closed {
-background: url(#{$local-directory}icon-caret-right.png) left 0.3em no-repeat;
+background: url("../../public/images/icon-caret-right.png") left 0.3em no-repeat;
 padding-left: 0.75em;
 }
 
 .toggle-open {
-background: url(#{$local-directory}icon-caret-down.png) left 0.5em no-repeat;
+background: url("../../public/images/icon-caret-down.png") left 0.5em no-repeat;
 padding-left: 0.75em;
 margin-bottom: 0;
 }
@@ -630,29 +634,6 @@ font-size: 0.8em;
 color: #6E6E6E;
 }
 
-//YH
-// other YH
-
-hr {
-border:0;
-height: 1px;
-background: #bfc1c3; }
-
-hr.what-did-you-think {
-margin: 20px 0; }
-
-b, strong {
-font-weight: 600; }
-
-.confirmation-text h1{
-text-align: center;
-}
-.tick-icon {
-    width: 24em;
-    background: url(#{$local-directory}tick-icon.png);
-}
-
-
 //MATEJ
 #loadingItem {
     min-height: 0 !important;
@@ -670,3 +651,24 @@ input[type=password] {
     font-family: Arial, sans-serif;
 }
 
+.back-to-previous {
+font-family: "nta",Arial,sans-serif;
+font-size: 16px;
+line-height: 1.25;
+font-weight: 300;
+text-transform: none;
+display: block;
+position: static;
+text-decoration: none;
+border-bottom: #0b0c0c 1px solid;
+width: 2.25em;
+background: url("../../public/images/icon-caret-left.png") left 0.2em no-repeat;
+padding-left: 0.75em;
+text-align: right;
+margin: 0 0 15px 0;
+overflow: hidden;
+}
+
+a.back-to-previous, a.back-to-previous:active, a.back-to-previous:hover, a.back-to-previous:focus {
+color: #0b0c0c;
+}

@@ -1,0 +1,48 @@
+{{<layouts/1-column}}
+
+	{{$column-1}}
+       <form>
+            <fieldset>
+                <div class="confirmation-message form-group">
+                    <div class="confirmation-text">
+                        <h1 class="heading-48">You have submitted 3 documents</h1>
+                     </div>
+                </div>
+            </fieldset>
+        </form><!--Comment this section since this is needed to be run from within the site -->
+        <h2 class="heading-24 form-block">Application reference: 7505</h2>
+        <p>We've sent your confirmation to you by email.</p>
+        <p>It takes up to 5 days to approve documents, in the meantime you will be charged the standard rate.</p>
+        <p>If you have any questions about your local resident's discount application, contact Dart Charge.</p>
+        <div class="contact">
+            <p><strong>Dart Charge</strong><br>
+            Telephone: 0300 3000 120<br>
+            Opening hours: 5am to midnight, 7 days a week (including bank holidays)<br>
+            <a href="/call-charges">Find out about call charges</a></p>
+        </div>
+        <hr class="what-did-you-think">
+        <p><a href='/'>What did you think of this service?</a> (Takes 30 seconds)</p>
+	{{/column-1}}
+
+	{{$js-functions}}
+		func = function() {
+			console.log(el.buttonNext);
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			el.body.addEventListener('click', function() {
+				func();
+			}, false);
+		}
+	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			body: $('body'),
+			buttonNext: $('#next')
+		}
+	{{/js-objects}}
+
+{{/layouts/1-column}}

@@ -3,7 +3,7 @@
     {{$account-nav}}
         {{>account/user/personal-standard/nav}}
     {{/account-nav}}
-    
+
     {{$h1}}Your details{{/h1}}
 
     {{$column-1}}
@@ -19,8 +19,7 @@
 
     {{$column-2}}
         <h2 class="heading-24" id="section1">Apply for a local resident's discount</h2>
-        <a href="/account/user/personal-standard/your-details/apply-local-residents-discount-upload" class="toggle-closed">Providing documents</a>
-        <form>
+        <form action="apply-local-residents-discount-upload">
             <fieldset>
                 <div id="proof">
                     <h2 class="heading-24">Proof of residency and vehicle ownership</h2>
@@ -55,92 +54,21 @@
                     </ol>
                 </div>
             </fieldset>
+            <p class="form-group form-final-force">By continuing with this service you accept the <a href="/terms-and-conditions/">terms and conditions</a>.
+            </p>
+            <p>
+                <button class="button" id="next" type="submit">Continue</button>
+            </p>
         </form>
     {{/column-2}}
-{{$js-functions}}
-        testNext = function() {
-            if (
-                el.proofOfOwnership.files.length > 0 &&
-                el.proofOfResidence1.files.length > 0 &&
-                el.proofOfResidence2.files.length > 0
-            ) {
-                setDisabled(el.buttonNext, false);
-            } else {
-                setDisabled(el.buttonNext, true);
-            }
-        }
+
+    {{$js-functions}}
     {{/js-functions}}
 
     {{$js-initialisation}}
-        init = function() {
-            if (window.location.search.match(/=debug/)) {
-                el.body.classList.add('debug');
-            }
-
-            if (
-                el.proofOfOwnership.files.length > 0 &&
-                el.proofOfResidence1.files.length > 0 &&
-                el.proofOfResidence2.files.length > 0
-            ) {
-                setDisabled(el.buttonNext, false);
-            } else {
-                setDisabled(el.buttonNext, true);
-            }
-
-            document.addEventListener('keydown', function(e) {
-                if (e.keyCode == 13 || e.which == 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            el.buttonNext.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location = './pre-payment';
-            });
-            el.proofOfOwnership.addEventListener('change', function(e) {
-                testNext();
-            }, false);
-            el.proofOfResidence1.addEventListener('change', function(e) {
-                testNext();
-            }, false);
-            el.proofOfResidence2.addEventListener('change', function(e) {
-                testNext();
-            }, false);
-            el.proofNow.addEventListener('click', function(e) {
-                setDisplay(el.uploadNow, true);
-                setDisplay(el.uploadLater, false);
-                setDisplay(el.uploadMail, false);
-                setDisabled(el.buttonNext, true);
-            }, false);
-            el.proofLater.addEventListener('click', function(e) {
-                setDisplay(el.uploadNow, false);
-                setDisplay(el.uploadLater, true);
-                setDisplay(el.uploadMail, false);
-                setDisabled(el.buttonNext, false);
-            }, false);
-            el.proofMail.addEventListener('click', function(e) {
-                setDisplay(el.uploadNow, false);
-                setDisplay(el.uploadLater, false);
-                setDisplay(el.uploadMail, true);
-                setDisabled(el.buttonNext, false);
-            }, false);
-        }
     {{/js-initialisation}}
 
     {{$js-objects}}
-        el = {
-            buttonNext: $('#next'),
-            proof: $('#proof'),
-            proofOfOwnership: $('#proof-of-ownership'),
-            proofOfResidence1: $('#proof-of-residence-1'),
-            proofOfResidence2: $('#proof-of-residence-2'),
-            proofMail: $('#proof-mail'),
-            proofNow: $('#proof-now'),
-            proofLater: $('#proof-later'),
-            uploadLater: $('#upload-later'),
-            uploadMail: $('#upload-mail'),
-            uploadNow: $('#upload-now')
-        }
     {{/js-objects}}
 
 {{/layouts/account-your-details}}
