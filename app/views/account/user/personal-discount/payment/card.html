@@ -1,4 +1,4 @@
-{{<layouts/account}}
+{{<layouts/1-column}}
 
     {{$account-nav}}
         {{>account/user/personal-standard/nav}}
@@ -8,9 +8,9 @@
 
 	{{$column-1}}
         <form method="post" action="/Secure/iTransact.ashx" id="payment" autocomplete="off" style="margin-bottom: 0 !important;">
-            <p class="heading-24">
-                Total cost:
-                <span id="labelAmount">£10</span>
+            <p class="form-group">
+                Payment amount:
+                <span id="labelAmount">£10.00</span>
             </p>
 
             <fieldset>
@@ -85,9 +85,8 @@
                     </select>
                 </p>
                 <p class="form-group">
-                    <label for='CV2' class="form-label">Card Security Code</label>
-                    <span class="form-hint">The last 3 digits found on the signature strip on the back of the card. For Amex the 4 digits after the card number on the front.</span>
-                    <input name="CV2" maxlength="4" id="CV2" title="The last 3 digits found on the signature strip on the back of the card. For Amex the 4 digits after the card number on the front." class="text small" autocomplete="off" type="text" pattern="[0-9]*" />
+                    <label for='CV2' class="form-label">Card Security Code</label><span class="form-hint">The last 3 numbers found on the signature strip on the back of the card. For Amex the 4 numbers after the card number on the front.</span>
+                    <input name="CV2" maxlength="4" id="CV2" title="Card Security Code" class="text small" autocomplete="off" type="text" pattern="[0-9]*" />
                 </p>
                 <p class="form-group">
                     <label for='QAAAddress' class="form-label">Billing Address</label>
@@ -118,7 +117,7 @@
 			}
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
-				window.location = '/account/user/personal-standard/confirmation';
+				window.location = 'card-confirmation';
 			});
 		}
 	{{/js-initialisation}}
@@ -130,4 +129,4 @@
 		}
 	{{/js-objects}}
 
-{{/layouts/account}}
+{{/layouts/1-column}}

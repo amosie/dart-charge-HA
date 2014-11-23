@@ -18,50 +18,100 @@
     {{/column-1}}
 
     {{$column-2}}
-        <h2 class="heading-24" id="section1">Change your payment details</h2>
+        <h2 class="heading-24" id="section1">Change your payment details&emsp;<span class="copy-16">
+            <a href="/account/user/personal-standard/payment-history">
+                View payment history
+            </a></span></h2>
+        <div class="js-hidden" id="type">manual</div>
         <h3 class="heading-24">Top-up method: manual</h3>
-        <p>You must remember to add funds to your account yourself when your balance is low.
-        <p class="panel-indent">When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.</p>
-        <a href="/account/user/personal-standard/your-details/change-payment-details-auto" class="button" id="next" type="submit">Pay automatically</a>
+        <p>You will need to remember to add funds to your account yourself when your balance is low.</p>
+        <div class="panel-indent" id="type-manual">
+            <p class="non-form">
+                When your account goes below £10 an email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
+            </p>
+        </div>
+        <form>
+            <fieldset class="">
+
+                <legend class="heading-24">How would you like to top-up your account?</legend>
+                <div class="form-group form-group-compound mini" id="dart-boolean">
+                    <div id="manual">
+                        <label class="block-label" for="top-up-manual">
+                            <input id="top-up-manual" type="radio" name="topup-group" value="Yes">
+                            Manually
+                        </label>
+                        <p class="panel-inline-indent">
+                            You will need to remember to add funds to your account yourself when your balance is low.
+                        </p>
+                        <div class="panel-indent js-hidden" id="type-manual">
+                            <p class="non-form">
+                                When your account goes below £10 email notification will be sent to remind you to topup. If account balance goes below zero, you will have 24 hours to add funds after that account will be closed and you may receive a penalty charge if you use the crossing and don't pay.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="automatic">
+                        <label class="block-label" for="top-up-automatic">
+                            <input id="top-up-automatic" type="radio" name="topup-group" value="No">
+                            Automatically
+                        </label>
+                        <p class="panel-inline-indent">
+                            No need to remember to top-up, funds to your account are added automatically when balance goes below specified amount.
+                        </p>
+                    </div>
+                </div>
+                <div class="js-hidden" id="top-up-types">
+                    
+                    <div class="panel-indent js-hidden" id="type-automatic">
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">Top-up my account by:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <p class="form-group">
+                            <label class="form-label" for="automatic-start">When my account reaches:</label>
+                            £ <input class="form-control form-control-1-4" id="automatic-start" type="text" value="10.00" />
+                        </p>
+                        <legend class="heading-24">Payment type</legend>
+                        <p class="form-group form-group-compound mini inline" id="payment-method">
+                            <label class="block-label" for="payment-direct-debit">
+                                <input id="payment-direct-debit" type="radio" name="payment-group" value="Yes">
+                                Direct debit
+                            </label>
+                            <label class="block-label" for="payment-card">
+                                <input id="payment-card" type="radio" name="payment-group" value="No">
+                                Debit or Credit card
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+            <p class="form-group form-final-force">By continuing with this service you accept the <a href="/terms-and-conditions/">terms and conditions</a>.
+            </p>
+            <p>
+                <button class="button" id="next" type="submit">Continue</button>
+            </p>
+        </form>
     {{/column-2}}
 
     {{$js-functions}}
-        showAddresses = function() {
-            setDisplay(el.address, true);
-            var addressValues = el.addressFound[el.addressFound.selectedIndex].text.split(',');
-            el.addressOne.value = addressValues[0];
-            el.townCity.value = addressValues[1];
-            setDisplay(el.addressDetail, true);
+        clearDirectDebit = function() {
+            setDisplay(el.sectionDirectDebit, false);
         },
-        showAddressForm = function(target) {
-            if (target.checked == true) {
-                setDisplay(el.addressDetail, true);
-            } else {
-                setDisplay(el.addressDetail, false);
-            }
+        showAutomatic = function() {
+            setDisplay(el.sectionTopUp, true);
+            setDisplay(el.sectionTopUpAutomatic, true);
+            setDisplay(el.sectionTopUpManual, false);
         },
-        setAddress = function(target) {
-            var addressValues = target[target.selectedIndex].text.split(',');
-            el.addressOne.value = addressValues[0];
-            el.townCity.value = addressValues[1];
+        showDirectDebit = function() {
+            setDisplay(el.sectionDirectDebit, true);
         },
-        testCompany = function(target) {
-            if (target.checked == true) {
-                setDisplay(el.company, true);
-            } else {
-                setDisplay(el.company, false);
-                el.companyNumber.value = '';
-            }
+        showManual = function() {
+            el.radioPaymentDirectDebit.checked = false;
+            setDisplay(el.sectionTopUp, true);
+            setDisplay(el.sectionTopUpAutomatic, false);
+            setDisplay(el.sectionTopUpManual, true);
         },
-        testLocal = function(target) {
-            if (el.discountInvite) {
-                var postcode = target.value.toUpperCase();
-                if (postcode.match(/^(BR8|CM13|DA(1[01347]*|[23459])|RM(1[456789]|20)|SS1[67])\s*\d[A-Z]{2}$/)) {
-                    setDisplay(el.discountInvite, true);
-                } else {
-                    setDisplay(el.discountInvite, false);
-                }
-            }
+        testForm = function() {
+            setDisabled(el.buttonNext, false);
         }
     {{/js-functions}}
 
@@ -70,54 +120,51 @@
             if (window.location.search.match(/=debug/)) {
                 el.body.classList.add('debug');
             }
-            el.addressFound.addEventListener('change',function(e) {
-                setAddress(e.target);
-            });
-            el.addressNotFound.addEventListener('click', function(e) {
-                showAddressForm(e.target);
-            }, false);
-            el.behalfCompany.addEventListener('change', function(e) {
-                testCompany(e.target);
-            }, false);
+            if(el.type.innerText == "manual"){
+                setDisplay(el.manual, false);
+            }else{
+                setDisplay(el.automatic, false);
+            }
+            
             el.buttonNext.addEventListener('click', function(e) {
                 e.preventDefault();
-                if (el.localDiscount.checked) {
-                    window.location = './personal/account-setup-LRDS';
+                if ($('#payment-direct-debit:checked')) {
+                    window.location = '/account/user/personal-standard/payment/direct-debit';
                 } else {
-                    window.location = './personal/account-setup';
+                    window.location = '/account/user/personal-standard/payment/card';
                 }
             });
-            el.findAddress.addEventListener('click', function(e) {
-                e.preventDefault();
-                showAddresses();
-                setDisabled(el.buttonNext, true);
-                testLocal(el.postcode);
+            el.radioPaymentDirectDebit.addEventListener('click', function() {
+                showDirectDebit();
             }, false);
-            el.findCompany.addEventListener('click', function(e) {
-                e.preventDefault();
+            el.radioPaymentCard.addEventListener('click', function() {
+                clearDirectDebit();
+            }, false);
+            el.radioTopUpAutomatic.addEventListener('click', function() {
+                showAutomatic();
+            }, false);
+            el.radioTopUpManual.addEventListener('click', function() {
+                showManual();
             }, false);
         }
     {{/js-initialisation}}
 
     {{$js-objects}}
         el = {
-            address: $('#address'),
-            addressOne: $('#address-1'),
-            addressTwo: $('#address-2'),
-            addressDetail: $('#address-detail'),
-            addressFound: $('#address-found'),
-            addressNotFound: $('#address-not-found'),
             body: $('body'),
             buttonNext: $('#next'),
-            behalfCompany: $('#behalf-of-company'),
-            company: $('#company'),
-            companyNumber: $('#company-number'),
-            discountInvite: $('#discount-invite'),
-            findAddress: $('#find-address'),
-            findCompany: $('#find-company'),
-            localDiscount: $('#local-discount'),
-            postcode: $('#postcode'),
-            townCity: $('#town-city')
+            autmatic: $('#automatic'),
+            manual: $('#manual'),
+            radioPaymentCard: $('#payment-card'),
+            radioPaymentDirectDebit: $('#payment-direct-debit'),
+            radioTopUpAutomatic: $('#top-up-automatic'),
+            radioTopUpManual: $('#top-up-manual'),
+            sectionDirectDebit: $('#direct-debit'),
+            sectionTopUp: $('#top-up-types'),
+            sectionTopUpAutomatic: $('#type-automatic'),
+            sectionTopUpAll: $$('.top-up > div'),
+            sectionTopUpManual: $('#type-manual'),
+            type: $('#type')
         }
     {{/js-objects}}
 

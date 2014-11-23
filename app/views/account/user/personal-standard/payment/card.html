@@ -1,7 +1,7 @@
 {{<layouts/1-column}}
 
     {{$account-nav}}
-        {{>account/user/commercial/nav}}
+        {{>account/user/personal-standard/nav}}
     {{/account-nav}}
 
 	{{$h1}}Credit/debit card details{{/h1}}
@@ -85,8 +85,8 @@
                     </select>
                 </p>
                 <p class="form-group">
-                    <label for='CV2' class="form-label">Card Security Code</label>
-                    <input name="CV2" maxlength="4" id="CV2" title="The last 3 digits found on the signature strip on the back of the card. For Amex the 4 digits after the card number on the front." class="text small" autocomplete="off" type="text" pattern="[0-9]*" />
+                    <label for='CV2' class="form-label">Card Security Code</label><span class="form-hint">The last 3 numbers found on the signature strip on the back of the card. For Amex the 4 numbers after the card number on the front.</span>
+                    <input name="CV2" maxlength="4" id="CV2" title="Card Security Code" class="text small" autocomplete="off" type="text" pattern="[0-9]*" />
                 </p>
                 <p class="form-group">
                     <label for='QAAAddress' class="form-label">Billing Address</label>
@@ -117,7 +117,7 @@
 			}
 			el.buttonNext.addEventListener('click', function(e) {
 				e.preventDefault();
-				window.location = '../summary';
+				window.location = 'card-confirmation';
 			});
 		}
 	{{/js-initialisation}}
