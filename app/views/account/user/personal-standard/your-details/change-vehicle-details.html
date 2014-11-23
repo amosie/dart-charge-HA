@@ -23,10 +23,10 @@
             <p class="form-block">
                 You can add up to twenty vehicles manually.
             </p>
-            <p class="form-force form-group js-hidden" id="vehicle-add-another" style="display: block;">
+            <p class="form-force form-group" id="vehicle-add-another">
                 <button class="button" id="vehicle-add-another-button">Add another vehicle</button>
             </p>
-            <fieldset class="inline" id="vehicle-input" style="display: none;"><br>
+            <fieldset class="inline" id="vehicle-input">
                 <label class="form-label" for="vehicle-registration">
                     Country of registration
                 </label>
@@ -308,7 +308,7 @@
                     <input class="form-control form-control-1-4 form-control-uppercase" id="vehicle-registration" type="text">
                     <button class="button inline" id="vehicle-add">Find vehicle</button>
                 </p>
-                <div class="panel-indent js-hidden" id="vehicle-not-found" style="display: none;">
+                <div class="panel-indent js-hidden" id="vehicle-not-found">
                     <p class="form-group mini">
                         <label for="vehicle-class-group">Vehicle class</label>
                         </p><fieldset class="inline">
@@ -343,8 +343,10 @@
                     </p>
                 </div>
             </fieldset>
-            <a href="/account/user/personal-standard/your-details/change-multiple-vehicle-details" class="toggle-closed">Changing multiple vehicles</a>
-            <fieldset class="js-hidden form-group" id="vehicles" style="display: block;">
+            <a href="/account/user/personal-standard/your-details/change-multiple-vehicle-details" class="toggle-closed">
+                Changing multiple vehicles
+            </a>
+            <fieldset class="form-group" id="vehicles">
                 <table>
                     <thead>
                         <tr>
@@ -368,11 +370,10 @@
                     </tbody>
                 </table>
             </fieldset>
-            <p class="hidden"><button class="button" id="next" type="submit">Save new vehicle details</button></p>
         </form>
     {{/column-2}}
 
-        {{$js-functions}}
+    {{$js-functions}}
         createTableRow = function(vehicleData) {
             if(el.vehicleRegistration.value != ''){
                 setDisplay(el.vehicleNotFound, false);
@@ -397,11 +398,10 @@
                 vehicleCounter += 1;
                 el.vehicleRegistration.value = '';
                 setDisplay(el.vehicles, true);
-                setDisabled(el.buttonNext, false);
-                if(vehicleCounter < 5){
-                    setDisplay(el.vehicleAddAnother, true);
-                }
+   
             }
+            el.vehicleAdd.removeAttribute("style");
+            el.vehicleAddAnother.removeAttribute("style");
         },
         destroyTableRow = function(target) {
             var rows = $$('#vehicle-list tr');
@@ -412,7 +412,7 @@
                 setDisplay(el.vehicleInput, true);
                 setDisplay(el.vehicles, false);
             }
-            if(vehicleCounter < 5 && vehicleCounter > 0){
+            if(vehicleCounter < 20 && vehicleCounter > 0){
                 setDisplay(el.vehicleAddAnother, true);
             }
         },
@@ -452,10 +452,8 @@
                     return false;
                 }
             });
-            el.buttonNext.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location = 'payment';
-            });
+            setDisplay(el.vehicleInput, false);
+
             el.form.addEventListener('submit', function(e) {
                 if (el.buttonNext.disabled) {
                     e.preventDefault();
@@ -496,7 +494,7 @@
             vehicles: $('#vehicles'),
             vehicleRegistration: $('#vehicle-registration')
         },
-        vehicleCounter = 0,
+        vehicleCounter = 1,
         vehicles = [
             {
                 reg: 'GX05DTY',
