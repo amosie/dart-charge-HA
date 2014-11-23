@@ -19,9 +19,10 @@
 
     {{$column-2}}
         <h2 class="heading-24" id="section1">Change your payment details&emsp;<span class="copy-16">
-            <a href="../payment-history">
+            <a href="/account/user/personal-standard/payment-history">
                 View payment history
             </a></span></h2>
+        <div class="js-hidden" id="type">manual</div>
         <h3 class="heading-24">Top-up method: manual</h3>
         <p>You will need to remember to add funds to your account yourself when your balance is low.</p>
         <div class="panel-indent" id="type-manual">
@@ -34,7 +35,7 @@
 
                 <legend class="heading-24">How would you like to top-up your account?</legend>
                 <div class="form-group form-group-compound mini" id="dart-boolean">
-                    <div class="js-hidden">
+                    <div id="manual">
                         <label class="block-label" for="top-up-manual">
                             <input id="top-up-manual" type="radio" name="topup-group" value="Yes">
                             Manually
@@ -48,13 +49,15 @@
                             </p>
                         </div>
                     </div>
-                    <label class="block-label" for="top-up-automatic">
-                        <input id="top-up-automatic" type="radio" name="topup-group" value="No">
-                        Automatically
-                    </label>
-                    <p class="panel-inline-indent">
-                        No need to remember to top-up, funds to your account are added automatically when balance goes below specified amount.
-                    </p>
+                    <div id="automatic">
+                        <label class="block-label" for="top-up-automatic">
+                            <input id="top-up-automatic" type="radio" name="topup-group" value="No">
+                            Automatically
+                        </label>
+                        <p class="panel-inline-indent">
+                            No need to remember to top-up, funds to your account are added automatically when balance goes below specified amount.
+                        </p>
+                    </div>
                 </div>
                 <div class="js-hidden" id="top-up-types">
                     
@@ -117,12 +120,18 @@
             if (window.location.search.match(/=debug/)) {
                 el.body.classList.add('debug');
             }
+            if(el.type.innerText == "manual"){
+                setDisplay(el.manual, false);
+            }else{
+                setDisplay(el.automatic, false);
+            }
+            
             el.buttonNext.addEventListener('click', function(e) {
                 e.preventDefault();
                 if ($('#payment-direct-debit:checked')) {
-                    window.location = '../payment/direct-debit';
+                    window.location = '/account/user/personal-standard/payment/direct-debit';
                 } else {
-                    window.location = '../payment/card';
+                    window.location = '/account/user/personal-standard/payment/card';
                 }
             });
             el.radioPaymentDirectDebit.addEventListener('click', function() {
@@ -144,6 +153,8 @@
         el = {
             body: $('body'),
             buttonNext: $('#next'),
+            autmatic: $('#automatic'),
+            manual: $('#manual'),
             radioPaymentCard: $('#payment-card'),
             radioPaymentDirectDebit: $('#payment-direct-debit'),
             radioTopUpAutomatic: $('#top-up-automatic'),
@@ -152,7 +163,8 @@
             sectionTopUp: $('#top-up-types'),
             sectionTopUpAutomatic: $('#type-automatic'),
             sectionTopUpAll: $$('.top-up > div'),
-            sectionTopUpManual: $('#type-manual')
+            sectionTopUpManual: $('#type-manual'),
+            type: $('#type')
         }
     {{/js-objects}}
 
