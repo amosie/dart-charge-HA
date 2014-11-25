@@ -5,7 +5,8 @@ module.exports = function(grunt){
     sass: {
       dev: {
         files: {
-          'public/stylesheets/application.css': 'app/assets/sass/application.scss'
+          'public/stylesheets/application.css': 'app/assets/sass/application.scss',
+          'public/stylesheets/application-ie8.css': 'app/assets/sass/application-ie8.scss'
         },
         options: {
           loadPath: [
