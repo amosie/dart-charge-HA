@@ -34,13 +34,13 @@ table th {
   font-weight: 800;
 }
 .phase-banner  {
-  @include phase-banner(beta);
+  @include phase-banner(alpha);
   strong {
     text-transform: uppercase;
   }
 }
 .phase-tag {
-  @include phase-tag(beta);
+  @include phase-tag(alpha);
 }
 .border-left {
     border-left: 1px solid #bfc1c3;
