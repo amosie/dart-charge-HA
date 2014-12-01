@@ -3,6 +3,8 @@
 $local-directory: "/public/images/";
 //$local-directory: "/Content/Images/";
 
+$current-phase: alpha;
+
 form p {
   margin: 0;
 }
@@ -34,13 +36,13 @@ table th {
   font-weight: 800;
 }
 .phase-banner  {
-  @include phase-banner(alpha);
+  @include phase-banner($current-phase);
   strong {
     text-transform: uppercase;
   }
 }
 .phase-tag {
-  @include phase-tag(alpha);
+  @include phase-tag($current-phase);
 }
 .border-left {
     border-left: 1px solid #bfc1c3;
