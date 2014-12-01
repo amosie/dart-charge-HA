@@ -1,7 +1,7 @@
 @import "elements";
 
-$local-directory: "/public/images/";
-//$local-directory: "/Content/Images/";
+//$local-directory: "/public/images/";
+$local-directory: "/Content/Images/";
 
 form p {
   margin: 0;
@@ -248,7 +248,7 @@ input.form-restriction-1-16 {
 
 #upgPay {
     width: 1000px;
-    height: 950px;
+    height: 980px;
     overflow: hidden;
     border: none;
 }
@@ -641,14 +641,6 @@ color: #6E6E6E;
 #loadingItem {
     min-height: 0 !important;
 }
-
-#upgPay {
-    width: 1000px;
-    height: 980px;
-    overflow: hidden;
-    border: none;
-}
-
 
 input[type=password] {
     font-family: Arial, sans-serif;
