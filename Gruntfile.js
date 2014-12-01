@@ -6,6 +6,8 @@ module.exports = function(grunt){
       dev: {
         files: {
           'public/stylesheets/application.css': 'app/assets/sass/application.scss',
+          'public/stylesheets/application-ie6.css': 'app/assets/sass/application-ie6.scss',
+          'public/stylesheets/application-ie7.css': 'app/assets/sass/application-ie7.scss',
           'public/stylesheets/application-ie8.css': 'app/assets/sass/application-ie8.scss'
         },
         options: {
